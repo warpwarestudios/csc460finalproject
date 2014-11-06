@@ -15,7 +15,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smitth
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new BlackJackMainWindow());
         }
     }
 }

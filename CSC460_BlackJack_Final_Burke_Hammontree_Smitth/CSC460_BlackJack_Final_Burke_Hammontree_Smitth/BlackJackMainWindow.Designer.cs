@@ -1,6 +1,6 @@
 ﻿namespace CSC460_BlackJack_Final_Burke_Hammontree_Smitth
 {
-    partial class Form1
+    partial class BlackJackMainWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // BlackJackMainWindow
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(1135, 513);
+            this.Name = "BlackJackMainWindow";
+            this.Text = "BlackJack";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
     }
 }
-

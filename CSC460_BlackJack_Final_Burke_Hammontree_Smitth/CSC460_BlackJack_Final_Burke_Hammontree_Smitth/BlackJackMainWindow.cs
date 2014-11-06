@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace CSC460_BlackJack_Final_Burke_Hammontree_Smitth
 {
-    public partial class Form1 : Form
+    public partial class BlackJackMainWindow : Form
     {
-        public Form1()
+        public BlackJackMainWindow()
         {
             InitializeComponent();
         }
