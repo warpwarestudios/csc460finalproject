@@ -1,6 +1,6 @@
-﻿namespace CSC460_BlackJack_Final_Burke_Hammontree_Smitth
+﻿namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 {
-    partial class BlackJackMainWindow
+    partial class BlackjackMainWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -30,13 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // BlackJackMainWindow
+            // BlackjackMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1135, 513);
-            this.Name = "BlackJackMainWindow";
-            this.Text = "BlackJack";
+            this.ClientSize = new System.Drawing.Size(1113, 460);
+            this.Name = "BlackjackMainWindow";
+            this.Text = "Blackjack";
             this.ResumeLayout(false);
 
         }

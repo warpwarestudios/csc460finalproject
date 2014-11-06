@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CSC460_BlackJack_Final_Burke_Hammontree_Smitth.Properties
+namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smitth.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CSC460_BlackJack_Final_Burke_Hammontree_Smitth.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

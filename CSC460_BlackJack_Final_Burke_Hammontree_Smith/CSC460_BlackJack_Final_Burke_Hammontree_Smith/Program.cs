@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace CSC460_BlackJack_Final_Burke_Hammontree_Smitth
+namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 {
     static class Program
     {
@@ -15,7 +15,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smitth
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BlackJackMainWindow());
+            Application.Run(new Form1());
         }
     }
 }

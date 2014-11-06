@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CSC460_BlackJack_Final_Burke_Hammontree_Smitth")]
+[assembly: AssemblyTitle("CSC460_BlackJack_Final_Burke_Hammontree_Smith")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
-[assembly: AssemblyProduct("CSC460_BlackJack_Final_Burke_Hammontree_Smitth")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2014")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("CSC460_BlackJack_Final_Burke_Hammontree_Smith")]
+[assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d1c683c2-c1ee-46a0-9edc-8c60dfa6a937")]
+[assembly: Guid("5b049737-9f12-48a6-8c8f-a1d35b259f9a")]
 
 // Version information for an assembly consists of the following four values:
 //

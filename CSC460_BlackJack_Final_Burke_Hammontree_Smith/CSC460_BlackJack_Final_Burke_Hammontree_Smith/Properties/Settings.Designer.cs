@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CSC460_BlackJack_Final_Burke_Hammontree_Smitth.Properties
+namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties
 {
 
 

@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace CSC460_BlackJack_Final_Burke_Hammontree_Smitth
+namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 {
-    public partial class BlackJackMainWindow : Form
+    public partial class BlackjackMainWindow : Form
     {
-        public BlackJackMainWindow()
+        public BlackjackMainWindow()
         {
             InitializeComponent();
         }
