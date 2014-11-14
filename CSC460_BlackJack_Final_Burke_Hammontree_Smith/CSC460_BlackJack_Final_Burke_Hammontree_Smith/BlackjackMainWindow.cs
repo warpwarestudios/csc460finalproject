@@ -29,7 +29,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
             // Test Insertion
             System.Data.SqlClient.SqlConnection connect =
-            new System.Data.SqlClient.SqlConnection("Data Source=|DataDirectory|\\Database.sdf");
+            new System.Data.SqlClient.SqlConnection("server=.\\SQLExpress;database=Database;integrated Security=SSPI;");
 
             System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
             cmd.CommandType = System.Data.CommandType.Text;
