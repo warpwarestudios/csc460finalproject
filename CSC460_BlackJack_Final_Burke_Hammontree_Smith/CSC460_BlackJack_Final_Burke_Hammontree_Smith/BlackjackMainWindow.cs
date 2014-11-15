@@ -22,7 +22,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         }
 
         // create a new player for the database
-        private static void createPlayer(String name, String password)
+        private static void CreatePlayer(String name, String password)
         {
             // primary key id value
             int id = 1;
@@ -56,7 +56,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             db.SaveChanges();
         }
 
-        private static Player selectPlayer(String name, String password)
+        // Select player based on name and password
+        private static Player SelectPlayer(String name, String password)
         {
             using (var playerList = new DatabaseEntities())
             {
@@ -69,7 +70,9 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             }
         }
 
-        private static void updateBank(Player selectPlayer, decimal change, bool borrow)
+        // update bank amount based on current selected player 
+        // and entered values for bank amount change and if borrowing is invoked
+        private static void UpdateBank(Player selectPlayer, decimal change, bool borrow)
         {
             // database connect
             var db = new DatabaseEntities();

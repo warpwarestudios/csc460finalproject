@@ -5,6 +5,7 @@ namespace Cards
         private readonly Suit suit;
         private readonly Value value;
 
+        // Assigns card suit and value
 		public PlayingCard(Suit s, Value v)
 		{
 			this.suit = s;

@@ -13,7 +13,12 @@ namespace Cards
         public Pack()
         {
             this.cardPack = new Hashtable();
+            Reshuffle();
+        }
 
+        // Builds deck with card values for all card suits and values
+        public void Reshuffle()
+        {
             for (Suit suit = Suit.Clubs; suit <= Suit.Spades; suit++)
             {
                 SortedList cardsInSuit = new SortedList();
@@ -25,6 +30,8 @@ namespace Cards
             }
         }
 
+        // Deals new card
+        // checks against cards that have been dealt before 
         public PlayingCard DealCardFromPack()
         {
             Suit suit = (Suit)randomCardSelector.Next(NumSuits);
