@@ -21,24 +21,16 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             this.Validate();
         }
 
-        int testVar = 1;
-
         private void button1_Click(object sender, EventArgs e)
         {
             createPlayer("Ryan", "Secret");
+            
+            Player selection = selectPlayer("Ryan", "Secret");
+            label1.Text = selection.Username;
+            label2.Text = selection.Password;
+            label3.Text = selection.Bank.ToString();
+            label4.Text = selection.Borrow.ToString();
 
-            using (var playerList = new DatabaseEntities())
-            {
-                // Query for all players  
-                Player players = (from player in playerList.Players
-                              where (player.id == testVar)
-                              select player).FirstOrDefault<Player>();
-
-                label1.Text = players.Username;
-                label2.Text = players.Password;
-                label3.Text = players.Bank.ToString();
-                label4.Text = players.Borrow.ToString();
-            }
         }
 
         // create a new player for the database
@@ -79,5 +71,22 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
             // End Database Insertion
         }
+
+        private static Player selectPlayer(String name, String password)
+        {
+            using (var playerList = new DatabaseEntities())
+            {
+                // Query for selected player  
+                Player selectedPlayer = (from player in playerList.Players
+                                  where ((player.Username == name) && (player.Password == password))
+                                  select player).FirstOrDefault<Player>();
+
+                return selectedPlayer;
+            }
+        }
+
+
     }
+
+
 }

@@ -11,6 +11,6 @@
     <Property Name="Username" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
     <Property Name="Password" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
     <Property Name="Bank" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
-    <Property Name="Borrowed" Type="Decimal" Precision="19" Scale="4" />
+    <Property Type="Decimal" Name="Borrow" Precision="19" Scale="4" />
   </EntityType>
 </Schema>

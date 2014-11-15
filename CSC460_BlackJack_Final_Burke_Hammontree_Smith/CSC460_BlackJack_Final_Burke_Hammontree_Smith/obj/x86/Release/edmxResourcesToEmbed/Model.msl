@@ -4,11 +4,11 @@
     <EntitySetMapping Name="Players">
       <EntityTypeMapping TypeName="DatabaseModel.Player">
         <MappingFragment StoreEntitySet="Player">
+          <ScalarProperty Name="Borrow" ColumnName="Borrow" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="Username" ColumnName="Username" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Bank" ColumnName="Bank" />
-          <ScalarProperty Name="Borrowed" ColumnName="Borrowed" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

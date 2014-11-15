@@ -7,10 +7,10 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="id" Type="int" Nullable="false" />
     <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="100" />
     <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="100" />
     <Property Name="Bank" Type="money" Nullable="false" />
-    <Property Name="Borrowed" Type="money" />
+    <Property Name="Borrow" Type="money" />
   </EntityType>
 </Schema>
