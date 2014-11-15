@@ -21,23 +21,9 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             this.Validate();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            createPlayer("Ryan", "Secret");
-            
-            Player selection = selectPlayer("Ryan", "Secret");
-            label1.Text = selection.Username;
-            label2.Text = selection.Password;
-            label3.Text = selection.Bank.ToString();
-            label4.Text = selection.Borrow.ToString();
-
-        }
-
         // create a new player for the database
         private static void createPlayer(String name, String password)
         {
-            // Database Insertion
-
             // primary key id value
             int id = 1;
 
@@ -68,8 +54,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             db.AddToPlayers(newPlayer);
 
             db.SaveChanges();
-
-            // End Database Insertion
         }
 
         private static Player selectPlayer(String name, String password)
@@ -80,10 +64,31 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 Player selectedPlayer = (from player in playerList.Players
                                   where ((player.Username == name) && (player.Password == password))
                                   select player).FirstOrDefault<Player>();
-
+                // return player
                 return selectedPlayer;
             }
         }
+
+        private static void updateBank(Player selectPlayer, decimal change, bool borrow)
+        {
+            // database connect
+            var db = new DatabaseEntities();
+
+            // update bank value
+            selectPlayer.Bank += change;
+
+            // update if borrowing
+            if (borrow)
+            {
+                selectPlayer.Bank += 1000;
+                selectPlayer.Borrow += 1000;
+            }
+            // save database changes
+            db.SaveChanges();
+
+            // note: the database saving part may be unneccesary
+        }
+
 
 
     }
