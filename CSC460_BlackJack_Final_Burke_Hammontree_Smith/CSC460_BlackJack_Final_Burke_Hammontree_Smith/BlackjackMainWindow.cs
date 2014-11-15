@@ -21,8 +21,31 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             this.Validate();
         }
 
+        int testVar = 1;
+
         private void button1_Click(object sender, EventArgs e)
         {
+            createPlayer("Ryan", "Secret");
+
+            using (var playerList = new DatabaseEntities())
+            {
+                // Query for all players  
+                Player players = (from player in playerList.Players
+                              where (player.id == testVar)
+                              select player).FirstOrDefault<Player>();
+
+                label1.Text = players.Username;
+                label2.Text = players.Password;
+                label3.Text = players.Bank.ToString();
+                label4.Text = players.Borrow.ToString();
+            }
+        }
+
+        // create a new player for the database
+        private static void createPlayer(String name, String password)
+        {
+            // Database Insertion
+
             // primary key id value
             int id = 1;
 
@@ -31,7 +54,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             {
                 // Query for all players  
                 var players = from player in playerList.Players
-                             select player;
+                              select player;
                 // Go through all players in db
                 foreach (Player item in players)
                 {   // set the new id value to 1 + the highest current id in use
@@ -42,19 +65,19 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 }
             }
 
-            // Database Insertion
             var db = new DatabaseEntities();
             Player newPlayer = new Player();
 
             // create player
             newPlayer.id = id;
-            newPlayer.Username = "Ryan";
-            newPlayer.Password = "secret";
+            newPlayer.Username = name;
+            newPlayer.Password = password;
             newPlayer.Bank = 1000;
             db.AddToPlayers(newPlayer);
 
             db.SaveChanges();
-            // End Test Insertion
+
+            // End Database Insertion
         }
     }
 }
