@@ -21,12 +21,28 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             this.Validate();
         }
 
-        int id = 1;
-
         private void button1_Click(object sender, EventArgs e)
         {
+            // primary key id value
+            int id = 1;
 
-            // Test Insertion
+            // id set sequence
+            using (var playerList = new DatabaseEntities())
+            {
+                // Query for all players  
+                var players = from player in playerList.Players
+                             select player;
+                // Go through all players in db
+                foreach (Player item in players)
+                {   // set the new id value to 1 + the highest current id in use
+                    if (item.id > id)
+                    {
+                        id += 1;
+                    }
+                }
+            }
+
+            // Database Insertion
             var db = new DatabaseEntities();
             Player newPlayer = new Player();
 
