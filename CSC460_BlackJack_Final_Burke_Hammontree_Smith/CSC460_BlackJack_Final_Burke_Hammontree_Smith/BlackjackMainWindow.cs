@@ -92,6 +92,11 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             // note: the database saving part may be unneccesary
         }
 
+        private void BlackjackMainWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
 
     }

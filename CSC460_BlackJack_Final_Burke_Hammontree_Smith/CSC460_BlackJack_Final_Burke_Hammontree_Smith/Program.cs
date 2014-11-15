@@ -16,7 +16,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BlackjackMainWindow());
+            Application.Run(new LogonWindow());
 
             Hand playerHand = new Hand();
             Hand dealerHand = new Hand();
