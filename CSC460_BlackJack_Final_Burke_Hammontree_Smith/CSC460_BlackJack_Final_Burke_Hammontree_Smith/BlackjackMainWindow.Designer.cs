@@ -29,34 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.databaseDataSet = new CSC460_BlackJack_Final_Burke_Hammontree_Smith.DatabaseDataSet();
-            this.playerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.playerTableAdapter = new CSC460_BlackJack_Final_Burke_Hammontree_Smith.DatabaseDataSetTableAdapters.PlayerTableAdapter();
-            this.tableAdapterManager = new CSC460_BlackJack_Final_Burke_Hammontree_Smith.DatabaseDataSetTableAdapters.TableAdapterManager();
             this.button1 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // databaseDataSet
-            // 
-            this.databaseDataSet.DataSetName = "DatabaseDataSet";
-            this.databaseDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // playerBindingSource
-            // 
-            this.playerBindingSource.DataMember = "Player";
-            this.playerBindingSource.DataSource = this.databaseDataSet;
-            // 
-            // playerTableAdapter
-            // 
-            this.playerTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.PlayerTableAdapter = this.playerTableAdapter;
-            this.tableAdapterManager.UpdateOrder = CSC460_BlackJack_Final_Burke_Hammontree_Smith.DatabaseDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
             // button1
             // 
@@ -77,18 +52,11 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "BlackjackMainWindow";
             this.Text = "Blackjack";
-            ((System.ComponentModel.ISupportInitialize)(this.databaseDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.playerBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private DatabaseDataSet databaseDataSet;
-        private System.Windows.Forms.BindingSource playerBindingSource;
-        private DatabaseDataSetTableAdapters.PlayerTableAdapter playerTableAdapter;
-        private DatabaseDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.Button button1;
     }
 }

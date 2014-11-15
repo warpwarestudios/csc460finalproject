@@ -19,26 +19,25 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         private void playerBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
-            this.playerBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.databaseDataSet);
-
         }
+
+        int id = 1;
 
         private void button1_Click(object sender, EventArgs e)
         {
 
             // Test Insertion
-            System.Data.SqlClient.SqlConnection connect =
-            new System.Data.SqlClient.SqlConnection("server=.\\SQLExpress;database=Database;integrated Security=SSPI;");
+            var db = new DatabaseEntities();
+            Player newPlayer = new Player();
 
-            System.Data.SqlClient.SqlCommand cmd = new System.Data.SqlClient.SqlCommand();
-            cmd.CommandType = System.Data.CommandType.Text;
-            cmd.CommandText = "INSERT Player (Username, Password, Bank, Borrowed) VALUES ('Ryan', 'fancypants', $100, '$0)";
-            cmd.Connection = connect;
+            // create player
+            newPlayer.id = id;
+            newPlayer.Username = "Ryan";
+            newPlayer.Password = "secret";
+            newPlayer.Bank = 1000;
+            db.AddToPlayers(newPlayer);
 
-            connect.Open();
-            cmd.ExecuteNonQuery();
-            connect.Close();
+            db.SaveChanges();
             // End Test Insertion
         }
     }
