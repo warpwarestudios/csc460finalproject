@@ -76,6 +76,7 @@
       <DependentUpon>BlackjackMainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Cards\Hand.cs" />
+    <Compile Include="DatabaseCall.cs" />
     <Compile Include="LogonWindow.cs">
       <SubType>Form</SubType>
     </Compile>
