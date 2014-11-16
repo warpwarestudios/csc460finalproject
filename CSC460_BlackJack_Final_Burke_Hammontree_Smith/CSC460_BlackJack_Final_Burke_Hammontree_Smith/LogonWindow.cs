@@ -11,15 +11,28 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 {
     public partial class LogInWindow : Form
     {
+
+        // Variables
+        Player selectedPlayer;
+
         public LogInWindow()
         {
             InitializeComponent();
+            InitializePasswordBox();
+        }
+
+        private void InitializePasswordBox()
+        {
+            // characters in password box as turned into asterisks
+            tboxPassword.PasswordChar = '*';
+            // limit number of character for a password
+            tboxPassword.MaxLength = 32;
         }
 
         private void btnLogon_Click(object sender, EventArgs e)
         {
             // find player from log in info
-            Player selectedPlayer = DatabaseCall.SelectPlayer(tboxUsername.Text, tboxPassword.Text);
+            selectedPlayer = DatabaseCall.SelectPlayer(tboxUsername.Text, tboxPassword.Text);
             // if invalid player notify user of such
             if (selectedPlayer == null)
             { MessageBox.Show("Invalid username or password combination."); }
@@ -42,5 +55,14 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                     + ex.Message + "\n" + ex.InnerException);
             }
         }
+
+        private void LogInWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (selectedPlayer == null)
+            { BlackjackMainWindow.activePlayer = null; }
+            else
+            { BlackjackMainWindow.activePlayer = selectedPlayer; }
+        }
+
     }
 }

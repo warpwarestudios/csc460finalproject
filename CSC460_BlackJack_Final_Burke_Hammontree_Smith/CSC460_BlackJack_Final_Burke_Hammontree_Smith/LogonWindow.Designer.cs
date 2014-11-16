@@ -39,7 +39,7 @@
             // btnLogon
             // 
             this.btnLogon.Location = new System.Drawing.Point(45, 128);
-            this.btnLogon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLogon.Margin = new System.Windows.Forms.Padding(4);
             this.btnLogon.Name = "btnLogon";
             this.btnLogon.Size = new System.Drawing.Size(100, 28);
             this.btnLogon.TabIndex = 0;
@@ -50,7 +50,7 @@
             // btnRegister
             // 
             this.btnRegister.Location = new System.Drawing.Point(167, 128);
-            this.btnRegister.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRegister.Margin = new System.Windows.Forms.Padding(4);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(100, 28);
             this.btnRegister.TabIndex = 1;
@@ -81,7 +81,7 @@
             // tboxUsername
             // 
             this.tboxUsername.Location = new System.Drawing.Point(133, 39);
-            this.tboxUsername.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tboxUsername.Margin = new System.Windows.Forms.Padding(4);
             this.tboxUsername.Name = "tboxUsername";
             this.tboxUsername.Size = new System.Drawing.Size(132, 22);
             this.tboxUsername.TabIndex = 4;
@@ -89,7 +89,7 @@
             // tboxPassword
             // 
             this.tboxPassword.Location = new System.Drawing.Point(133, 82);
-            this.tboxPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tboxPassword.Margin = new System.Windows.Forms.Padding(4);
             this.tboxPassword.Name = "tboxPassword";
             this.tboxPassword.Size = new System.Drawing.Size(132, 22);
             this.tboxPassword.TabIndex = 5;
@@ -105,9 +105,11 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnLogon);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LogInWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Log In";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LogInWindow_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

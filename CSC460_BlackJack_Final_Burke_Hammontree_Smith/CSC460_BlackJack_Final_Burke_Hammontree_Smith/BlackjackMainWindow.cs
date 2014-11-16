@@ -11,6 +11,9 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 {
     public partial class BlackjackMainWindow : Form
     {
+        // Variables
+        public static Player activePlayer;
+
         public BlackjackMainWindow()
         {
             InitializeComponent();
@@ -23,10 +26,15 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
         private void BlackjackMainWindow_Load(object sender, EventArgs e)
         {
-            this.Hide();
             LogInWindow login = new LogInWindow();
             login.ShowDialog(this);
+
+            // if player closed login window without logging in
+            // close this window to finish complete program shutdown
+            if (activePlayer == null)
+            { this.Close(); }
         }
+
 
 
 

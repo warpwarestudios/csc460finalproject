@@ -32,11 +32,13 @@
             // 
             // BlackjackMainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(835, 374);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Casino_Mortambo;
+            this.ClientSize = new System.Drawing.Size(1902, 1035);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "BlackjackMainWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Blackjack";
             this.Load += new System.EventHandler(this.BlackjackMainWindow_Load);
             this.ResumeLayout(false);
