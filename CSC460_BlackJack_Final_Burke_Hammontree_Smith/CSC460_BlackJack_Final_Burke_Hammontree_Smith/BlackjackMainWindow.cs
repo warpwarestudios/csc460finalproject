@@ -23,7 +23,9 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
         private void BlackjackMainWindow_Load(object sender, EventArgs e)
         {
-
+            this.Hide();
+            LogInWindow login = new LogInWindow();
+            login.ShowDialog(this);
         }
 
 
