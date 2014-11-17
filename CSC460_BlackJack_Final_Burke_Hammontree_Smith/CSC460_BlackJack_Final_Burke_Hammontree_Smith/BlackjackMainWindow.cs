@@ -46,8 +46,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
             playerHand.AddCardToHand(deck.DealCardFromPack());
             playerHand.AddCardToHand(deck.DealCardFromPack());
-
-            //Console.WriteLine();
         }
 
 
