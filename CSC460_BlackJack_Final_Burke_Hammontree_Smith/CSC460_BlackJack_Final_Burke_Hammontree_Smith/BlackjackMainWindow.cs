@@ -47,10 +47,12 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
             playerHand.AddCardToHand(deck.DealCardFromPack());
             playerHand.AddCardToHand(deck.DealCardFromPack());
+            lblPlayerHandValue.Text = GetTotalHandValue(playerHand).ToString();
 
             dealerHand.AddCardToHand(deck.DealCardFromPack());
             dealerHand.AddCardToHand(deck.DealCardFromPack());
-            
+            lblDealerHandValue.Text = GetTotalHandValue(dealerHand).ToString();
+
             DisplayPlayerCards();
             DisplayDealerCards();
         }
@@ -113,22 +115,70 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         private void btnHit_Click(object sender, EventArgs e)
         {
             playerHand.AddCardToHand(deck.DealCardFromPack());
-
+            lblPlayerHandValue.Text = GetTotalHandValue(playerHand).ToString();
             DisplayPlayerCards();
         }
 
         //intended to add everything up to make it easier to check for win conditions
         private int GetTotalHandValue(Hand hand)
         {
-            int value = 0;
+            int handValue = 0;
 
             foreach (PlayingCard card in hand.CardsInHand())
             {
-               
+                if (card.CardValue() > Value.Nine && card.CardValue() < Value.Ace)
+                {
+                    handValue += 10;
+                    continue;
+                }
+                else if (card.CardValue() < Value.Ten)
+                {
+                    switch (card.CardValue())
+                    {
+                        case Value.Two:
+                            handValue += 2;
+                            break;
+                        case Value.Three:
+                            handValue += 3;
+                            break;
+                        case Value.Four:
+                            handValue += 4;
+                            break;
+                        case Value.Five:
+                            handValue += 5;
+                            break;
+                        case Value.Six:
+                            handValue += 6;
+                            break;
+                        case Value.Seven:
+                            handValue += 7;
+                            break;
+                        case Value.Eight:
+                            handValue += 8;
+                            break;
+                        case Value.Nine:
+                            handValue += 9;
+                            break;
+                    }
+                    continue;
+                }
+                else if (card.CardValue() == Value.Ace)
+                {
+                    if (handValue + 11 > 21)
+                    {
+                        handValue += 1;
+                    }
+                    else
+                    {
+                        handValue += 11;
+                    }
+                }
             }
-
-            return value;
+            return handValue;
         }
+
+
+
     }
 
 
