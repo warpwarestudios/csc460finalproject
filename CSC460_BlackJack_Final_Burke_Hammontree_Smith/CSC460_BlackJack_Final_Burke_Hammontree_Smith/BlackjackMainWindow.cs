@@ -64,7 +64,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 {
                     Button newButton = new Button();
                     newButton.Name = "Card" + i;
-                    newButton.Location = new Point(this.Size.Width / 2 + (25 * i), this.Size.Height - 250);
+                    newButton.Location = new Point(this.Size.Width / 2 + (35 * i), this.Size.Height - 250);
                     newButton.BackgroundImage = ((PlayingCard)playerHand.CardsInHand()[i - 1]).CardImage();
                     newButton.BackgroundImageLayout = ImageLayout.Stretch;
                     newButton.Size = new Size(100,150);
@@ -84,7 +84,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 {
                     Button newButton = new Button();
                     newButton.Name = "DealerCard" + i;
-                    newButton.Location = new Point(this.Size.Width/2 + (25*i), 100);
+                    newButton.Location = new Point(this.Size.Width/2 + (35*i), 300);
                     newButton.BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[i - 1]).CardImage();
                     newButton.BackgroundImageLayout = ImageLayout.Stretch;
                     newButton.Size = new Size(100, 150);
