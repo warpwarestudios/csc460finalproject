@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Cards;
+using System.Resources;
 
 namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 {
@@ -14,7 +15,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
     {
         // Variables
         public static Player activePlayer;
-
+        bool dealerFirstDraw = true;
         Pack deck;
         Hand playerHand;
         Hand dealerHand;
@@ -67,7 +68,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                     newButton.Location = new Point(this.Size.Width / 2 + (35 * i), this.Size.Height - 250);
                     newButton.BackgroundImage = ((PlayingCard)playerHand.CardsInHand()[i - 1]).CardImage();
                     newButton.BackgroundImageLayout = ImageLayout.Stretch;
-                    newButton.Size = new Size(100,150);
+                    newButton.Size = new Size(100, 150);
                     this.Controls.Add(newButton);
                     this.Controls.SetChildIndex(newButton, playerHand.CardsInHand().Count - i);
                 }
@@ -82,14 +83,29 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 //if control does not already exist create and position it
                 if (!this.Controls.ContainsKey("DealerCard" + i))
                 {
-                    Button newButton = new Button();
-                    newButton.Name = "DealerCard" + i;
-                    newButton.Location = new Point(this.Size.Width/2 + (35*i), 300);
-                    newButton.BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[i - 1]).CardImage();
-                    newButton.BackgroundImageLayout = ImageLayout.Stretch;
-                    newButton.Size = new Size(100, 150);
-                    this.Controls.Add(newButton);
-                    this.Controls.SetChildIndex(newButton, playerHand.CardsInHand().Count - i);
+                    if (dealerFirstDraw)
+                    {
+                        Button newButton = new Button();
+                        newButton.Name = "DealerCard" + i;
+                        newButton.Location = new Point(this.Size.Width / 2 + (35 * i), 300);
+                        newButton.BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[i - 1]).HiddenCardImage();
+                        newButton.BackgroundImageLayout = ImageLayout.Stretch;
+                        newButton.Size = new Size(100, 150);
+                        this.Controls.Add(newButton);
+                        this.Controls.SetChildIndex(newButton, playerHand.CardsInHand().Count - i);
+                        dealerFirstDraw = false;
+                    }
+                    else
+                    {
+                        Button newButton = new Button();
+                        newButton.Name = "DealerCard" + i;
+                        newButton.Location = new Point(this.Size.Width / 2 + (35 * i), 300);
+                        newButton.BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[i - 1]).CardImage();
+                        newButton.BackgroundImageLayout = ImageLayout.Stretch;
+                        newButton.Size = new Size(100, 150);
+                        this.Controls.Add(newButton);
+                        this.Controls.SetChildIndex(newButton, playerHand.CardsInHand().Count - i);
+                    }
                 }
             }
         }
