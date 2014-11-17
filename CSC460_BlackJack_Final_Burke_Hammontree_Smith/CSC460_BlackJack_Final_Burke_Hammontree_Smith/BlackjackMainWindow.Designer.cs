@@ -41,7 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.valueLostLbl = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.valuebetlbl = new System.Windows.Forms.Label();
+            this.valueBetLbl = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.valuePlayerLbl = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -80,7 +80,7 @@
             // 
             // betFiveBtn
             // 
-            this.betFiveBtn.Location = new System.Drawing.Point(299, 517);
+            this.betFiveBtn.Location = new System.Drawing.Point(17, 518);
             this.betFiveBtn.Name = "betFiveBtn";
             this.betFiveBtn.Size = new System.Drawing.Size(75, 23);
             this.betFiveBtn.TabIndex = 3;
@@ -90,7 +90,7 @@
             // 
             // betTenBtn
             // 
-            this.betTenBtn.Location = new System.Drawing.Point(380, 517);
+            this.betTenBtn.Location = new System.Drawing.Point(98, 518);
             this.betTenBtn.Name = "betTenBtn";
             this.betTenBtn.Size = new System.Drawing.Size(75, 23);
             this.betTenBtn.TabIndex = 4;
@@ -100,7 +100,7 @@
             // 
             // betFiftyBtn
             // 
-            this.betFiftyBtn.Location = new System.Drawing.Point(461, 517);
+            this.betFiftyBtn.Location = new System.Drawing.Point(179, 518);
             this.betFiftyBtn.Name = "betFiftyBtn";
             this.betFiftyBtn.Size = new System.Drawing.Size(75, 23);
             this.betFiftyBtn.TabIndex = 5;
@@ -110,7 +110,7 @@
             // 
             // betHundredBtn
             // 
-            this.betHundredBtn.Location = new System.Drawing.Point(541, 517);
+            this.betHundredBtn.Location = new System.Drawing.Point(259, 518);
             this.betHundredBtn.Name = "betHundredBtn";
             this.betHundredBtn.Size = new System.Drawing.Size(75, 23);
             this.betHundredBtn.TabIndex = 6;
@@ -120,7 +120,7 @@
             // 
             // betFiveHundredBtn
             // 
-            this.betFiveHundredBtn.Location = new System.Drawing.Point(622, 517);
+            this.betFiveHundredBtn.Location = new System.Drawing.Point(340, 518);
             this.betFiveHundredBtn.Name = "betFiveHundredBtn";
             this.betFiveHundredBtn.Size = new System.Drawing.Size(75, 23);
             this.betFiveHundredBtn.TabIndex = 7;
@@ -130,7 +130,7 @@
             // 
             // betThousandBtn
             // 
-            this.betThousandBtn.Location = new System.Drawing.Point(703, 517);
+            this.betThousandBtn.Location = new System.Drawing.Point(421, 518);
             this.betThousandBtn.Name = "betThousandBtn";
             this.betThousandBtn.Size = new System.Drawing.Size(75, 23);
             this.betThousandBtn.TabIndex = 8;
@@ -140,9 +140,9 @@
             // 
             // betAndSetBtn
             // 
-            this.betAndSetBtn.Location = new System.Drawing.Point(501, 546);
+            this.betAndSetBtn.Location = new System.Drawing.Point(219, 547);
             this.betAndSetBtn.Name = "betAndSetBtn";
-            this.betAndSetBtn.Size = new System.Drawing.Size(75, 23);
+            this.betAndSetBtn.Size = new System.Drawing.Size(72, 23);
             this.betAndSetBtn.TabIndex = 9;
             this.betAndSetBtn.Text = "Bet";
             this.betAndSetBtn.UseVisualStyleBackColor = true;
@@ -181,16 +181,16 @@
             this.label3.TabIndex = 12;
             this.label3.Text = "Bet: $";
             // 
-            // valuebetlbl
+            // valueBetLbl
             // 
-            this.valuebetlbl.AutoSize = true;
-            this.valuebetlbl.BackColor = System.Drawing.Color.Transparent;
-            this.valuebetlbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valuebetlbl.Location = new System.Drawing.Point(178, 282);
-            this.valuebetlbl.Name = "valuebetlbl";
-            this.valuebetlbl.Size = new System.Drawing.Size(30, 31);
-            this.valuebetlbl.TabIndex = 13;
-            this.valuebetlbl.Text = "0";
+            this.valueBetLbl.AutoSize = true;
+            this.valueBetLbl.BackColor = System.Drawing.Color.Transparent;
+            this.valueBetLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valueBetLbl.Location = new System.Drawing.Point(178, 282);
+            this.valueBetLbl.Name = "valueBetLbl";
+            this.valueBetLbl.Size = new System.Drawing.Size(30, 31);
+            this.valueBetLbl.TabIndex = 13;
+            this.valueBetLbl.Text = "0";
             // 
             // label5
             // 
@@ -248,7 +248,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.valuePlayerLbl);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.valuebetlbl);
+            this.Controls.Add(this.valueBetLbl);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.valueLostLbl);
             this.Controls.Add(this.label1);
@@ -288,7 +288,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label valueLostLbl;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label valuebetlbl;
+        private System.Windows.Forms.Label valueBetLbl;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label valuePlayerLbl;
         private System.Windows.Forms.Label label7;

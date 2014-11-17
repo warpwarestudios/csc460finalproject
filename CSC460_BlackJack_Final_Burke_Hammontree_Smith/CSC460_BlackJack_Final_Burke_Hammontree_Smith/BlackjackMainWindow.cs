@@ -72,6 +72,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             if (betAndSetBtn.Text == "Bet")
             {
                 betAndSetBtn.Text = "Deal";
+                BettingMoneyGrabber(5);
                 MoneyButtonVisiblity(true);
                 
             }
@@ -148,7 +149,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             playerMoneyValue = playerMoneyValue - amount;
             betMoneyValue = betMoneyValue + amount;
             valuePlayerLbl.Text = playerMoneyValue.ToString();
-            label3.Text = betMoneyValue.ToString();
+            valueBetLbl.Text = betMoneyValue.ToString();
         }
 
         private void PlayerMoneyControl()
