@@ -77,6 +77,12 @@
     </Compile>
     <Compile Include="Cards\Hand.cs" />
     <Compile Include="DatabaseCall.cs" />
+    <Compile Include="BankWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BankWindow.Designer.cs">
+      <DependentUpon>BankWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="LogonWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     <Compile Include="Cards\Value.cs" />
     <EmbeddedResource Include="BlackjackMainWindow.resx">
       <DependentUpon>BlackjackMainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BankWindow.resx">
+      <DependentUpon>BankWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LogonWindow.resx">
       <DependentUpon>LogonWindow.cs</DependentUpon>
