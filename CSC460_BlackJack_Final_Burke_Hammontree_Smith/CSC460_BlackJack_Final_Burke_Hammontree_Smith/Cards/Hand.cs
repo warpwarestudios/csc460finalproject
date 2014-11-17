@@ -24,7 +24,6 @@ namespace Cards
             this.cards.Clear();
         }
 
-
 		public override string ToString()
 		{
 			string result = "";

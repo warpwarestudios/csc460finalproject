@@ -46,11 +46,73 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
             playerHand.AddCardToHand(deck.DealCardFromPack());
             playerHand.AddCardToHand(deck.DealCardFromPack());
+
+            dealerHand.AddCardToHand(deck.DealCardFromPack());
+            dealerHand.AddCardToHand(deck.DealCardFromPack());
+            
+            DisplayPlayerCards();
+            DisplayDealerCards();
         }
 
+        private void DisplayPlayerCards()
+        {
+            //Displays all cards in hand
+            for (int i = 1; i <= playerHand.CardsInHand().Count; i++)
+            {
+                //if control does not already exist create and position it
+                if (!this.Controls.ContainsKey("Card" + i))
+                {
+                    Button newButton = new Button();
+                    newButton.Name = "Card" + i;
+                    newButton.Location = new Point(this.Size.Width / 2 + (25 * i), this.Size.Height - 250);
+                    newButton.BackgroundImage = ((PlayingCard)playerHand.CardsInHand()[i - 1]).CardImage();
+                    newButton.BackgroundImageLayout = ImageLayout.Stretch;
+                    newButton.Size = new Size(100,150);
+                    this.Controls.Add(newButton);
+                    this.Controls.SetChildIndex(newButton, playerHand.CardsInHand().Count - i);
+                }
+            }
+        }
 
+        private void DisplayDealerCards()
+        {
+            //Displays all cards in hand
+            for (int i = 1; i <= dealerHand.CardsInHand().Count; i++)
+            {
+                //if control does not already exist create and position it
+                if (!this.Controls.ContainsKey("DealerCard" + i))
+                {
+                    Button newButton = new Button();
+                    newButton.Name = "DealerCard" + i;
+                    newButton.Location = new Point(this.Size.Width/2 + (25*i), 100);
+                    newButton.BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[i - 1]).CardImage();
+                    newButton.BackgroundImageLayout = ImageLayout.Stretch;
+                    newButton.Size = new Size(100, 150);
+                    this.Controls.Add(newButton);
+                    this.Controls.SetChildIndex(newButton, playerHand.CardsInHand().Count - i);
+                }
+            }
+        }
 
+        private void btnHit_Click(object sender, EventArgs e)
+        {
+            playerHand.AddCardToHand(deck.DealCardFromPack());
 
+            DisplayPlayerCards();
+        }
+
+        //intended to add everything up to make it easier to check for win conditions
+        private int GetTotalHandValue(Hand hand)
+        {
+            int value = 0;
+
+            foreach (PlayingCard card in hand.CardsInHand())
+            {
+               
+            }
+
+            return value;
+        }
     }
 
 
