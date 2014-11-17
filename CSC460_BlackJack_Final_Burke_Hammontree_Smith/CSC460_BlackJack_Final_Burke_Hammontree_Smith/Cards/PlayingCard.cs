@@ -12,7 +12,7 @@ namespace Cards
 		{
 			this.suit = s;
 			this.value = v;
-            this.image = Image.FromFile("Resources/" + suit + "-" + value);
+            //this.image = Image.FromFile("Resources/" + suit + "-" + value);
 		}
 
         public override string ToString()
