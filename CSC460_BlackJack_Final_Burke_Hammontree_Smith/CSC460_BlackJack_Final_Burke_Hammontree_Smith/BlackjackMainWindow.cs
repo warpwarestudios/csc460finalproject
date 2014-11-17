@@ -19,10 +19,19 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         Pack deck;
         Hand playerHand;
         Hand dealerHand;
+        double betMoneyValue = 0; //bettng value takes place
+        double playerMoneyValue = 10000; //How much player has currently
+        double lostMoneyValue = 0;  //How much you lost total from the dealer
+        double mostGainedValue = 0; //if win black jack the most gained bet sets here
+ 
 
         public BlackjackMainWindow()
         {
             InitializeComponent();
+            MoneyButtonVisiblity(false);
+            valuePlayerLbl.Text = playerMoneyValue.ToString();
+            valueLostLbl.Text = lostMoneyValue.ToString();
+            valueMostGainedLbl.Text = mostGainedValue.ToString();
         }
 
         private void playerBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -55,6 +64,134 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
             DisplayPlayerCards();
             DisplayDealerCards();
+        }
+
+
+        private void betAndSetBtn_Click(object sender, EventArgs e)
+        {
+            if (betAndSetBtn.Text == "Bet")
+            {
+                betAndSetBtn.Text = "Deal";
+                MoneyButtonVisiblity(true);
+                
+            }
+            else if (betAndSetBtn.Text == "Deal")
+            {
+                betAndSetBtn.Text = "Bet";
+                MoneyButtonVisiblity(false);
+                betAndSetBtn.Enabled = false;
+            }
+        }
+
+        private void MoneyButtonVisiblity(bool enable)
+        {
+            //sets the betting money buttons to false or true 
+            betFiveBtn.Visible = enable;
+            betTenBtn.Visible = enable;
+            betFiftyBtn.Visible = enable;
+            betHundredBtn.Visible = enable;
+            betFiveHundredBtn.Visible = enable;
+            betThousandBtn.Visible = enable;
+
+        }
+        private void betFiveBtn_Click(object sender, EventArgs e)
+        {
+            PlayerMoneyControl();
+            BettingMoneyGrabber(5);
+            PlayerMoneyControl();
+ 
+        }
+
+        private void betTenBtn_Click(object sender, EventArgs e)
+        {
+            PlayerMoneyControl();
+            BettingMoneyGrabber(10);
+            PlayerMoneyControl();
+
+        }
+
+        private void betFiftyBtn_Click(object sender, EventArgs e)
+        {
+            PlayerMoneyControl();
+            BettingMoneyGrabber(50);
+            PlayerMoneyControl();
+
+        }
+
+        private void betHundredBtn_Click(object sender, EventArgs e)
+        {
+            PlayerMoneyControl();
+            BettingMoneyGrabber(100);
+            PlayerMoneyControl();
+            
+        }
+
+        private void betFiveHundredBtn_Click(object sender, EventArgs e)
+        {
+            PlayerMoneyControl();
+            BettingMoneyGrabber(500);
+            PlayerMoneyControl();
+            
+        }
+
+        private void betThousandBtn_Click(object sender, EventArgs e)
+        {
+            PlayerMoneyControl();
+            BettingMoneyGrabber(1000);
+            PlayerMoneyControl();
+            
+        }
+
+        private void BettingMoneyGrabber(double amount)
+        {     
+            //Grabs the money from the button to the betting table subtracting the player's money.
+            playerMoneyValue = playerMoneyValue - amount;
+            betMoneyValue = betMoneyValue + amount;
+            valuePlayerLbl.Text = playerMoneyValue.ToString();
+            label3.Text = betMoneyValue.ToString();
+        }
+
+        private void PlayerMoneyControl()
+        {
+            MoneyButtonHandler(1000, betThousandBtn);
+            MoneyButtonHandler(500, betFiveHundredBtn);
+            MoneyButtonHandler(100, betHundredBtn);
+            MoneyButtonHandler(50, betFiftyBtn);
+            MoneyButtonHandler(10, betTenBtn);
+            MoneyButtonHandler(5, betFiveBtn);
+            BankMoneyControl();
+        }
+
+        private void BankMoneyControl()
+        {
+            if (playerMoneyValue == 0)
+            {
+                DialogResult dialogResult = MessageBox.Show("Your current money is now $0, would you like to borrow money from the bank?", "Bank", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    MessageBox.Show("Bank has given you $100.");
+                    playerMoneyValue += 100;
+                    valuePlayerLbl.Text = playerMoneyValue.ToString();
+                    PlayerMoneyControl();
+                }
+                if (dialogResult == DialogResult.No)
+                {
+                    MessageBox.Show("Insert the surrender here");
+                    PlayerMoneyControl();
+                }
+            }
+        }
+
+        private void MoneyButtonHandler(double amount, Button moneyButton)
+        {
+            if (playerMoneyValue < amount)
+            {
+                moneyButton.Enabled = false;
+            }
+            else
+            {
+                moneyButton.Enabled = true;
+            }
         }
 
         private void DisplayPlayerCards()
