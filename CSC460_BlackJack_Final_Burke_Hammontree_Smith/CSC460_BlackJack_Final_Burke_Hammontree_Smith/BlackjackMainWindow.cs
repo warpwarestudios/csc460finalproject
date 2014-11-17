@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Cards;
 
 namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 {
@@ -13,6 +14,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
     {
         // Variables
         public static Player activePlayer;
+
+        Pack deck;
+        Hand playerHand;
+        Hand dealerHand;
 
         public BlackjackMainWindow()
         {
@@ -33,6 +38,16 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             // close this window to finish complete program shutdown
             if (activePlayer == null)
             { this.Close(); }
+            
+            //create decks, deal initial hands
+            deck = new Pack();
+            playerHand = new Hand();
+            dealerHand = new Hand();
+
+            playerHand.AddCardToHand(deck.DealCardFromPack());
+            playerHand.AddCardToHand(deck.DealCardFromPack());
+
+            //Console.WriteLine();
         }
 
 

@@ -7,6 +7,11 @@ namespace Cards
 	{
         private ArrayList cards = new ArrayList();
 
+        public ArrayList CardsInHand()
+        {
+            return cards;
+        }
+
         // Recieves card and places into container array
 		public void AddCardToHand(PlayingCard cardDealt)
 		{
@@ -18,6 +23,7 @@ namespace Cards
         {
             this.cards.Clear();
         }
+
 
 		public override string ToString()
 		{

@@ -1,15 +1,18 @@
 namespace Cards
 {
+    using System.Drawing;
 	class PlayingCard
 	{
         private readonly Suit suit;
         private readonly Value value;
+        private readonly Image image;
 
         // Assigns card suit and value
 		public PlayingCard(Suit s, Value v)
 		{
 			this.suit = s;
 			this.value = v;
+            this.image = Image.FromFile("Resources/" + suit + "-" + value);
 		}
 
         public override string ToString()
@@ -27,5 +30,10 @@ namespace Cards
         {
             return this.value;
         }
+        public Image CardImage()
+        {
+            return this.image;
+        }
+        
 	}
 }
