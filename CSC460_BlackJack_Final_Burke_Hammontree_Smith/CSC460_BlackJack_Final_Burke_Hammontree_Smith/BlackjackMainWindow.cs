@@ -143,9 +143,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 DialogResult dialogResult = MessageBox.Show("Your current money is now $0, would you like to borrow money from the bank?", "Bank", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    BankWindow bankWindow = new BankWindow();
-                    bankWindow.ShowDialog();
-                    playerMoneyValue = bankWindow.amountBorrow;
+                    MessageBox.Show("Bank has given you $100.");
+                    playerMoneyValue += 100;
                     valuePlayerLbl.Text = playerMoneyValue.ToString();
                     PlayerMoneyControl();
                 }
