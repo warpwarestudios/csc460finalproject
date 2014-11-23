@@ -49,21 +49,11 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             if (activePlayer == null)
             { this.Close(); }
             
-            //create decks, deal initial hands
+            //create decks and hands
             deck = new Pack();
             playerHand = new Hand();
             dealerHand = new Hand();
 
-            playerHand.AddCardToHand(deck.DealCardFromPack());
-            playerHand.AddCardToHand(deck.DealCardFromPack());
-            lblPlayerHandValue.Text = GetTotalHandValue(playerHand).ToString();
-
-            dealerHand.AddCardToHand(deck.DealCardFromPack());
-            dealerHand.AddCardToHand(deck.DealCardFromPack());
-            lblDealerHandValue.Text = GetTotalHandValue(dealerHand).ToString();
-
-            DisplayPlayerCards();
-            DisplayDealerCards();
         }
 
 
@@ -81,6 +71,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 betAndSetBtn.Text = "Bet";
                 MoneyButtonVisiblity(false);
                 betAndSetBtn.Enabled = false;
+                Deal();
             }
         }
 
@@ -255,6 +246,63 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             playerHand.AddCardToHand(deck.DealCardFromPack());
             lblPlayerHandValue.Text = GetTotalHandValue(playerHand).ToString();
             DisplayPlayerCards();
+            CheckForWin();
+        }
+
+        //check for win condition, returns 0 for no win condition met, 1 for player, -1 for dealer
+        private void CheckForWin()
+        {
+            
+            //dealer has 21, dealer wins 
+            if (GetTotalHandValue(dealerHand) == 21)
+            {
+                valueBetLbl.Text = "0.00";
+                DialogResult dialogResult = MessageBox.Show("I got Blackjack! You lose your bet.", "Lose!", MessageBoxButtons.OK);
+                betAndSetBtn.Enabled = true;
+            }
+            //player has 21, player wins
+            else if (GetTotalHandValue(playerHand) == 21)
+            {
+                valuePlayerLbl.Text = (playerMoneyValue + (int.Parse(valueBetLbl.Text) * 2)).ToString();
+                valueBetLbl.Text = "0.00";
+                DialogResult dialogResult = MessageBox.Show("You got Blackjack! Great job! Here's your money.", "Win!", MessageBoxButtons.OK);
+                betAndSetBtn.Enabled = true;
+            }
+            //player busts
+            else if (CheckForBust(playerHand))
+            {
+                valueBetLbl.Text = "0.00";
+                DialogResult dialogResult = MessageBox.Show("You busted! You lose your bet.", "Lose!", MessageBoxButtons.OK);
+                betAndSetBtn.Enabled = true;
+            }
+            //dealer busts
+            else if (CheckForBust(playerHand))
+            {
+                valuePlayerLbl.Text = (playerMoneyValue + (int.Parse(valueBetLbl.Text) * 2)).ToString();
+                valueBetLbl.Text = "0.00";
+                DialogResult dialogResult = MessageBox.Show("I busted! Here's your money.", "Win!", MessageBoxButtons.OK);
+                betAndSetBtn.Enabled = true;
+            }
+            //dealer and player hands are tied
+            else if (GetTotalHandValue(dealerHand) == GetTotalHandValue(playerHand))
+            {
+                valuePlayerLbl.Text = (playerMoneyValue + (int.Parse(valueBetLbl.Text))).ToString();
+                valueBetLbl.Text = "0.00";
+                DialogResult dialogResult = MessageBox.Show("We tied! Here's your bet back.", "Tied!", MessageBoxButtons.OK);
+                betAndSetBtn.Enabled = true;
+            }
+        }
+        //check for hand greater than 21
+        private bool CheckForBust(Hand hand)
+        {
+            bool bust = false;
+
+            if (GetTotalHandValue(hand) > 21)
+            {
+                bust = true;
+            }
+
+            return bust;
         }
 
         //intended to add everything up to make it easier to check for win conditions
@@ -316,7 +364,24 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         }
 
 
+        private void Deal()
+        {
+            playerHand = new Hand();
+            dealerHand = new Hand();
 
+            playerHand.AddCardToHand(deck.DealCardFromPack());
+            playerHand.AddCardToHand(deck.DealCardFromPack());
+            lblPlayerHandValue.Text = GetTotalHandValue(playerHand).ToString();
+
+            dealerHand.AddCardToHand(deck.DealCardFromPack());
+            dealerHand.AddCardToHand(deck.DealCardFromPack());
+            lblDealerHandValue.Text = GetTotalHandValue(dealerHand).ToString();
+
+            DisplayPlayerCards();
+            DisplayDealerCards();
+
+            CheckForWin();
+        }
     }
 
 
