@@ -16,6 +16,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         // Variables
         public static Player activePlayer;
         bool dealerFirstDraw = true;
+        bool stand = false;
+        bool dealerStand = false;
         Pack deck;
         Hand playerHand;
         Hand dealerHand;
@@ -62,6 +64,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             if (betAndSetBtn.Text == "Bet")
             {
                 betAndSetBtn.Text = "Deal";
+                btnHit.Enabled = false;
                 BettingMoneyGrabber(5);
                 MoneyButtonVisiblity(true);
                 
@@ -71,6 +74,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 betAndSetBtn.Text = "Bet";
                 MoneyButtonVisiblity(false);
                 betAndSetBtn.Enabled = false;
+                btnHit.Enabled = true;
                 Deal();
             }
         }
@@ -246,51 +250,112 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             playerHand.AddCardToHand(deck.DealCardFromPack());
             lblPlayerHandValue.Text = GetTotalHandValue(playerHand).ToString();
             DisplayPlayerCards();
-            CheckForWin();
+            //if no win condition is met, dealer hits
+            if (!CheckForWin())
+            {
+                DealerHit();
+            }
+
         }
 
-        //check for win condition, returns 0 for no win condition met, 1 for player, -1 for dealer
-        private void CheckForWin()
+        private void DealerHit()
         {
-            
+            //if dealer isn't standing, give him a card and check for win
+            if (!dealerStand)
+            {
+                dealerHand.AddCardToHand(deck.DealCardFromPack());
+                lblDealerHandValue.Text = GetTotalHandValue(dealerHand).ToString();
+                DisplayDealerCards();
+                CheckForWin();
+            }
+            if (GetTotalHandValue(dealerHand) >= 17)
+            {
+                dealerStand = true;
+            }
+        }
+
+        //check for win condition, sends true if a win condition is met
+        private bool CheckForWin()
+        {
+            bool win = false;
+
             //dealer has 21, dealer wins 
             if (GetTotalHandValue(dealerHand) == 21)
             {
-                valueBetLbl.Text = "0.00";
-                DialogResult dialogResult = MessageBox.Show("I got Blackjack! You lose your bet.", "Lose!", MessageBoxButtons.OK);
-                betAndSetBtn.Enabled = true;
+                //check for tie, otherwise dealer wins
+                if (GetTotalHandValue(dealerHand) == GetTotalHandValue(playerHand))
+                {
+                    playerMoneyValue += betMoneyValue;
+                    valuePlayerLbl.Text = playerMoneyValue.ToString();
+                    betMoneyValue = 0;
+                    valueBetLbl.Text = betMoneyValue.ToString();
+                    DialogResult dialogResult = MessageBox.Show("We tied! Here's your bet back.", "Tied!", MessageBoxButtons.OK);
+                    betAndSetBtn.Enabled = true;
+                }
+                else
+                {
+                    betMoneyValue = 0;
+                    valueBetLbl.Text = betMoneyValue.ToString();
+                    DialogResult dialogResult = MessageBox.Show("I got Blackjack! You lose your bet.", "Lose!", MessageBoxButtons.OK);
+                    betAndSetBtn.Enabled = true;
+                }
+                btnHit.Enabled = false;
+                win = true;
             }
             //player has 21, player wins
             else if (GetTotalHandValue(playerHand) == 21)
             {
-                valuePlayerLbl.Text = (playerMoneyValue + (int.Parse(valueBetLbl.Text) * 2)).ToString();
-                valueBetLbl.Text = "0.00";
+                //if the player is dealt 21 in first deal, then they get 3 to 2 return on bet
+                if (playerHand.CardsInHand().Count == 2)
+                {
+                    playerMoneyValue += betMoneyValue + (betMoneyValue * 3 / 2);
+                }
+                else
+                {
+                    playerMoneyValue += betMoneyValue * 2;
+                }
+                valuePlayerLbl.Text = playerMoneyValue.ToString();
+                betMoneyValue = 0;
+                valueBetLbl.Text = betMoneyValue.ToString();
                 DialogResult dialogResult = MessageBox.Show("You got Blackjack! Great job! Here's your money.", "Win!", MessageBoxButtons.OK);
                 betAndSetBtn.Enabled = true;
+                btnHit.Enabled = false;
+                win = true;
             }
             //player busts
             else if (CheckForBust(playerHand))
             {
-                valueBetLbl.Text = "0.00";
+                betMoneyValue = 0;
+                valueBetLbl.Text = betMoneyValue.ToString();
                 DialogResult dialogResult = MessageBox.Show("You busted! You lose your bet.", "Lose!", MessageBoxButtons.OK);
                 betAndSetBtn.Enabled = true;
+                btnHit.Enabled = false;
+                win = true;
             }
             //dealer busts
-            else if (CheckForBust(playerHand))
+            else if (CheckForBust(dealerHand))
             {
-                valuePlayerLbl.Text = (playerMoneyValue + (int.Parse(valueBetLbl.Text) * 2)).ToString();
-                valueBetLbl.Text = "0.00";
+                playerMoneyValue += betMoneyValue * 2;
+                valuePlayerLbl.Text = playerMoneyValue.ToString();
+                betMoneyValue = 0;
+                valueBetLbl.Text = betMoneyValue.ToString();
                 DialogResult dialogResult = MessageBox.Show("I busted! Here's your money.", "Win!", MessageBoxButtons.OK);
                 betAndSetBtn.Enabled = true;
+                btnHit.Enabled = false;
+                win = true;
             }
             //dealer and player hands are tied
             else if (GetTotalHandValue(dealerHand) == GetTotalHandValue(playerHand))
             {
-                valuePlayerLbl.Text = (playerMoneyValue + (int.Parse(valueBetLbl.Text))).ToString();
-                valueBetLbl.Text = "0.00";
+                playerMoneyValue += betMoneyValue;
+                valuePlayerLbl.Text = playerMoneyValue.ToString();
+                valueBetLbl.Text = betMoneyValue.ToString();
                 DialogResult dialogResult = MessageBox.Show("We tied! Here's your bet back.", "Tied!", MessageBoxButtons.OK);
                 betAndSetBtn.Enabled = true;
+                btnHit.Enabled = false;
+                win = true;
             }
+            return win;
         }
         //check for hand greater than 21
         private bool CheckForBust(Hand hand)
@@ -366,6 +431,12 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
         private void Deal()
         {
+
+            //delete all cards shown in player and dealer hands
+            DeletePlayerCards();
+            DeleteDealerCards();
+
+            dealerFirstDraw = true;
             playerHand = new Hand();
             dealerHand = new Hand();
 
@@ -377,10 +448,34 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             dealerHand.AddCardToHand(deck.DealCardFromPack());
             lblDealerHandValue.Text = GetTotalHandValue(dealerHand).ToString();
 
+            
             DisplayPlayerCards();
             DisplayDealerCards();
 
             CheckForWin();
+        }
+
+        private void DeletePlayerCards()
+        {
+            //Deletes all cards shown
+            for (int i = 1; i <= playerHand.CardsInHand().Count; i++)
+            {
+                if (this.Controls.ContainsKey("Card" + i))
+                {
+                    this.Controls.RemoveByKey("Card" + i);
+                }
+            }
+        }
+        private void DeleteDealerCards()
+        {
+            //Deletes all cards shown
+            for (int i = 1; i <= playerHand.CardsInHand().Count; i++)
+            {
+                if (this.Controls.ContainsKey("DealerCard" + i))
+                {
+                    this.Controls.RemoveByKey("DealerCard" + i);
+                }
+            }
         }
     }
 
