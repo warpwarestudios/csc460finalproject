@@ -275,7 +275,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 //check for tie, otherwise dealer wins
                 if (GetTotalHandValue(dealerHand) == GetTotalHandValue(playerHand))
                 {
-                    playerMoneyValue += betMoneyValue;
+                    playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
                     valuePlayerLbl.Text = playerMoneyValue.ToString();
                     betMoneyValue = 0;
                     valueBetLbl.Text = betMoneyValue.ToString();
@@ -285,6 +285,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 else
                 {
                     DatabaseCall.UpdateBank(activePlayer, (decimal)(-betMoneyValue), false);
+                    playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
                     betMoneyValue = 0;
                     valueBetLbl.Text = betMoneyValue.ToString();
                     DialogResult dialogResult = MessageBox.Show("I got Blackjack! You lose your bet.", "Lose!", MessageBoxButtons.OK);
@@ -300,13 +301,14 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 if (playerHand.CardsInHand().Count == 21)
                 {
                     DatabaseCall.UpdateBank(activePlayer, (decimal)(betMoneyValue * 2.5), false);
-                    playerMoneyValue += betMoneyValue + (betMoneyValue * 2.5);
+                    playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
                 }
                 else
                 {
                     DatabaseCall.UpdateBank(activePlayer, (decimal)(betMoneyValue * 2), false);
-                    playerMoneyValue += betMoneyValue * 2;
+                    playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
                 }
+                playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
                 valuePlayerLbl.Text = playerMoneyValue.ToString();
                 betMoneyValue = 0;
                 valueBetLbl.Text = betMoneyValue.ToString();
@@ -319,6 +321,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             else if (CheckForBust(playerHand))
             {
                 DatabaseCall.UpdateBank(activePlayer, (decimal)(-betMoneyValue), false);
+                playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
                 betMoneyValue = 0;
                 valueBetLbl.Text = betMoneyValue.ToString();
                 DialogResult dialogResult = MessageBox.Show("You busted! You lose your bet.", "Lose!", MessageBoxButtons.OK);
@@ -330,7 +333,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             else if (CheckForBust(dealerHand))
             {
                 DatabaseCall.UpdateBank(activePlayer, (decimal)(betMoneyValue * 2), false);
-                playerMoneyValue += betMoneyValue * 2;
+                playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
                 valuePlayerLbl.Text = playerMoneyValue.ToString();
                 betMoneyValue = 0;
                 valueBetLbl.Text = betMoneyValue.ToString();
@@ -342,7 +345,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             //dealer and player hands are tied
             else if (GetTotalHandValue(dealerHand) == GetTotalHandValue(playerHand))
             {
-                playerMoneyValue += betMoneyValue;
+                playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
                 valuePlayerLbl.Text = playerMoneyValue.ToString();
                 valueBetLbl.Text = betMoneyValue.ToString();
                 DialogResult dialogResult = MessageBox.Show("We tied! Here's your bet back.", "Tied!", MessageBoxButtons.OK);
@@ -355,15 +358,9 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             if (playerMoneyValue == 0)
             {
                 DatabaseCall.UpdateBank(activePlayer, 0, true);
-                playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
                 playerDebt = (double)activePlayer.Borrow; // retrieve how much player owes bank
+                playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
                 valuePlayerLbl.Text = playerMoneyValue.ToString();
-            }
-
-            // error check bank and playerMoneyValue sync
-            if ((double)activePlayer.Bank != playerMoneyValue)
-            {
-                MessageBox.Show("Error syncing with database");
             }
 
             return win;
