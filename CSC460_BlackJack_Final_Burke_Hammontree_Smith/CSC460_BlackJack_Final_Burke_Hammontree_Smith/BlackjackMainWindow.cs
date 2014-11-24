@@ -21,10 +21,11 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         Pack deck;
         Hand playerHand;
         Hand dealerHand;
-        double playerMoneyValue; //How much player has currently
-        double betMoneyValue = 0; //bettng value takes place
-        double lostMoneyValue = 0;  //How much you lost total from the dealer
-        double mostGainedValue = 0; //if win black jack the most gained bet sets here
+        double playerMoneyValue; // How much player has currently
+        double playerDebt; // How much player owes bank
+        double betMoneyValue = 0; // bettng value takes place
+        double lostMoneyValue = 0;  // How much you lost total from the dealer
+        double mostGainedValue = 0; // if win black jack the most gained bet sets here
  
 
         public BlackjackMainWindow()
@@ -58,6 +59,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
             double playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
             valuePlayerLbl.Text = playerMoneyValue.ToString();
+
+            playerDebt = (double)activePlayer.Borrow; // retrieve how much player owes bank
         }
 
 
@@ -339,6 +342,16 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 btnHit.Enabled = false;
                 win = true;
             }
+
+            // borrow money if player is out of money
+            if (playerMoneyValue == 0)
+            {
+                DatabaseCall.UpdateBank(activePlayer, 0, true);
+                playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
+                playerDebt = (double)activePlayer.Borrow; // retrieve how much player owes bank
+                valuePlayerLbl.Text = playerMoneyValue.ToString();
+            }
+
             // error check bank and playerMoneyValue sync
             if ((double)activePlayer.Bank != playerMoneyValue)
             {
