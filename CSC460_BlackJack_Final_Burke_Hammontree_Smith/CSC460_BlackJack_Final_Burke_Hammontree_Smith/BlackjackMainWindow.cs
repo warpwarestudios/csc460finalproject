@@ -21,7 +21,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         Pack deck;
         Hand playerHand;
         Hand dealerHand;
-        double playerMoneyValue; // How much player has currently
+        double playerMoneyValue;// retrieve current player's money
         double playerDebt; // How much player owes bank
         double betMoneyValue = 0; // bettng value takes place
         double lostMoneyValue = 0;  // How much you lost total from the dealer
@@ -60,19 +60,18 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             double playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
             valuePlayerLbl.Text = playerMoneyValue.ToString();
             if (activePlayer.Borrow != null)
-            {
-                playerDebt = (double)activePlayer.Borrow; // retrieve how much player owes bank
-            }
+            { playerDebt = (double)activePlayer.Borrow; } // retrieve how much player owes bank
             else
-            {
-                playerDebt = 0;
-            }
+            { playerDebt = 0; }
+
             btnHit.Enabled = false;
         }
 
 
         private void betAndSetBtn_Click(object sender, EventArgs e)
         {
+            playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
+
             if (betAndSetBtn.Text == "Bet")
             {
                 betAndSetBtn.Text = "Deal";
@@ -145,12 +144,22 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         }
 
         private void BettingMoneyGrabber(double amount)
-        {     
+        {
             //Grabs the money from the button to the betting table subtracting the player's money.
             playerMoneyValue = playerMoneyValue - amount;
+            valuePlayerLbl.Text = playerMoneyValue.ToString();
             betMoneyValue = betMoneyValue + amount;
             valuePlayerLbl.Text = playerMoneyValue.ToString();
             valueBetLbl.Text = betMoneyValue.ToString();
+
+            if (playerMoneyValue == 0)
+            {
+                betAndSetBtn.Text = "Bet";
+                MoneyButtonVisiblity(false);
+                betAndSetBtn.Enabled = false;
+                btnHit.Enabled = true;
+                Deal();
+            }
         }
 
         private void PlayerMoneyControl()
@@ -161,14 +170,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             MoneyButtonHandler(50, betFiftyBtn);
             MoneyButtonHandler(10, betTenBtn);
             MoneyButtonHandler(5, betFiveBtn);
-            if (playerMoneyValue == 0)
-            {
-                betAndSetBtn.Text = "Bet";
-                MoneyButtonVisiblity(false);
-                betAndSetBtn.Enabled = false;
-                btnHit.Enabled = true;
-                Deal();
-            }
         } 
 
         private void MoneyButtonHandler(double amount, Button moneyButton)
@@ -352,15 +353,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 win = true;
             }
 
-            // borrow money if player is out of money
-            if (playerMoneyValue == 0)
-            {
-                DatabaseCall.UpdateBank(activePlayer, 0, true);
-                playerDebt = (double)activePlayer.Borrow; // retrieve how much player owes bank
-                playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
-                valuePlayerLbl.Text = playerMoneyValue.ToString();
-            }
-
             return win;
         }
         //check for hand greater than 21
@@ -476,6 +468,15 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 }
             }
         }
+
+        // borrow money if player is out of money
+       /*     if (playerMoneyValue == 0)
+            {
+                DatabaseCall.UpdateBank(activePlayer, 0, true);
+                playerDebt = (double)activePlayer.Borrow; // retrieve how much player owes bank
+                playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
+                valuePlayerLbl.Text = playerMoneyValue.ToString();
+            }*/
     }
 
 
