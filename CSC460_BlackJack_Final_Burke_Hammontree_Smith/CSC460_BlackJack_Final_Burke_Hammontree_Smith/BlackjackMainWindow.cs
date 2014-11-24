@@ -242,10 +242,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             lblPlayerHandValue.Text = GetTotalHandValue(playerHand).ToString();
             DisplayPlayerCards();
             //if no win condition is met, dealer hits
-            if (!CheckForWin())
-            {
-                DealerHit();
-            }
+            CheckForWin();
 
         }
 
