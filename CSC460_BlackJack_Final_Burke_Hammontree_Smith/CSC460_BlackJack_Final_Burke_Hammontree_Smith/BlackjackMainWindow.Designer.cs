@@ -46,11 +46,14 @@
             this.valuePlayerLbl = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.valueMostGainedLbl = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnHit
             // 
-            this.btnHit.Location = new System.Drawing.Point(420, 546);
+            this.btnHit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHit.Location = new System.Drawing.Point(612, 547);
             this.btnHit.Name = "btnHit";
             this.btnHit.Size = new System.Drawing.Size(75, 23);
             this.btnHit.TabIndex = 0;
@@ -71,7 +74,7 @@
             // lblPlayerHandValue
             // 
             this.lblPlayerHandValue.AutoSize = true;
-            this.lblPlayerHandValue.Location = new System.Drawing.Point(418, 583);
+            this.lblPlayerHandValue.Location = new System.Drawing.Point(477, 483);
             this.lblPlayerHandValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayerHandValue.Name = "lblPlayerHandValue";
             this.lblPlayerHandValue.Size = new System.Drawing.Size(58, 13);
@@ -80,69 +83,96 @@
             // 
             // betFiveBtn
             // 
-            this.betFiveBtn.Location = new System.Drawing.Point(17, 518);
+            this.betFiveBtn.BackColor = System.Drawing.Color.White;
+            this.betFiveBtn.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Chip_Blue;
+            this.betFiveBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.betFiveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.betFiveBtn.Location = new System.Drawing.Point(-1, 508);
             this.betFiveBtn.Name = "betFiveBtn";
-            this.betFiveBtn.Size = new System.Drawing.Size(75, 23);
+            this.betFiveBtn.Size = new System.Drawing.Size(100, 100);
             this.betFiveBtn.TabIndex = 3;
             this.betFiveBtn.Text = "$5";
-            this.betFiveBtn.UseVisualStyleBackColor = true;
+            this.betFiveBtn.UseVisualStyleBackColor = false;
             this.betFiveBtn.Click += new System.EventHandler(this.betFiveBtn_Click);
             // 
             // betTenBtn
             // 
-            this.betTenBtn.Location = new System.Drawing.Point(98, 518);
+            this.betTenBtn.BackColor = System.Drawing.Color.White;
+            this.betTenBtn.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Chip_Green;
+            this.betTenBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.betTenBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.betTenBtn.Location = new System.Drawing.Point(98, 508);
             this.betTenBtn.Name = "betTenBtn";
-            this.betTenBtn.Size = new System.Drawing.Size(75, 23);
+            this.betTenBtn.Size = new System.Drawing.Size(100, 100);
             this.betTenBtn.TabIndex = 4;
             this.betTenBtn.Text = "$10";
-            this.betTenBtn.UseVisualStyleBackColor = true;
+            this.betTenBtn.UseVisualStyleBackColor = false;
             this.betTenBtn.Click += new System.EventHandler(this.betTenBtn_Click);
             // 
             // betFiftyBtn
             // 
-            this.betFiftyBtn.Location = new System.Drawing.Point(179, 518);
+            this.betFiftyBtn.BackColor = System.Drawing.Color.White;
+            this.betFiftyBtn.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Chip_Orange;
+            this.betFiftyBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.betFiftyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.betFiftyBtn.Location = new System.Drawing.Point(197, 508);
             this.betFiftyBtn.Name = "betFiftyBtn";
-            this.betFiftyBtn.Size = new System.Drawing.Size(75, 23);
+            this.betFiftyBtn.Size = new System.Drawing.Size(100, 100);
             this.betFiftyBtn.TabIndex = 5;
             this.betFiftyBtn.Text = "$50";
-            this.betFiftyBtn.UseVisualStyleBackColor = true;
+            this.betFiftyBtn.UseVisualStyleBackColor = false;
             this.betFiftyBtn.Click += new System.EventHandler(this.betFiftyBtn_Click);
             // 
             // betHundredBtn
             // 
-            this.betHundredBtn.Location = new System.Drawing.Point(259, 518);
+            this.betHundredBtn.BackColor = System.Drawing.Color.White;
+            this.betHundredBtn.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Chip_Red;
+            this.betHundredBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.betHundredBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.betHundredBtn.Location = new System.Drawing.Point(296, 508);
             this.betHundredBtn.Name = "betHundredBtn";
-            this.betHundredBtn.Size = new System.Drawing.Size(75, 23);
+            this.betHundredBtn.Size = new System.Drawing.Size(100, 100);
             this.betHundredBtn.TabIndex = 6;
             this.betHundredBtn.Text = "$100";
-            this.betHundredBtn.UseVisualStyleBackColor = true;
+            this.betHundredBtn.UseVisualStyleBackColor = false;
             this.betHundredBtn.Click += new System.EventHandler(this.betHundredBtn_Click);
             // 
             // betFiveHundredBtn
             // 
-            this.betFiveHundredBtn.Location = new System.Drawing.Point(340, 518);
+            this.betFiveHundredBtn.BackColor = System.Drawing.Color.White;
+            this.betFiveHundredBtn.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Chip_Purple;
+            this.betFiveHundredBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.betFiveHundredBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.betFiveHundredBtn.Location = new System.Drawing.Point(395, 508);
             this.betFiveHundredBtn.Name = "betFiveHundredBtn";
-            this.betFiveHundredBtn.Size = new System.Drawing.Size(75, 23);
+            this.betFiveHundredBtn.Size = new System.Drawing.Size(100, 100);
             this.betFiveHundredBtn.TabIndex = 7;
             this.betFiveHundredBtn.Text = "$500";
-            this.betFiveHundredBtn.UseVisualStyleBackColor = true;
+            this.betFiveHundredBtn.UseVisualStyleBackColor = false;
             this.betFiveHundredBtn.Click += new System.EventHandler(this.betFiveHundredBtn_Click);
             // 
             // betThousandBtn
             // 
-            this.betThousandBtn.Location = new System.Drawing.Point(421, 518);
+            this.betThousandBtn.BackColor = System.Drawing.Color.Transparent;
+            this.betThousandBtn.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Chip_Black;
+            this.betThousandBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.betThousandBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.betThousandBtn.ForeColor = System.Drawing.Color.White;
+            this.betThousandBtn.Location = new System.Drawing.Point(494, 508);
             this.betThousandBtn.Name = "betThousandBtn";
-            this.betThousandBtn.Size = new System.Drawing.Size(75, 23);
+            this.betThousandBtn.Size = new System.Drawing.Size(100, 100);
             this.betThousandBtn.TabIndex = 8;
             this.betThousandBtn.Text = "$1000";
-            this.betThousandBtn.UseVisualStyleBackColor = true;
+            this.betThousandBtn.UseVisualStyleBackColor = false;
             this.betThousandBtn.Click += new System.EventHandler(this.betThousandBtn_Click);
             // 
             // betAndSetBtn
             // 
-            this.betAndSetBtn.Location = new System.Drawing.Point(219, 547);
+            this.betAndSetBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.betAndSetBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.betAndSetBtn.Location = new System.Drawing.Point(246, 614);
             this.betAndSetBtn.Name = "betAndSetBtn";
-            this.betAndSetBtn.Size = new System.Drawing.Size(72, 23);
+            this.betAndSetBtn.Size = new System.Drawing.Size(100, 23);
             this.betAndSetBtn.TabIndex = 9;
             this.betAndSetBtn.Text = "Bet";
             this.betAndSetBtn.UseVisualStyleBackColor = true;
@@ -236,14 +266,27 @@
             this.valueMostGainedLbl.TabIndex = 17;
             this.valueMostGainedLbl.Text = "0";
             // 
+            // panel1
+            // 
+            this.panel1.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.CasinoMortambo;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.lblPlayerHandValue);
+            this.panel1.Location = new System.Drawing.Point(-1, -4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1014, 516);
+            this.panel1.TabIndex = 18;
+            // 
             // BlackjackMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.CasinoMortambo;
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1016, 596);
+            this.ClientSize = new System.Drawing.Size(1016, 645);
+            this.Controls.Add(this.betFiftyBtn);
+            this.Controls.Add(this.betFiveBtn);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.valueMostGainedLbl);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.valuePlayerLbl);
@@ -256,10 +299,7 @@
             this.Controls.Add(this.betThousandBtn);
             this.Controls.Add(this.betFiveHundredBtn);
             this.Controls.Add(this.betHundredBtn);
-            this.Controls.Add(this.betFiftyBtn);
             this.Controls.Add(this.betTenBtn);
-            this.Controls.Add(this.betFiveBtn);
-            this.Controls.Add(this.lblPlayerHandValue);
             this.Controls.Add(this.lblDealerHandValue);
             this.Controls.Add(this.btnHit);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -268,6 +308,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Blackjack";
             this.Load += new System.EventHandler(this.BlackjackMainWindow_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -293,6 +335,7 @@
         private System.Windows.Forms.Label valuePlayerLbl;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label valueMostGainedLbl;
+        private System.Windows.Forms.Panel panel1;
 
 
     }
