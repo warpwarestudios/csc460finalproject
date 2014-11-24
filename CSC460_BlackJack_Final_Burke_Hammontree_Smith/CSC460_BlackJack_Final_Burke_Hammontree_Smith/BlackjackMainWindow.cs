@@ -67,6 +67,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             {
                 playerDebt = 0;
             }
+            btnHit.Enabled = false;
         }
 
 
