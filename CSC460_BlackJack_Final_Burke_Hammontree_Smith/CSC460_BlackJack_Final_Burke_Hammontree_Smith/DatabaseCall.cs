@@ -22,7 +22,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 // Go through all players in db
                 foreach (Player item in players)
                 {   // set the new id value to 1 + the highest current id in use
-                    if (item.id > id)
+                    if (item.id >= id)
                     {
                         id += 1;
                     }
