@@ -46,8 +46,8 @@
             this.valuePlayerLbl = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.valueMostGainedLbl = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
+            this.pnlBackground = new System.Windows.Forms.Panel();
+            this.pnlBackground.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnHit
@@ -183,7 +183,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(82, 240);
+            this.label1.Location = new System.Drawing.Point(855, 577);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 31);
             this.label1.TabIndex = 10;
@@ -194,7 +194,7 @@
             this.valueLostLbl.AutoSize = true;
             this.valueLostLbl.BackColor = System.Drawing.Color.Transparent;
             this.valueLostLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valueLostLbl.Location = new System.Drawing.Point(178, 240);
+            this.valueLostLbl.Location = new System.Drawing.Point(951, 577);
             this.valueLostLbl.Name = "valueLostLbl";
             this.valueLostLbl.Size = new System.Drawing.Size(30, 31);
             this.valueLostLbl.TabIndex = 11;
@@ -205,7 +205,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(94, 282);
+            this.label3.Location = new System.Drawing.Point(867, 619);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 31);
             this.label3.TabIndex = 12;
@@ -216,7 +216,7 @@
             this.valueBetLbl.AutoSize = true;
             this.valueBetLbl.BackColor = System.Drawing.Color.Transparent;
             this.valueBetLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valueBetLbl.Location = new System.Drawing.Point(178, 282);
+            this.valueBetLbl.Location = new System.Drawing.Point(951, 619);
             this.valueBetLbl.Name = "valueBetLbl";
             this.valueBetLbl.Size = new System.Drawing.Size(30, 31);
             this.valueBetLbl.TabIndex = 13;
@@ -227,7 +227,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(87, 327);
+            this.label5.Location = new System.Drawing.Point(654, 577);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(98, 31);
             this.label5.TabIndex = 14;
@@ -238,7 +238,7 @@
             this.valuePlayerLbl.AutoSize = true;
             this.valuePlayerLbl.BackColor = System.Drawing.Color.Transparent;
             this.valuePlayerLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valuePlayerLbl.Location = new System.Drawing.Point(178, 327);
+            this.valuePlayerLbl.Location = new System.Drawing.Point(745, 577);
             this.valuePlayerLbl.Name = "valuePlayerLbl";
             this.valuePlayerLbl.Size = new System.Drawing.Size(30, 31);
             this.valuePlayerLbl.TabIndex = 15;
@@ -249,7 +249,7 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(-26, 367);
+            this.label7.Location = new System.Drawing.Point(541, 617);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(211, 31);
             this.label7.TabIndex = 16;
@@ -260,21 +260,21 @@
             this.valueMostGainedLbl.AutoSize = true;
             this.valueMostGainedLbl.BackColor = System.Drawing.Color.Transparent;
             this.valueMostGainedLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valueMostGainedLbl.Location = new System.Drawing.Point(178, 367);
+            this.valueMostGainedLbl.Location = new System.Drawing.Point(745, 617);
             this.valueMostGainedLbl.Name = "valueMostGainedLbl";
             this.valueMostGainedLbl.Size = new System.Drawing.Size(30, 31);
             this.valueMostGainedLbl.TabIndex = 17;
             this.valueMostGainedLbl.Text = "0";
             // 
-            // panel1
+            // pnlBackground
             // 
-            this.panel1.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.CasinoMortambo;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.lblPlayerHandValue);
-            this.panel1.Location = new System.Drawing.Point(-1, -4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1014, 516);
-            this.panel1.TabIndex = 18;
+            this.pnlBackground.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.CasinoMortambo;
+            this.pnlBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlBackground.Controls.Add(this.lblPlayerHandValue);
+            this.pnlBackground.Location = new System.Drawing.Point(12, 12);
+            this.pnlBackground.Name = "pnlBackground";
+            this.pnlBackground.Size = new System.Drawing.Size(992, 455);
+            this.pnlBackground.TabIndex = 18;
             // 
             // BlackjackMainWindow
             // 
@@ -286,7 +286,7 @@
             this.ClientSize = new System.Drawing.Size(1016, 645);
             this.Controls.Add(this.betFiftyBtn);
             this.Controls.Add(this.betFiveBtn);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlBackground);
             this.Controls.Add(this.valueMostGainedLbl);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.valuePlayerLbl);
@@ -308,8 +308,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Blackjack";
             this.Load += new System.EventHandler(this.BlackjackMainWindow_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlBackground.ResumeLayout(false);
+            this.pnlBackground.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -335,7 +335,7 @@
         private System.Windows.Forms.Label valuePlayerLbl;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label valueMostGainedLbl;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlBackground;
 
 
     }

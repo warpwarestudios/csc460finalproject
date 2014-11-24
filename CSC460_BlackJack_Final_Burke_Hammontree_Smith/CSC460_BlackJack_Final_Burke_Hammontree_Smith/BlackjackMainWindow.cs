@@ -59,8 +59,14 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
             double playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
             valuePlayerLbl.Text = playerMoneyValue.ToString();
-
-            playerDebt = (double)activePlayer.Borrow; // retrieve how much player owes bank
+            if (activePlayer.Borrow != null)
+            {
+                playerDebt = (double)activePlayer.Borrow; // retrieve how much player owes bank
+            }
+            else
+            {
+                playerDebt = 0;
+            }
         }
 
 
@@ -182,10 +188,12 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 {
                     Button newButton = new Button();
                     newButton.Name = "Card" + i;
-                    newButton.Location = new Point(this.Size.Width / 2 + (35 * i), this.Size.Height - 250);
+                    newButton.Parent = pnlBackground;
+                    newButton.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+                    newButton.Size = new Size(100, 150);
+                    newButton.Location = new Point(newButton.Parent.Size.Width / 2 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - 50);
                     newButton.BackgroundImage = ((PlayingCard)playerHand.CardsInHand()[i - 1]).CardImage();
                     newButton.BackgroundImageLayout = ImageLayout.Stretch;
-                    newButton.Size = new Size(100, 150);
                     this.Controls.Add(newButton);
                     this.Controls.SetChildIndex(newButton, playerHand.CardsInHand().Count - i);
                 }
