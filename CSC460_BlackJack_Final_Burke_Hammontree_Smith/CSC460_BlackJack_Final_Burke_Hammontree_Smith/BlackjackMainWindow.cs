@@ -19,8 +19,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         bool stand = false;
         bool dealerStand = false;
         Pack deck;
-        //TODO: Add 3 hands to player hands
-        Hand playerHand;
+        Hand playerHand1 , playerHand2, playerHand3;
         Hand dealerHand;
         double playerMoneyValue;// retrieve current player's money
         double playerDebt; // How much player owes bank
@@ -55,7 +54,9 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             
             //create decks and hands
             deck = new Pack();
-            playerHand = new Hand();
+            playerHand1 = new Hand();
+            playerHand2 = new Hand();
+            playerHand3 = new Hand();
             dealerHand = new Hand();
 
             valuePlayerLbl.Text = playerMoneyValue.ToString();
@@ -68,124 +69,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             btnStand.Enabled = false;
         }
 
-
-        private void betAndSetBtn_Click(object sender, EventArgs e)
-        {
-            playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
-
-            if (betAndSetBtn.Text == "Bet")
-            {
-                betAndSetBtn.Text = "Deal";
-                btnHit.Enabled = false;
-                BettingMoneyGrabber(5);
-                MoneyButtonVisiblity(true);
-                
-            }
-            else if (betAndSetBtn.Text == "Deal")
-            {
-                betAndSetBtn.Text = "Bet";
-                MoneyButtonVisiblity(false);
-                betAndSetBtn.Enabled = false;
-                btnHit.Enabled = true;
-                btnStand.Enabled = true;
-                Deal();
-            }
-        }
-
-        private void MoneyButtonVisiblity(bool enable)
-        {
-            //sets the betting money buttons to false or true 
-            betFiveBtn.Visible = enable;
-            betTenBtn.Visible = enable;
-            betFiftyBtn.Visible = enable;
-            betHundredBtn.Visible = enable;
-            betFiveHundredBtn.Visible = enable;
-            betThousandBtn.Visible = enable;
-
-        }
-        private void betFiveBtn_Click(object sender, EventArgs e)
-        {
-            PlayerMoneyControl();
-            BettingMoneyGrabber(5);
-            PlayerMoneyControl();
-        }
-
-        private void betTenBtn_Click(object sender, EventArgs e)
-        {
-            PlayerMoneyControl();
-            BettingMoneyGrabber(10);
-            PlayerMoneyControl();
-        }
-
-        private void betFiftyBtn_Click(object sender, EventArgs e)
-        {
-            PlayerMoneyControl();
-            BettingMoneyGrabber(50);
-            PlayerMoneyControl();
-        }
-
-        private void betHundredBtn_Click(object sender, EventArgs e)
-        {
-            PlayerMoneyControl();
-            BettingMoneyGrabber(100);
-            PlayerMoneyControl();            
-        }
-
-        private void betFiveHundredBtn_Click(object sender, EventArgs e)
-        {
-            PlayerMoneyControl();
-            BettingMoneyGrabber(500);
-            PlayerMoneyControl();            
-        }
-
-        private void betThousandBtn_Click(object sender, EventArgs e)
-        {
-            PlayerMoneyControl();
-            BettingMoneyGrabber(1000);
-            PlayerMoneyControl();            
-        }
-
-        private void BettingMoneyGrabber(double amount)
-        {
-            //Grabs the money from the button to the betting table subtracting the player's money.
-            playerMoneyValue = playerMoneyValue - amount;
-            valuePlayerLbl.Text = playerMoneyValue.ToString();
-            betMoneyValue = betMoneyValue + amount;
-            valuePlayerLbl.Text = playerMoneyValue.ToString();
-            valueBetLbl.Text = betMoneyValue.ToString();
-
-            if (playerMoneyValue == 0)
-            {
-                betAndSetBtn.Text = "Bet";
-                MoneyButtonVisiblity(false);
-                betAndSetBtn.Enabled = false;
-                btnHit.Enabled = true;
-                Deal();
-            }
-        }
-
-        private void PlayerMoneyControl()
-        {
-            MoneyButtonHandler(1000, betThousandBtn);
-            MoneyButtonHandler(500, betFiveHundredBtn);
-            MoneyButtonHandler(100, betHundredBtn);
-            MoneyButtonHandler(50, betFiftyBtn);
-            MoneyButtonHandler(10, betTenBtn);
-            MoneyButtonHandler(5, betFiveBtn);
-        } 
-
-        private void MoneyButtonHandler(double amount, Button moneyButton)
-        {
-            if (playerMoneyValue < amount)
-            { moneyButton.Enabled = false; }
-            else
-            { moneyButton.Enabled = true; }
-        }
-
-        private void DisplayPlayerCards()
+        private void DisplayPlayerCards(Hand hand)
         {
             //Displays all cards in hand
-            for (int i = 1; i <= playerHand.CardsInHand().Count; i++)
+            for (int i = 1; i <= hand.CardsInHand().Count; i++)
             {
                 //if control does not already exist create and position it
                 if (!this.Controls.ContainsKey("Card" + i))
@@ -196,18 +83,18 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                     newButton.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
                     newButton.Size = new Size(100, 150);
                     newButton.Location = new Point(newButton.Parent.Size.Width / 2 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - 50);
-                    newButton.BackgroundImage = ((PlayingCard)playerHand.CardsInHand()[i - 1]).CardImage();
+                    newButton.BackgroundImage = ((PlayingCard)hand.CardsInHand()[i - 1]).CardImage();
                     newButton.BackgroundImageLayout = ImageLayout.Stretch;
                     this.Controls.Add(newButton);
-                    this.Controls.SetChildIndex(newButton, playerHand.CardsInHand().Count - i);
+                    this.Controls.SetChildIndex(newButton, hand.CardsInHand().Count - i);
                 }
             }
         }
 
-        private void DisplayDealerCards()
+        private void DisplayDealerCards(Hand hand)
         {
             //Displays all cards in hand
-            for (int i = 1; i <= dealerHand.CardsInHand().Count; i++)
+            for (int i = 1; i <= hand.CardsInHand().Count; i++)
             {
                 //if control does not already exist create and position it
                 if (!this.Controls.ContainsKey("DealerCard" + i))
@@ -217,11 +104,11 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                         Button newButton = new Button();
                         newButton.Name = "DealerCard" + i;
                         newButton.Location = new Point(this.Size.Width / 2 + (35 * i), 100);
-                        newButton.BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[i - 1]).HiddenCardImage();
+                        newButton.BackgroundImage = ((PlayingCard)hand.CardsInHand()[i - 1]).HiddenCardImage();
                         newButton.BackgroundImageLayout = ImageLayout.Stretch;
                         newButton.Size = new Size(100, 150);
                         this.Controls.Add(newButton);
-                        this.Controls.SetChildIndex(newButton, playerHand.CardsInHand().Count - i);
+                        this.Controls.SetChildIndex(newButton, hand.CardsInHand().Count - i);
                         dealerFirstDraw = false;
                     }
                     else
@@ -229,25 +116,17 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                         Button newButton = new Button();
                         newButton.Name = "DealerCard" + i;
                         newButton.Location = new Point(this.Size.Width / 2 + (35 * i), 100);
-                        newButton.BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[i - 1]).CardImage();
+                        newButton.BackgroundImage = ((PlayingCard)hand.CardsInHand()[i - 1]).CardImage();
                         newButton.BackgroundImageLayout = ImageLayout.Stretch;
                         newButton.Size = new Size(100, 150);
                         this.Controls.Add(newButton);
-                        this.Controls.SetChildIndex(newButton, playerHand.CardsInHand().Count - i);
+                        this.Controls.SetChildIndex(newButton, hand.CardsInHand().Count - i);
                     }
                 }
             }
         }
 
-        private void btnHit_Click(object sender, EventArgs e)
-        {
-            playerHand.AddCardToHand(deck.DealCardFromPack());
-            lblPlayerHandValue.Text = GetTotalHandValue(playerHand).ToString();
-            DisplayPlayerCards();
-            //if no win condition is met, dealer hits
-            CheckForWin();
-
-        }
+        
 
         private void DealerHit()
         {
@@ -263,13 +142,12 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                     dealerHand.AddCardToHand(deck.DealCardFromPack());
                     lblDealerHandValue.Text = GetTotalHandValue(dealerHand).ToString();
                 }
-                
             }
         }
 
         //check for win condition, sends true if a win condition is met
         // TODO: ADD PLAYER HAND INPUT
-        private bool CheckForWin()
+        private bool CheckForWin(Hand playerHand)
         {
             bool win = false;
 
@@ -317,7 +195,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 {
                     //player stands, dealer hits
                     DealerHit();
-                    DisplayDealerCards();
+                    DisplayDealerCards(dealerHand);
                     if (GetTotalHandValue(dealerHand) == 21)
                     {
                         playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
@@ -409,6 +287,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             dealerStand = false;
             return win;
         }
+
         //check for hand greater than 21
         private bool CheckForBust(Hand hand)
         {
@@ -418,6 +297,30 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             { bust = true; }
 
             return bust;
+        }
+
+        private void Deal()
+        {
+            //delete all cards shown in player and dealer hands
+            DeleteCards(playerHand1);
+            DeleteCards(dealerHand);
+
+            dealerFirstDraw = true;
+            playerHand1 = new Hand();
+            dealerHand = new Hand();
+
+            playerHand1.AddCardToHand(deck.DealCardFromPack());
+            playerHand1.AddCardToHand(deck.DealCardFromPack());
+            lblPlayerHandValue.Text = GetTotalHandValue(playerHand1).ToString();
+
+            dealerHand.AddCardToHand(deck.DealCardFromPack());
+            dealerHand.AddCardToHand(deck.DealCardFromPack());
+            lblDealerHandValue.Text = GetTotalHandValue(dealerHand).ToString();
+
+            DisplayPlayerCards(playerHand1);
+            DisplayDealerCards(dealerHand);
+
+            CheckForWin(playerHand1);
         }
 
         //intended to add everything up to make it easier to check for win conditions
@@ -474,36 +377,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             return handValue;
         }
 
-
-        private void Deal()
-        {
-
-            //delete all cards shown in player and dealer hands
-            DeletePlayerCards();
-            DeleteDealerCards();
-
-            dealerFirstDraw = true;
-            playerHand = new Hand();
-            dealerHand = new Hand();
-
-            playerHand.AddCardToHand(deck.DealCardFromPack());
-            playerHand.AddCardToHand(deck.DealCardFromPack());
-            lblPlayerHandValue.Text = GetTotalHandValue(playerHand).ToString();
-
-            dealerHand.AddCardToHand(deck.DealCardFromPack());
-            dealerHand.AddCardToHand(deck.DealCardFromPack());
-            lblDealerHandValue.Text = GetTotalHandValue(dealerHand).ToString();
-
-            DisplayPlayerCards();
-            DisplayDealerCards();
-
-            CheckForWin();
-        }
-
-        private void DeletePlayerCards()
+        private void DeleteCards(Hand hand)
         {
             //Deletes all cards shown
-            for (int i = 1; i <= playerHand.CardsInHand().Count; i++)
+            for (int i = 1; i <= hand.CardsInHand().Count; i++)
             {
                 if (this.Controls.ContainsKey("Card" + i))
                 {
@@ -511,30 +388,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 }
             }
         }
-        private void DeleteDealerCards()
-        {
-            //Deletes all cards shown
-            for (int i = 1; i <= playerHand.CardsInHand().Count; i++)
-            {
-                if (this.Controls.ContainsKey("DealerCard" + i))
-                {
-                    this.Controls.RemoveByKey("DealerCard" + i);
-                }
-            }
-        }
 
-        private void btnStand_Click(object sender, EventArgs e)
-        {
-            btnHit.Enabled = false;
-            stand = true;
-            ((Button)this.Controls["DealerCard1"]).BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[0]).CardImage();
-            DealerHit();
-            DisplayDealerCards();
-            CheckForWin();
-        }
-
-  
-
+        //Reference for borrowing
         // borrow money if player is out of money
        /*     if (playerMoneyValue == 0)
             {
@@ -543,6 +398,135 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
                 valuePlayerLbl.Text = playerMoneyValue.ToString();
             }*/
+
+        // *BUTTONS AND STUFF*
+
+        private void btnHit_Click(object sender, EventArgs e)
+        {
+            playerHand1.AddCardToHand(deck.DealCardFromPack());
+            lblPlayerHandValue.Text = GetTotalHandValue(playerHand1).ToString();
+            DisplayPlayerCards(playerHand1);
+            //if no win condition is met, dealer hits
+            CheckForWin(playerHand1);
+
+        }
+
+        private void btnStand_Click(object sender, EventArgs e)
+        {
+            btnHit.Enabled = false;
+            stand = true;
+            ((Button)this.Controls["DealerCard1"]).BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[0]).CardImage();
+            DealerHit();
+            DisplayDealerCards(dealerHand);
+            CheckForWin(playerHand1);
+        }
+
+        private void betAndSetBtn_Click(object sender, EventArgs e)
+        {
+            playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
+
+            if (betAndSetBtn.Text == "Bet")
+            {
+                betAndSetBtn.Text = "Deal";
+                btnHit.Enabled = false;
+                BettingMoneyGrabber(5);
+                MoneyButtonVisiblity(true);
+
+            }
+            else if (betAndSetBtn.Text == "Deal")
+            {
+                betAndSetBtn.Text = "Bet";
+                MoneyButtonVisiblity(false);
+                betAndSetBtn.Enabled = false;
+                btnHit.Enabled = true;
+                btnStand.Enabled = true;
+                Deal();
+            }
+        }
+
+        private void BettingMoneyGrabber(double amount)
+        {
+            //Grabs the money from the button to the betting table subtracting the player's money.
+            playerMoneyValue = playerMoneyValue - amount;
+            valuePlayerLbl.Text = playerMoneyValue.ToString();
+            betMoneyValue = betMoneyValue + amount;
+            valuePlayerLbl.Text = playerMoneyValue.ToString();
+            valueBetLbl.Text = betMoneyValue.ToString();
+
+            if (playerMoneyValue == 0)
+            {
+                betAndSetBtn.Text = "Bet";
+                MoneyButtonVisiblity(false);
+                betAndSetBtn.Enabled = false;
+                btnHit.Enabled = true;
+                Deal();
+            }
+        }
+        private void PlayerMoneyControl()
+        {
+            MoneyButtonHandler(1000, betThousandBtn);
+            MoneyButtonHandler(500, betFiveHundredBtn);
+            MoneyButtonHandler(100, betHundredBtn);
+            MoneyButtonHandler(50, betFiftyBtn);
+            MoneyButtonHandler(10, betTenBtn);
+            MoneyButtonHandler(5, betFiveBtn);
+        }
+        private void MoneyButtonHandler(double amount, Button moneyButton)
+        {
+            if (playerMoneyValue < amount)
+            { moneyButton.Enabled = false; }
+            else
+            { moneyButton.Enabled = true; }
+        }
+        private void MoneyButtonVisiblity(bool enable)
+        {
+            //sets the betting money buttons to false or true 
+            betFiveBtn.Visible = enable;
+            betTenBtn.Visible = enable;
+            betFiftyBtn.Visible = enable;
+            betHundredBtn.Visible = enable;
+            betFiveHundredBtn.Visible = enable;
+            betThousandBtn.Visible = enable;
+
+        }
+
+        private void betFiveBtn_Click(object sender, EventArgs e)
+        {
+            PlayerMoneyControl();
+            BettingMoneyGrabber(5);
+            PlayerMoneyControl();
+        }
+        private void betTenBtn_Click(object sender, EventArgs e)
+        {
+            PlayerMoneyControl();
+            BettingMoneyGrabber(10);
+            PlayerMoneyControl();
+        }
+        private void betFiftyBtn_Click(object sender, EventArgs e)
+        {
+            PlayerMoneyControl();
+            BettingMoneyGrabber(50);
+            PlayerMoneyControl();
+        }
+        private void betHundredBtn_Click(object sender, EventArgs e)
+        {
+            PlayerMoneyControl();
+            BettingMoneyGrabber(100);
+            PlayerMoneyControl();
+        }
+        private void betFiveHundredBtn_Click(object sender, EventArgs e)
+        {
+            PlayerMoneyControl();
+            BettingMoneyGrabber(500);
+            PlayerMoneyControl();
+        }
+        private void betThousandBtn_Click(object sender, EventArgs e)
+        {
+            PlayerMoneyControl();
+            BettingMoneyGrabber(1000);
+            PlayerMoneyControl();
+        }
+        
     }
 
 
