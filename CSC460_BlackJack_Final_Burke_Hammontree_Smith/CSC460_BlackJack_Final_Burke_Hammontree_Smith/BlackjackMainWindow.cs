@@ -146,7 +146,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         }
 
         //check for win condition, sends true if a win condition is met
-        // TODO: ADD PLAYER HAND INPUT
         private bool CheckForWin(Hand playerHand)
         {
             bool win = false;
@@ -435,6 +434,17 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             CheckForWin(playerHand1);
         }
 
+        //Double down
+        private void btnDoubleDown_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Split hand
+        private void btnSplit_Click(object sender, EventArgs e)
+        {
+
+        }
         private void betAndSetBtn_Click(object sender, EventArgs e)
         {
             playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
