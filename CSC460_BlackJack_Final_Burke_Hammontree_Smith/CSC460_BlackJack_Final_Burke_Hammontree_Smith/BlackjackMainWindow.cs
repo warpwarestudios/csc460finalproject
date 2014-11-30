@@ -395,6 +395,11 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 {
                     this.Controls.RemoveByKey("Card" + i);
                 }
+
+                if (this.Controls.ContainsKey("DealerCard" + i))
+                {
+                    this.Controls.RemoveByKey("DealerCard" + i);
+                }
             }
         }
 
