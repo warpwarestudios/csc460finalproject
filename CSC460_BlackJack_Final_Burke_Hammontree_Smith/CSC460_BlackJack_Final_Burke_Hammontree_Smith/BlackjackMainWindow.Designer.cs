@@ -143,7 +143,7 @@
             this.betFiveHundredBtn.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Chip_Purple;
             this.betFiveHundredBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.betFiveHundredBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.betFiveHundredBtn.Location = new System.Drawing.Point(405, 508);
+            this.betFiveHundredBtn.Location = new System.Drawing.Point(398, 508);
             this.betFiveHundredBtn.Name = "betFiveHundredBtn";
             this.betFiveHundredBtn.Size = new System.Drawing.Size(100, 100);
             this.betFiveHundredBtn.TabIndex = 7;
@@ -182,10 +182,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(855, 577);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(837, 521);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 31);
+            this.label1.Size = new System.Drawing.Size(64, 20);
             this.label1.TabIndex = 10;
             this.label1.Text = "Lost: $";
             // 
@@ -193,10 +193,10 @@
             // 
             this.valueLostLbl.AutoSize = true;
             this.valueLostLbl.BackColor = System.Drawing.Color.Transparent;
-            this.valueLostLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valueLostLbl.Location = new System.Drawing.Point(951, 577);
+            this.valueLostLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valueLostLbl.Location = new System.Drawing.Point(907, 521);
             this.valueLostLbl.Name = "valueLostLbl";
-            this.valueLostLbl.Size = new System.Drawing.Size(30, 31);
+            this.valueLostLbl.Size = new System.Drawing.Size(19, 20);
             this.valueLostLbl.TabIndex = 11;
             this.valueLostLbl.Text = "0";
             // 
@@ -204,10 +204,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(867, 619);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(844, 540);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 31);
+            this.label3.Size = new System.Drawing.Size(57, 20);
             this.label3.TabIndex = 12;
             this.label3.Text = "Bet: $";
             // 
@@ -215,10 +215,10 @@
             // 
             this.valueBetLbl.AutoSize = true;
             this.valueBetLbl.BackColor = System.Drawing.Color.Transparent;
-            this.valueBetLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valueBetLbl.Location = new System.Drawing.Point(951, 619);
+            this.valueBetLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valueBetLbl.Location = new System.Drawing.Point(907, 540);
             this.valueBetLbl.Name = "valueBetLbl";
-            this.valueBetLbl.Size = new System.Drawing.Size(30, 31);
+            this.valueBetLbl.Size = new System.Drawing.Size(19, 20);
             this.valueBetLbl.TabIndex = 13;
             this.valueBetLbl.Text = "0";
             // 
@@ -226,10 +226,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(654, 577);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(840, 500);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(98, 31);
+            this.label5.Size = new System.Drawing.Size(61, 20);
             this.label5.TabIndex = 14;
             this.label5.Text = "You: $";
             // 
@@ -237,10 +237,10 @@
             // 
             this.valuePlayerLbl.AutoSize = true;
             this.valuePlayerLbl.BackColor = System.Drawing.Color.Transparent;
-            this.valuePlayerLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valuePlayerLbl.Location = new System.Drawing.Point(745, 577);
+            this.valuePlayerLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valuePlayerLbl.Location = new System.Drawing.Point(907, 480);
             this.valuePlayerLbl.Name = "valuePlayerLbl";
-            this.valuePlayerLbl.Size = new System.Drawing.Size(30, 31);
+            this.valuePlayerLbl.Size = new System.Drawing.Size(19, 20);
             this.valuePlayerLbl.TabIndex = 15;
             this.valuePlayerLbl.Text = "0";
             // 
@@ -248,10 +248,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(541, 617);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(770, 480);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(211, 31);
+            this.label7.Size = new System.Drawing.Size(131, 20);
             this.label7.TabIndex = 16;
             this.label7.Text = "Most Gained: $";
             // 
@@ -259,10 +259,10 @@
             // 
             this.valueMostGainedLbl.AutoSize = true;
             this.valueMostGainedLbl.BackColor = System.Drawing.Color.Transparent;
-            this.valueMostGainedLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valueMostGainedLbl.Location = new System.Drawing.Point(745, 617);
+            this.valueMostGainedLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valueMostGainedLbl.Location = new System.Drawing.Point(907, 500);
             this.valueMostGainedLbl.Name = "valueMostGainedLbl";
-            this.valueMostGainedLbl.Size = new System.Drawing.Size(30, 31);
+            this.valueMostGainedLbl.Size = new System.Drawing.Size(19, 20);
             this.valueMostGainedLbl.TabIndex = 17;
             this.valueMostGainedLbl.Text = "0";
             // 

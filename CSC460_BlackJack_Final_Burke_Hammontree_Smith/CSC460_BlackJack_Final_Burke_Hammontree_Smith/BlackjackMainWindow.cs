@@ -167,6 +167,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                         DialogResult dialogResult = MessageBox.Show("You got Blackjack! Great job! Here's your money.", "Win!", MessageBoxButtons.OK);
                         betAndSetBtn.Enabled = true;
                         btnHit.Enabled = false;
+                        btnStand.Enabled = false;
                         win = true;
                     }
                 }
@@ -178,6 +179,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                     valueBetLbl.Text = betMoneyValue.ToString();
                     DialogResult dialogResult = MessageBox.Show("I got Blackjack! You lose your bet.", "Lose!", MessageBoxButtons.OK);
                     betAndSetBtn.Enabled = true;
+                    btnStand.Enabled = false;
                 }
                 btnHit.Enabled = false;
                 win = true;
@@ -204,6 +206,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                         DialogResult dialogResult = MessageBox.Show("We tied! Here's your bet back.", "Tied!", MessageBoxButtons.OK);
                         betAndSetBtn.Enabled = true;
                         btnHit.Enabled = false;
+                        btnStand.Enabled = false;
                         win = true;
                     }
                     else
@@ -216,6 +219,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                         DialogResult dialogResult = MessageBox.Show("You got Blackjack! Great job! Here's your money.", "Win!", MessageBoxButtons.OK);
                         betAndSetBtn.Enabled = true;
                         btnHit.Enabled = false;
+                        btnStand.Enabled = false;
                         win = true;
                     }
                 }
@@ -230,6 +234,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 DialogResult dialogResult = MessageBox.Show("You busted! You lose your bet.", "Lose!", MessageBoxButtons.OK);
                 betAndSetBtn.Enabled = true;
                 btnHit.Enabled = false;
+                btnStand.Enabled = false;
                 win = true;
             }
             //dealer busts
@@ -243,6 +248,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 DialogResult dialogResult = MessageBox.Show("I busted! Here's your money.", "Win!", MessageBoxButtons.OK);
                 betAndSetBtn.Enabled = true;
                 btnHit.Enabled = false;
+                btnStand.Enabled = false;
                 win = true;
             }
             //dealer and player hands are tied
@@ -254,6 +260,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 DialogResult dialogResult = MessageBox.Show("We tied! Here's your bet back.", "Tied!", MessageBoxButtons.OK);
                 betAndSetBtn.Enabled = true;
                 btnHit.Enabled = false;
+                btnStand.Enabled = false;
                 win = true;
             }
             //check for win if not 21 and both players stand
@@ -267,6 +274,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 DialogResult dialogResult = MessageBox.Show("You lose! I'll take your bet.", "Lose!", MessageBoxButtons.OK);
                 betAndSetBtn.Enabled = true;
                 btnHit.Enabled = false;
+                btnStand.Enabled = false;
                 win = true;
             }
             //if player hand is greater, player wins
@@ -280,6 +288,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 DialogResult dialogResult = MessageBox.Show("You win! Here's your money.", "Win!", MessageBoxButtons.OK);
                 betAndSetBtn.Enabled = true;
                 btnHit.Enabled = false;
+                btnStand.Enabled = false;
                 win = true;
             }
 
