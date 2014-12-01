@@ -18,9 +18,11 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         bool dealerFirstDraw = true;
         bool stand = false;
         bool dealerStand = false;
+        int splits = 0; // number off times the player has split
         Pack deck;
-        Hand playerHand1 , playerHand2, playerHand3;
-        Hand dealerHand;
+        Hand playerHand1, playerHand2, playerHand3; // holders for all possible player hands
+        Hand activePlayerHand; // current playing player hand
+        Hand dealerHand; // dealer hand
         double playerMoneyValue;// retrieve current player's money
         double playerDebt; // How much player owes bank
         double betMoneyValue = 0; // bettng value takes place
@@ -54,7 +56,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             
             //create decks and hands
             deck = new Pack();
-            playerHand1 = new Hand();
+            activePlayerHand = new Hand();
             playerHand2 = new Hand();
             playerHand3 = new Hand();
             dealerHand = new Hand();
@@ -67,6 +69,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
             btnHit.Enabled = false;
             btnStand.Enabled = false;
+            btnDoubleDown.Enabled = false;
+            btnDoubleDown.Visible = false;
+            btnSplit.Enabled = false;
+            btnSplit.Visible = false;
         }
 
         private void DisplayPlayerCards(Hand hand)
@@ -133,8 +139,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             }
         }
 
-        
-
         private void DealerHit()
         {
             //if dealer isn't standing, give him a card and check for win
@@ -157,9 +161,187 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         {
             bool blackjack = false;
 
+<<<<<<< HEAD
             if (GetTotalHandValue(hand) == 21)
             {
                 blackjack = true;
+=======
+            //dealer has 21, dealer wins 
+            if (GetTotalHandValue(dealerHand) == 21)
+            {
+                //check for tie, otherwise dealer wins
+                if (GetTotalHandValue(dealerHand) == GetTotalHandValue(playerHand))
+                {
+                    if (playerHand.CardsInHand().Count == 2)
+                    {
+                        DatabaseCall.UpdateBank(activePlayer, (decimal)(betMoneyValue * 2.5), false);
+                        playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
+                        valuePlayerLbl.Text = playerMoneyValue.ToString();
+                        betMoneyValue = 0;
+                        valueBetLbl.Text = betMoneyValue.ToString();
+                        DialogResult dialogResult = MessageBox.Show("You got Blackjack! Great job! Here's your money.", "Win!", MessageBoxButtons.OK);
+                        betAndSetBtn.Enabled = true;
+                        btnHit.Enabled = false;
+                        btnStand.Enabled = false;
+                        btnDoubleDown.Enabled = false;
+                        btnDoubleDown.Visible = false;
+                        btnSplit.Enabled = false;
+                        btnSplit.Visible = false;
+                        win = true;
+                    }
+                }
+                else
+                {
+                    DatabaseCall.UpdateBank(activePlayer, (decimal)(-betMoneyValue), false);
+                    playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
+                    betMoneyValue = 0;
+                    valueBetLbl.Text = betMoneyValue.ToString();
+                    DialogResult dialogResult = MessageBox.Show("I got Blackjack! You lose your bet.", "Lose!", MessageBoxButtons.OK);
+                    betAndSetBtn.Enabled = true;
+                    btnStand.Enabled = false;
+                }
+                btnHit.Enabled = false;
+                btnDoubleDown.Enabled = false;
+                btnDoubleDown.Visible = false;
+                btnSplit.Enabled = false;
+                btnSplit.Visible = false;
+                win = true;
+            }
+            //player has 21, player wins
+            else if (GetTotalHandValue(playerHand) == 21)
+            {
+                //if the player is dealt 21 in first deal, then they get 3 to 2 return on bet
+                if (playerHand.CardsInHand().Count == 2)
+                {
+                    DatabaseCall.UpdateBank(activePlayer, (decimal)(betMoneyValue * 2.5), false);
+                    playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
+                }
+                else
+                {
+                    //player stands, dealer hits
+                    DealerHit();
+                    DisplayDealerCards(dealerHand);
+                    if (GetTotalHandValue(dealerHand) == 21)
+                    {
+                        playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
+                        valuePlayerLbl.Text = playerMoneyValue.ToString();
+                        valueBetLbl.Text = betMoneyValue.ToString();
+                        DialogResult dialogResult = MessageBox.Show("We tied! Here's your bet back.", "Tied!", MessageBoxButtons.OK);
+                        betAndSetBtn.Enabled = true;
+                        btnHit.Enabled = false;
+                        btnStand.Enabled = false;
+                        btnDoubleDown.Enabled = false;
+                        btnDoubleDown.Visible = false;
+                        btnSplit.Enabled = false;
+                        btnSplit.Visible = false;
+                        win = true;
+                    }
+                    else
+                    {
+                        DatabaseCall.UpdateBank(activePlayer, (decimal)(betMoneyValue * 2), false);
+                        playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
+                        valuePlayerLbl.Text = playerMoneyValue.ToString();
+                        betMoneyValue = 0;
+                        valueBetLbl.Text = betMoneyValue.ToString();
+                        DialogResult dialogResult = MessageBox.Show("You got Blackjack! Great job! Here's your money.", "Win!", MessageBoxButtons.OK);
+                        betAndSetBtn.Enabled = true;
+                        btnHit.Enabled = false;
+                        btnStand.Enabled = false;
+                        btnDoubleDown.Enabled = false;
+                        btnDoubleDown.Visible = false;
+                        btnSplit.Enabled = false;
+                        btnSplit.Visible = false;
+                        win = true;
+                    }
+                }
+            }
+            //player busts
+            else if (CheckForBust(playerHand))
+            {
+                DatabaseCall.UpdateBank(activePlayer, (decimal)(-betMoneyValue), false);
+                playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
+                betMoneyValue = 0;
+                valueBetLbl.Text = betMoneyValue.ToString();
+                DialogResult dialogResult = MessageBox.Show("You busted! You lose your bet.", "Lose!", MessageBoxButtons.OK);
+                betAndSetBtn.Enabled = true;
+                btnHit.Enabled = false;
+                btnStand.Enabled = false;
+                btnDoubleDown.Enabled = false;
+                btnDoubleDown.Visible = false;
+                btnSplit.Enabled = false;
+                btnSplit.Visible = false;
+                win = true;
+            }
+            //dealer busts
+            else if (CheckForBust(dealerHand))
+            {
+                DatabaseCall.UpdateBank(activePlayer, (decimal)(betMoneyValue * 2), false);
+                playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
+                valuePlayerLbl.Text = playerMoneyValue.ToString();
+                betMoneyValue = 0;
+                valueBetLbl.Text = betMoneyValue.ToString();
+                DialogResult dialogResult = MessageBox.Show("I busted! Here's your money.", "Win!", MessageBoxButtons.OK);
+                betAndSetBtn.Enabled = true;
+                btnHit.Enabled = false;
+                btnStand.Enabled = false;
+                btnDoubleDown.Enabled = false;
+                btnDoubleDown.Visible = false;
+                btnSplit.Enabled = false;
+                btnSplit.Visible = false;
+                win = true;
+            }
+            //dealer and player hands are tied
+            else if (GetTotalHandValue(dealerHand) == GetTotalHandValue(playerHand) && stand && dealerStand)
+            {
+                playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
+                valuePlayerLbl.Text = playerMoneyValue.ToString();
+                valueBetLbl.Text = betMoneyValue.ToString();
+                DialogResult dialogResult = MessageBox.Show("We tied! Here's your bet back.", "Tied!", MessageBoxButtons.OK);
+                betAndSetBtn.Enabled = true;
+                btnHit.Enabled = false;
+                btnStand.Enabled = false;
+                btnDoubleDown.Enabled = false;
+                btnDoubleDown.Visible = false;
+                btnSplit.Enabled = false;
+                btnSplit.Visible = false;
+                win = true;
+            }
+            //check for win if not 21 and both players stand
+            //if dealer hand is greater, dealer wins
+            else if (GetTotalHandValue(dealerHand) > GetTotalHandValue(playerHand) && stand && dealerStand)
+            {
+                DatabaseCall.UpdateBank(activePlayer, (decimal)(-betMoneyValue), false);
+                playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
+                betMoneyValue = 0;
+                valueBetLbl.Text = betMoneyValue.ToString();
+                DialogResult dialogResult = MessageBox.Show("You lose! I'll take your bet.", "Lose!", MessageBoxButtons.OK);
+                betAndSetBtn.Enabled = true;
+                btnHit.Enabled = false;
+                btnStand.Enabled = false;
+                btnDoubleDown.Enabled = false;
+                btnDoubleDown.Visible = false;
+                btnSplit.Enabled = false;
+                btnSplit.Visible = false;
+                win = true;
+            }
+            //if player hand is greater, player wins
+            else if (GetTotalHandValue(dealerHand) < GetTotalHandValue(playerHand) && stand && dealerStand)
+            {
+                DatabaseCall.UpdateBank(activePlayer, (decimal)(betMoneyValue * 2), false);
+                playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
+                valuePlayerLbl.Text = playerMoneyValue.ToString();
+                betMoneyValue = 0;
+                valueBetLbl.Text = betMoneyValue.ToString();
+                DialogResult dialogResult = MessageBox.Show("You win! Here's your money.", "Win!", MessageBoxButtons.OK);
+                betAndSetBtn.Enabled = true;
+                btnHit.Enabled = false;
+                btnStand.Enabled = false;
+                btnDoubleDown.Enabled = false;
+                btnDoubleDown.Visible = false;
+                btnSplit.Enabled = false;
+                btnSplit.Visible = false;
+                win = true;
+>>>>>>> origin/Development-Branch
             }
 
             return blackjack;
@@ -176,6 +358,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             return bust;
         }
 
+<<<<<<< HEAD
         //check for chance for player to buy insurance
         //returns true if player buys insurance
         private bool CheckForInsurance()
@@ -193,29 +376,61 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             }
 
             return insurance;
+=======
+        private void CheckForSplit (Hand hand)
+        {
+            // if player has already split 3 times, prevent any more splitting
+            if (splits == 2)
+            { return;  }
+
+            // Split hand scenario checker
+            if (hand.CardsInHand().Count == 2)
+            {
+                PlayingCard card1 = null;
+                int i = 1;
+                foreach (PlayingCard card in hand.CardsInHand())
+                {
+                    if (i == 1)
+                    {
+                        card1 = card;
+                        i++;
+                    }
+                    else if (card1.CardValue() == card.CardValue())
+                    {
+                        btnSplit.Visible = true;
+                        btnSplit.Enabled = true;
+                    }
+                }
+            } // end of split hand check
+>>>>>>> origin/Development-Branch
         }
 
         private void Deal()
         {
             //delete all cards shown in player and dealer hands
-            DeleteCards(playerHand1);
+            DeleteCards(activePlayerHand);
             DeleteCards(dealerHand);
 
+            // reset split conditions
+            splits = 0;
+
             dealerFirstDraw = true;
-            playerHand1 = new Hand();
+            activePlayerHand = new Hand();
             dealerHand = new Hand();
 
-            playerHand1.AddCardToHand(deck.DealCardFromPack());
-            playerHand1.AddCardToHand(deck.DealCardFromPack());
-            lblPlayerHandValue.Text = GetTotalHandValue(playerHand1).ToString();
+            activePlayerHand.AddCardToHand(deck.DealCardFromPack());
+            activePlayerHand.AddCardToHand(deck.DealCardFromPack());
+            CheckForSplit(activePlayerHand);
+            lblPlayerHandValue.Text = GetTotalHandValue(activePlayerHand).ToString();
 
             dealerHand.AddCardToHand(deck.DealCardFromPack());
             dealerHand.AddCardToHand(deck.DealCardFromPack());
             lblDealerHandValue.Text = GetTotalHandValue(dealerHand).ToString();
 
-            DisplayPlayerCards(playerHand1);
+            DisplayPlayerCards(activePlayerHand);
             DisplayDealerCards(dealerHand);
 
+<<<<<<< HEAD
             //Check for initial win conditions
             //player blackjack
             if (CheckForBlackjack(playerHand1))
@@ -274,6 +489,9 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 ModifyBank(betMoneyValue * -1, true , false);
                 MessageBox.Show("I got blackjack! You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK); 
             }
+=======
+            CheckForWin(activePlayerHand);
+>>>>>>> origin/Development-Branch
         }
 
         //intended to add everything up to make it easier to check for win conditions
@@ -361,10 +579,19 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
         private void btnHit_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
+            btnDoubleDown.Enabled = false;
+            btnDoubleDown.Visible = false;
+            Hit();
+        }
+
+        private void Hit()
+        {
             playerHand1.AddCardToHand(deck.DealCardFromPack());
             lblPlayerHandValue.Text = GetTotalHandValue(playerHand1).ToString();
             DeleteCards(playerHand1);
             DisplayPlayerCards(playerHand1);
+<<<<<<< HEAD
             DisplayDealerCards(dealerHand);
             //if player busts
             if (CheckForBust(playerHand1))
@@ -390,9 +617,25 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 
 
             }
+=======
+=======
+            activePlayerHand.AddCardToHand(deck.DealCardFromPack());
+            lblPlayerHandValue.Text = GetTotalHandValue(activePlayerHand).ToString();
+            DisplayPlayerCards(activePlayerHand);
+>>>>>>> origin/Development-Branch
+            //if no win condition is met, dealer hits
+            CheckForWin(activePlayerHand);
+>>>>>>> origin/Development-Branch
         }
 
         private void btnStand_Click(object sender, EventArgs e)
+        {
+            btnDoubleDown.Enabled = false;
+            btnDoubleDown.Visible = false;
+            Stand();
+        }
+
+        private void Stand()
         {
             btnHit.Enabled = false;
             stand = true;
@@ -401,6 +644,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             //dealer hits until 17
             DealerHit();
             DisplayDealerCards(dealerHand);
+<<<<<<< HEAD
             //dealer has blackjack
             if (CheckForBlackjack(dealerHand))
             {
@@ -433,17 +677,83 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 MessageBox.Show("We tied! Here's your bet back.", "Tie!", MessageBoxButtons.OK);
             }
         }
+=======
+            CheckForWin(activePlayerHand);
+>>>>>>> origin/Development-Branch
 
+            // once a player stands hold a copy of the hand (this is important for splits)
+            // This is only neccesary once
+            if (splits >= 1)
+            {
+                foreach (PlayingCard card in activePlayerHand.CardsInHand())
+                { playerHand1.AddCardToHand(card); }
+            }
+        }
         //Double down
         private void btnDoubleDown_Click(object sender, EventArgs e)
         {
-
+            btnDoubleDown.Enabled = false;
+            btnDoubleDown.Visible = false;
+            BettingMoneyGrabber(betMoneyValue);
+            playerHand1.AddCardToHand(deck.DealCardFromPack());
+            lblPlayerHandValue.Text = GetTotalHandValue(playerHand1).ToString();
+            DisplayPlayerCards(playerHand1);
+            Stand();
         }
 
         //Split hand
         private void btnSplit_Click(object sender, EventArgs e)
         {
+            PlayingCard card1 = null , card2 = null;
+            int i = 1;
+            // first split
+            if (splits == 0)
+            {
+                foreach (PlayingCard card in activePlayerHand.CardsInHand())
+                {
+                    if (i == 1)
+                    { card1 = card; }
+                    else if (i == 2)
+                    { card2 = card; }
+                }
+                DeleteCards(activePlayerHand);
+                activePlayerHand.ClearHand();
 
+                activePlayerHand.AddCardToHand(card1);
+                activePlayerHand.AddCardToHand(deck.DealCardFromPack());
+                DisplayPlayerCards(activePlayerHand);
+
+                playerHand2.AddCardToHand(card2);
+                playerHand2.AddCardToHand(deck.DealCardFromPack());
+                // DisplayPlayerCards(playerHand2);
+                // ^ need a place to display 2nd hand
+                splits++;
+            }
+            else if (splits == 1) // second split
+            {
+                foreach (PlayingCard card in activePlayerHand.CardsInHand())
+                {
+                    if (i == 1)
+                    { card1 = card; }
+                    else if (i == 2)
+                    { card2 = card; }
+                }
+                DeleteCards(activePlayerHand);
+                activePlayerHand.ClearHand();
+
+                activePlayerHand.AddCardToHand(card1);
+                activePlayerHand.AddCardToHand(deck.DealCardFromPack());
+                DisplayPlayerCards(activePlayerHand);
+
+                playerHand3.AddCardToHand(card2);
+                playerHand3.AddCardToHand(deck.DealCardFromPack());
+                //DisplayPlayerCards(playerHand3);
+                // ^ need a place to display third hand
+                splits++;
+            }
+
+            btnSplit.Enabled = false;
+            btnSplit.Visible = false;
         }
         private void betAndSetBtn_Click(object sender, EventArgs e)
         {
@@ -455,7 +765,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 btnHit.Enabled = false;
                 BettingMoneyGrabber(5);
                 MoneyButtonVisiblity(true);
-
             }
             else if (betAndSetBtn.Text == "Deal")
             {
@@ -464,6 +773,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 betAndSetBtn.Enabled = false;
                 btnHit.Enabled = true;
                 btnStand.Enabled = true;
+                btnDoubleDown.Visible = true;
+                btnDoubleDown.Enabled = true;
                 Deal();
             }
         }
