@@ -130,6 +130,7 @@
     <Content Include="Database.sdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Background Layout.png" />
     <None Include="Resources\Chip-Red.png" />
     <None Include="Resources\Chip-Purple.png" />
     <None Include="Resources\Chip-Orange.png" />
