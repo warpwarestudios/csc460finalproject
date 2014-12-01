@@ -223,8 +223,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                     }
                 }
             } // end of split hand check
->>>>>>> origin/Development-Branch
-        }
+       }
 
         private void Deal()
         {
@@ -251,7 +250,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             DisplayPlayerCards(activePlayerHand);
             DisplayDealerCards(dealerHand);
 
-<<<<<<< HEAD
             //Check for initial win conditions
             //player blackjack
             if (CheckForBlackjack(playerHand1))
@@ -310,9 +308,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 ModifyBank(betMoneyValue * -1, true , false);
                 MessageBox.Show("I got blackjack! You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK); 
             }
-=======
-            CheckForWin(activePlayerHand);
->>>>>>> origin/Development-Branch
+            //TODO:Fix win conditions
+           // CheckForWin(activePlayerHand);
         }
 
         //intended to add everything up to make it easier to check for win conditions
