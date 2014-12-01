@@ -234,6 +234,12 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             // reset split conditions
             splits = 0;
 
+            // reshuffle deck if below 21 cards
+            if (deck.CardsLeft() <= 21)
+            {
+                deck.Reshuffle();
+            }
+
             dealerFirstDraw = true;
             activePlayerHand = new Hand();
             dealerHand = new Hand();

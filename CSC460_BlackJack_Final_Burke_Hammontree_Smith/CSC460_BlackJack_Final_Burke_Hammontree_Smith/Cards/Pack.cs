@@ -30,6 +30,11 @@ namespace Cards
             }
         }
 
+        public int CardsLeft()
+        {
+            return cardPack.Count;
+        }
+
         // Deals new card
         // checks against cards that have been dealt before 
         public PlayingCard DealCardFromPack()
