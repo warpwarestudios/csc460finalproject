@@ -455,6 +455,13 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
         private void btnHit_Click(object sender, EventArgs e)
         {
+            btnDoubleDown.Enabled = false;
+            btnDoubleDown.Visible = false;
+            Hit();
+        }
+
+        private void Hit()
+        {
             playerHand1.AddCardToHand(deck.DealCardFromPack());
             lblPlayerHandValue.Text = GetTotalHandValue(playerHand1).ToString();
             DisplayPlayerCards(playerHand1);
@@ -464,6 +471,13 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
         private void btnStand_Click(object sender, EventArgs e)
         {
+            btnDoubleDown.Enabled = false;
+            btnDoubleDown.Visible = false;
+            Stand();
+        }
+
+        private void Stand()
+        {
             btnHit.Enabled = false;
             stand = true;
             ((Button)this.Controls["DealerCard1"]).BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[0]).CardImage();
@@ -471,12 +485,16 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             DisplayDealerCards(dealerHand);
             CheckForWin(playerHand1);
         }
-
         //Double down
         private void btnDoubleDown_Click(object sender, EventArgs e)
         {
             btnDoubleDown.Enabled = false;
             btnDoubleDown.Visible = false;
+            BettingMoneyGrabber(betMoneyValue);
+            playerHand1.AddCardToHand(deck.DealCardFromPack());
+            lblPlayerHandValue.Text = GetTotalHandValue(playerHand1).ToString();
+            DisplayPlayerCards(playerHand1);
+            Stand();
         }
 
         //Split hand
@@ -520,7 +538,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 btnHit.Enabled = false;
                 BettingMoneyGrabber(5);
                 MoneyButtonVisiblity(true);
-
             }
             else if (betAndSetBtn.Text == "Deal")
             {
