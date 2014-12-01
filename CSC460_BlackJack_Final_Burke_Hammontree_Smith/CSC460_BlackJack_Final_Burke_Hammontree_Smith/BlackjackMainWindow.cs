@@ -18,10 +18,11 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         bool dealerFirstDraw = true;
         bool stand = false;
         bool dealerStand = false;
-        bool firstSplit = true;
+        int splits = 0; // number off times the player has split
         Pack deck;
-        Hand playerHand1 , playerHand2, playerHand3;
-        Hand dealerHand;
+        Hand playerHand1, playerHand2, playerHand3; // holders for all possible player hands
+        Hand activePlayerHand; // current playing player hand
+        Hand dealerHand; // dealer hand
         double playerMoneyValue;// retrieve current player's money
         double playerDebt; // How much player owes bank
         double betMoneyValue = 0; // bettng value takes place
@@ -55,7 +56,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             
             //create decks and hands
             deck = new Pack();
-            playerHand1 = new Hand();
+            activePlayerHand = new Hand();
             playerHand2 = new Hand();
             playerHand3 = new Hand();
             dealerHand = new Hand();
@@ -346,28 +347,59 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             return bust;
         }
 
+        private void CheckForSplit (Hand hand)
+        {
+            // if player has already split 3 times, prevent any more splitting
+            if (splits == 2)
+            { return;  }
+
+            // Split hand scenario checker
+            if (hand.CardsInHand().Count == 2)
+            {
+                PlayingCard card1 = null;
+                int i = 1;
+                foreach (PlayingCard card in hand.CardsInHand())
+                {
+                    if (i == 1)
+                    {
+                        card1 = card;
+                        i++;
+                    }
+                    else if (card1.CardValue() == card.CardValue())
+                    {
+                        btnSplit.Visible = true;
+                        btnSplit.Enabled = true;
+                    }
+                }
+            } // end of split hand check
+        }
+
         private void Deal()
         {
             //delete all cards shown in player and dealer hands
-            DeleteCards(playerHand1);
+            DeleteCards(activePlayerHand);
             DeleteCards(dealerHand);
 
+            // reset split conditions
+            splits = 0;
+
             dealerFirstDraw = true;
-            playerHand1 = new Hand();
+            activePlayerHand = new Hand();
             dealerHand = new Hand();
 
-            playerHand1.AddCardToHand(deck.DealCardFromPack());
-            playerHand1.AddCardToHand(deck.DealCardFromPack());
-            lblPlayerHandValue.Text = GetTotalHandValue(playerHand1).ToString();
+            activePlayerHand.AddCardToHand(deck.DealCardFromPack());
+            activePlayerHand.AddCardToHand(deck.DealCardFromPack());
+            CheckForSplit(activePlayerHand);
+            lblPlayerHandValue.Text = GetTotalHandValue(activePlayerHand).ToString();
 
             dealerHand.AddCardToHand(deck.DealCardFromPack());
             dealerHand.AddCardToHand(deck.DealCardFromPack());
             lblDealerHandValue.Text = GetTotalHandValue(dealerHand).ToString();
 
-            DisplayPlayerCards(playerHand1);
+            DisplayPlayerCards(activePlayerHand);
             DisplayDealerCards(dealerHand);
 
-            CheckForWin(playerHand1);
+            CheckForWin(activePlayerHand);
         }
 
         //intended to add everything up to make it easier to check for win conditions
@@ -455,6 +487,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
         private void btnHit_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             btnDoubleDown.Enabled = false;
             btnDoubleDown.Visible = false;
             Hit();
@@ -465,8 +498,13 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             playerHand1.AddCardToHand(deck.DealCardFromPack());
             lblPlayerHandValue.Text = GetTotalHandValue(playerHand1).ToString();
             DisplayPlayerCards(playerHand1);
+=======
+            activePlayerHand.AddCardToHand(deck.DealCardFromPack());
+            lblPlayerHandValue.Text = GetTotalHandValue(activePlayerHand).ToString();
+            DisplayPlayerCards(activePlayerHand);
+>>>>>>> origin/Development-Branch
             //if no win condition is met, dealer hits
-            CheckForWin(playerHand1);
+            CheckForWin(activePlayerHand);
         }
 
         private void btnStand_Click(object sender, EventArgs e)
@@ -483,7 +521,15 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             ((Button)this.Controls["DealerCard1"]).BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[0]).CardImage();
             DealerHit();
             DisplayDealerCards(dealerHand);
-            CheckForWin(playerHand1);
+            CheckForWin(activePlayerHand);
+
+            // once a player stands hold a copy of the hand (this is important for splits)
+            // This is only neccesary once
+            if (splits >= 1)
+            {
+                foreach (PlayingCard card in activePlayerHand.CardsInHand())
+                { playerHand1.AddCardToHand(card); }
+            }
         }
         //Double down
         private void btnDoubleDown_Click(object sender, EventArgs e)
@@ -502,27 +548,50 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         {
             PlayingCard card1 = null , card2 = null;
             int i = 1;
-
-            if (firstSplit)
+            // first split
+            if (splits == 0)
             {
-                foreach (PlayingCard card in playerHand1.CardsInHand())
+                foreach (PlayingCard card in activePlayerHand.CardsInHand())
                 {
                     if (i == 1)
                     { card1 = card; }
                     else if (i == 2)
                     { card2 = card; }
                 }
-                DeleteCards(playerHand1);
-                playerHand1.ClearHand();
+                DeleteCards(activePlayerHand);
+                activePlayerHand.ClearHand();
 
-                playerHand1.AddCardToHand(card1);
-                playerHand1.AddCardToHand(deck.DealCardFromPack());
+                activePlayerHand.AddCardToHand(card1);
+                activePlayerHand.AddCardToHand(deck.DealCardFromPack());
+                DisplayPlayerCards(activePlayerHand);
+
                 playerHand2.AddCardToHand(card2);
                 playerHand2.AddCardToHand(deck.DealCardFromPack());
+                // DisplayPlayerCards(playerHand2);
+                // ^ need a place to display 2nd hand
+                splits++;
             }
-            else if (!firstSplit) // I need to think this over more
+            else if (splits == 1) // second split
             {
+                foreach (PlayingCard card in activePlayerHand.CardsInHand())
+                {
+                    if (i == 1)
+                    { card1 = card; }
+                    else if (i == 2)
+                    { card2 = card; }
+                }
+                DeleteCards(activePlayerHand);
+                activePlayerHand.ClearHand();
 
+                activePlayerHand.AddCardToHand(card1);
+                activePlayerHand.AddCardToHand(deck.DealCardFromPack());
+                DisplayPlayerCards(activePlayerHand);
+
+                playerHand3.AddCardToHand(card2);
+                playerHand3.AddCardToHand(deck.DealCardFromPack());
+                //DisplayPlayerCards(playerHand3);
+                // ^ need a place to display third hand
+                splits++;
             }
 
             btnSplit.Enabled = false;
@@ -549,26 +618,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 btnDoubleDown.Visible = true;
                 btnDoubleDown.Enabled = true;
                 Deal();
-
-                // Split hand scenario checker
-                if (playerHand1.CardsInHand().Count == 2)
-                {
-                    PlayingCard card1 = null;
-                    int i = 1;
-                    foreach (PlayingCard card in playerHand1.CardsInHand())
-                    {
-                        if (i == 1)
-                        {
-                            card1 = card;
-                            i++;
-                        }
-                        else if (card1.CardValue() == card.CardValue())
-                        {
-                            btnSplit.Visible = true;
-                            btnSplit.Enabled = true;
-                        } 
-                    }
-                } // end of split hand check
             }
         }
 
