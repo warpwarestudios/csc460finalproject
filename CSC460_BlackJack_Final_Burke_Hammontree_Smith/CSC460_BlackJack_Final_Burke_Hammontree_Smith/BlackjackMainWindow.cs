@@ -67,6 +67,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
             btnHit.Enabled = false;
             btnStand.Enabled = false;
+            btnDoubleDown.Enabled = false;
+            btnDoubleDown.Visible = false;
+            btnSplit.Enabled = false;
+            btnSplit.Visible = false;
         }
 
         private void DisplayPlayerCards(Hand hand)
@@ -167,6 +171,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                         betAndSetBtn.Enabled = true;
                         btnHit.Enabled = false;
                         btnStand.Enabled = false;
+                        btnDoubleDown.Enabled = false;
+                        btnDoubleDown.Visible = false;
+                        btnSplit.Enabled = false;
+                        btnSplit.Visible = false;
                         win = true;
                     }
                 }
@@ -181,6 +189,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                     btnStand.Enabled = false;
                 }
                 btnHit.Enabled = false;
+                btnDoubleDown.Enabled = false;
+                btnDoubleDown.Visible = false;
+                btnSplit.Enabled = false;
+                btnSplit.Visible = false;
                 win = true;
             }
             //player has 21, player wins
@@ -206,6 +218,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                         betAndSetBtn.Enabled = true;
                         btnHit.Enabled = false;
                         btnStand.Enabled = false;
+                        btnDoubleDown.Enabled = false;
+                        btnDoubleDown.Visible = false;
+                        btnSplit.Enabled = false;
+                        btnSplit.Visible = false;
                         win = true;
                     }
                     else
@@ -219,6 +235,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                         betAndSetBtn.Enabled = true;
                         btnHit.Enabled = false;
                         btnStand.Enabled = false;
+                        btnDoubleDown.Enabled = false;
+                        btnDoubleDown.Visible = false;
+                        btnSplit.Enabled = false;
+                        btnSplit.Visible = false;
                         win = true;
                     }
                 }
@@ -234,6 +254,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 betAndSetBtn.Enabled = true;
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
+                btnDoubleDown.Enabled = false;
+                btnDoubleDown.Visible = false;
+                btnSplit.Enabled = false;
+                btnSplit.Visible = false;
                 win = true;
             }
             //dealer busts
@@ -248,6 +272,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 betAndSetBtn.Enabled = true;
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
+                btnDoubleDown.Enabled = false;
+                btnDoubleDown.Visible = false;
+                btnSplit.Enabled = false;
+                btnSplit.Visible = false;
                 win = true;
             }
             //dealer and player hands are tied
@@ -260,6 +288,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 betAndSetBtn.Enabled = true;
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
+                btnDoubleDown.Enabled = false;
+                btnDoubleDown.Visible = false;
+                btnSplit.Enabled = false;
+                btnSplit.Visible = false;
                 win = true;
             }
             //check for win if not 21 and both players stand
@@ -274,6 +306,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 betAndSetBtn.Enabled = true;
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
+                btnDoubleDown.Enabled = false;
+                btnDoubleDown.Visible = false;
+                btnSplit.Enabled = false;
+                btnSplit.Visible = false;
                 win = true;
             }
             //if player hand is greater, player wins
@@ -288,6 +324,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 betAndSetBtn.Enabled = true;
                 btnHit.Enabled = false;
                 btnStand.Enabled = false;
+                btnDoubleDown.Enabled = false;
+                btnDoubleDown.Visible = false;
+                btnSplit.Enabled = false;
+                btnSplit.Visible = false;
                 win = true;
             }
 
@@ -437,13 +477,15 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         //Double down
         private void btnDoubleDown_Click(object sender, EventArgs e)
         {
-
+            btnDoubleDown.Enabled = false;
+            btnDoubleDown.Visible = false;
         }
 
         //Split hand
         private void btnSplit_Click(object sender, EventArgs e)
         {
-
+            btnSplit.Enabled = false;
+            btnSplit.Visible = false;
         }
         private void betAndSetBtn_Click(object sender, EventArgs e)
         {
@@ -464,7 +506,29 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 betAndSetBtn.Enabled = false;
                 btnHit.Enabled = true;
                 btnStand.Enabled = true;
+                btnDoubleDown.Visible = true;
+                btnDoubleDown.Enabled = true;
                 Deal();
+
+                // Split hand scenario checker
+                if (playerHand1.CardsInHand().Count == 2)
+                {
+                    PlayingCard card1 = null;
+                    int i = 1;
+                    foreach (PlayingCard card in playerHand1.CardsInHand())
+                    {
+                        if (i == 1)
+                        {
+                            card1 = card;
+                            i++;
+                        }
+                        else if (card1.CardValue() == card.CardValue())
+                        {
+                            btnSplit.Visible = true;
+                            btnSplit.Enabled = true;
+                        } 
+                    }
+                } // end of split hand check
             }
         }
 

@@ -69,9 +69,9 @@
             this.lblDealerHandValue.AutoSize = true;
             this.lblDealerHandValue.Location = new System.Drawing.Point(72, 762);
             this.lblDealerHandValue.Name = "lblDealerHandValue";
-            this.lblDealerHandValue.Size = new System.Drawing.Size(76, 17);
+            this.lblDealerHandValue.Size = new System.Drawing.Size(118, 17);
             this.lblDealerHandValue.TabIndex = 1;
-            this.lblDealerHandValue.Text = "handValue";
+            this.lblDealerHandValue.Text = "dealerHandValue";
             // 
             // lblPlayerHandValue
             // 
