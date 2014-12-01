@@ -18,6 +18,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         bool dealerFirstDraw = true;
         bool stand = false;
         bool dealerStand = false;
+        bool firstSplit = true;
         Pack deck;
         Hand playerHand1 , playerHand2, playerHand3;
         Hand dealerHand;
@@ -129,8 +130,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 }
             }
         }
-
-        
 
         private void DealerHit()
         {
@@ -461,7 +460,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             DisplayPlayerCards(playerHand1);
             //if no win condition is met, dealer hits
             CheckForWin(playerHand1);
-
         }
 
         private void btnStand_Click(object sender, EventArgs e)
@@ -484,6 +482,31 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         //Split hand
         private void btnSplit_Click(object sender, EventArgs e)
         {
+            PlayingCard card1 = null , card2 = null;
+            int i = 1;
+
+            if (firstSplit)
+            {
+                foreach (PlayingCard card in playerHand1.CardsInHand())
+                {
+                    if (i == 1)
+                    { card1 = card; }
+                    else if (i == 2)
+                    { card2 = card; }
+                }
+                DeleteCards(playerHand1);
+                playerHand1.ClearHand();
+
+                playerHand1.AddCardToHand(card1);
+                playerHand1.AddCardToHand(deck.DealCardFromPack());
+                playerHand2.AddCardToHand(card2);
+                playerHand2.AddCardToHand(deck.DealCardFromPack());
+            }
+            else if (!firstSplit) // I need to think this over more
+            {
+
+            }
+
             btnSplit.Enabled = false;
             btnSplit.Visible = false;
         }
