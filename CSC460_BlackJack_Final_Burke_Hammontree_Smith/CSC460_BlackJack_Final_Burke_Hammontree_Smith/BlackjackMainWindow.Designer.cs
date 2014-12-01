@@ -59,11 +59,10 @@
             // 
             this.btnHit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnHit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
             this.btnHit.Location = new System.Drawing.Point(612, 547);
-=======
+
             this.btnHit.Location = new System.Drawing.Point(612, 70);
->>>>>>> origin/Development-Branch
+
             this.btnHit.Name = "btnHit";
             this.btnHit.Size = new System.Drawing.Size(75, 23);
             this.btnHit.TabIndex = 0;
@@ -75,19 +74,19 @@
             // 
             this.lblDealerHandValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblDealerHandValue.AutoSize = true;
-<<<<<<< HEAD
+
             this.lblDealerHandValue.Location = new System.Drawing.Point(54, 619);
             this.lblDealerHandValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDealerHandValue.Name = "lblDealerHandValue";
             this.lblDealerHandValue.Size = new System.Drawing.Size(58, 13);
-=======
+
             this.lblDealerHandValue.BackColor = System.Drawing.Color.Transparent;
             this.lblDealerHandValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDealerHandValue.Location = new System.Drawing.Point(259, 159);
             this.lblDealerHandValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDealerHandValue.Name = "lblDealerHandValue";
             this.lblDealerHandValue.Size = new System.Drawing.Size(148, 20);
->>>>>>> origin/Development-Branch
+
             this.lblDealerHandValue.TabIndex = 1;
             this.lblDealerHandValue.Text = "dealerHandValue";
             // 
@@ -95,7 +94,7 @@
             // 
             this.lblPlayerHandValue.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblPlayerHandValue.AutoSize = true;
-<<<<<<< HEAD
+
             this.lblPlayerHandValue.Location = new System.Drawing.Point(706, 547);
             this.lblPlayerHandValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPlayerHandValue.Name = "lblPlayerHandValue";
@@ -194,7 +193,6 @@
             this.betThousandBtn.UseVisualStyleBackColor = false;
             this.betThousandBtn.Click += new System.EventHandler(this.betThousandBtn_Click);
             // 
-=======
             this.lblPlayerHandValue.BackColor = System.Drawing.Color.Transparent;
             this.lblPlayerHandValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPlayerHandValue.Location = new System.Drawing.Point(311, 382);
@@ -204,18 +202,14 @@
             this.lblPlayerHandValue.TabIndex = 2;
             this.lblPlayerHandValue.Text = "handValue";
             // 
->>>>>>> origin/Development-Branch
             // betAndSetBtn
             // 
             this.betAndSetBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.betAndSetBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
             this.betAndSetBtn.ForeColor = System.Drawing.SystemColors.ControlText;
             this.betAndSetBtn.Location = new System.Drawing.Point(246, 614);
-=======
             this.betAndSetBtn.ForeColor = System.Drawing.Color.Black;
             this.betAndSetBtn.Location = new System.Drawing.Point(251, 135);
->>>>>>> origin/Development-Branch
             this.betAndSetBtn.Name = "betAndSetBtn";
             this.betAndSetBtn.Size = new System.Drawing.Size(100, 23);
             this.betAndSetBtn.TabIndex = 9;
@@ -229,11 +223,8 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
             this.label1.Location = new System.Drawing.Point(837, 521);
-=======
             this.label1.Location = new System.Drawing.Point(837, 53);
->>>>>>> origin/Development-Branch
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(64, 20);
             this.label1.TabIndex = 10;
@@ -245,11 +236,8 @@
             this.valueLostLbl.AutoSize = true;
             this.valueLostLbl.BackColor = System.Drawing.Color.Transparent;
             this.valueLostLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
             this.valueLostLbl.Location = new System.Drawing.Point(907, 521);
-=======
             this.valueLostLbl.Location = new System.Drawing.Point(907, 53);
->>>>>>> origin/Development-Branch
             this.valueLostLbl.Name = "valueLostLbl";
             this.valueLostLbl.Size = new System.Drawing.Size(19, 20);
             this.valueLostLbl.TabIndex = 11;
@@ -261,11 +249,8 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
             this.label3.Location = new System.Drawing.Point(844, 540);
-=======
             this.label3.Location = new System.Drawing.Point(844, 73);
->>>>>>> origin/Development-Branch
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 20);
             this.label3.TabIndex = 12;
@@ -277,11 +262,9 @@
             this.valueBetLbl.AutoSize = true;
             this.valueBetLbl.BackColor = System.Drawing.Color.Transparent;
             this.valueBetLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
+
             this.valueBetLbl.Location = new System.Drawing.Point(907, 540);
-=======
             this.valueBetLbl.Location = new System.Drawing.Point(907, 73);
->>>>>>> origin/Development-Branch
             this.valueBetLbl.Name = "valueBetLbl";
             this.valueBetLbl.Size = new System.Drawing.Size(19, 20);
             this.valueBetLbl.TabIndex = 13;
@@ -293,11 +276,8 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
             this.label5.Location = new System.Drawing.Point(840, 500);
-=======
             this.label5.Location = new System.Drawing.Point(840, 33);
->>>>>>> origin/Development-Branch
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 20);
             this.label5.TabIndex = 14;
@@ -309,11 +289,8 @@
             this.valuePlayerLbl.AutoSize = true;
             this.valuePlayerLbl.BackColor = System.Drawing.Color.Transparent;
             this.valuePlayerLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
             this.valuePlayerLbl.Location = new System.Drawing.Point(907, 480);
-=======
             this.valuePlayerLbl.Location = new System.Drawing.Point(907, 13);
->>>>>>> origin/Development-Branch
             this.valuePlayerLbl.Name = "valuePlayerLbl";
             this.valuePlayerLbl.Size = new System.Drawing.Size(19, 20);
             this.valuePlayerLbl.TabIndex = 15;
@@ -325,11 +302,8 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
             this.label7.Location = new System.Drawing.Point(776, 480);
-=======
             this.label7.Location = new System.Drawing.Point(770, 13);
->>>>>>> origin/Development-Branch
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(131, 20);
             this.label7.TabIndex = 16;
@@ -341,17 +315,13 @@
             this.valueMostGainedLbl.AutoSize = true;
             this.valueMostGainedLbl.BackColor = System.Drawing.Color.Transparent;
             this.valueMostGainedLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
             this.valueMostGainedLbl.Location = new System.Drawing.Point(907, 500);
-=======
             this.valueMostGainedLbl.Location = new System.Drawing.Point(907, 33);
->>>>>>> origin/Development-Branch
             this.valueMostGainedLbl.Name = "valueMostGainedLbl";
             this.valueMostGainedLbl.Size = new System.Drawing.Size(19, 20);
             this.valueMostGainedLbl.TabIndex = 17;
             this.valueMostGainedLbl.Text = "0";
             // 
-<<<<<<< HEAD
             // pnlBackground
             // 
             this.pnlBackground.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -366,17 +336,12 @@
             this.pnlBackground.Size = new System.Drawing.Size(992, 456);
             this.pnlBackground.TabIndex = 18;
             // 
-=======
->>>>>>> origin/Development-Branch
             // btnStand
             // 
             this.btnStand.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnStand.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
             this.btnStand.Location = new System.Drawing.Point(612, 518);
-=======
             this.btnStand.Location = new System.Drawing.Point(612, 41);
->>>>>>> origin/Development-Branch
             this.btnStand.Name = "btnStand";
             this.btnStand.Size = new System.Drawing.Size(75, 23);
             this.btnStand.TabIndex = 19;
@@ -388,13 +353,10 @@
             // 
             this.btnDoubleDown.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnDoubleDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
             this.btnDoubleDown.Location = new System.Drawing.Point(612, 575);
             this.btnDoubleDown.Margin = new System.Windows.Forms.Padding(2);
-=======
             this.btnDoubleDown.Location = new System.Drawing.Point(612, 99);
             this.btnDoubleDown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> origin/Development-Branch
             this.btnDoubleDown.Name = "btnDoubleDown";
             this.btnDoubleDown.Size = new System.Drawing.Size(75, 23);
             this.btnDoubleDown.TabIndex = 20;
@@ -406,13 +368,10 @@
             // 
             this.btnSplit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSplit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-<<<<<<< HEAD
             this.btnSplit.Location = new System.Drawing.Point(612, 603);
             this.btnSplit.Margin = new System.Windows.Forms.Padding(2);
-=======
             this.btnSplit.Location = new System.Drawing.Point(612, 126);
             this.btnSplit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
->>>>>>> origin/Development-Branch
             this.btnSplit.Name = "btnSplit";
             this.btnSplit.Size = new System.Drawing.Size(75, 23);
             this.btnSplit.TabIndex = 21;
