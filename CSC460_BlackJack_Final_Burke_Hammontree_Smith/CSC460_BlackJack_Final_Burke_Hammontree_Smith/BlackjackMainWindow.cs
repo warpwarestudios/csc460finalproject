@@ -21,7 +21,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         int splits = 0; // number off times the player has split
         Pack deck;
         Hand playerHand1, playerHand2, playerHand3; // holders for all possible player hands
-        Hand activePlayerHand; // current playing player hand
+        Hand activePlayerHand;// current playing player hand
         Hand dealerHand; // dealer hand
         double playerMoneyValue;// retrieve current player's money
         double playerDebt; // How much player owes bank
@@ -252,7 +252,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
             //Check for initial win conditions
             //player blackjack
-            if (CheckForBlackjack(playerHand1))
+            if (CheckForBlackjack(activePlayerHand))
             {
                 //if player has blackjack, dealer must check for blackjack
                 if (CheckForBlackjack(dealerHand))
@@ -409,18 +409,18 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             DisplayPlayerCards(activePlayerHand);
             
             //TODO: Fix to reflect activePlayerHand
-            DeleteCards(playerHand1);
-            DisplayPlayerCards(playerHand1);
+            DeleteCards(activePlayerHand);
+            DisplayPlayerCards(activePlayerHand);
              DisplayDealerCards(dealerHand);
 
             //TODO: Fix win conditions
             //if player busts
-            if (CheckForBust(playerHand1))
+            if (CheckForBust(activePlayerHand))
             {
                 ModifyBank(betMoneyValue * -1, true, false);
                 MessageBox.Show("You busted! You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK); 
             }
-            else if(CheckForBlackjack(playerHand1))
+            else if(CheckForBlackjack(activePlayerHand))
             {
                 DealerHit();
                 //if dealer got to 21, there is a tie
@@ -456,7 +456,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             if (splits >= 1)
             {
                 foreach (PlayingCard card in activePlayerHand.CardsInHand())
-                { playerHand1.AddCardToHand(card); }
+                { activePlayerHand.AddCardToHand(card); }
             }
 
             btnHit.Enabled = false;
@@ -479,20 +479,20 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 MessageBox.Show("I busted! You win! Here's your money.", "Win!", MessageBoxButtons.OK);
             }
             //dealer beats player
-            else if(GetTotalHandValue(dealerHand) > GetTotalHandValue(playerHand1))
+            else if(GetTotalHandValue(dealerHand) > GetTotalHandValue(activePlayerHand))
             {
                 ModifyBank(betMoneyValue * -1, true, false);
                 MessageBox.Show("You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK);
             }
             //player beats dealer
-            else if(GetTotalHandValue(dealerHand) < GetTotalHandValue(playerHand1))
+            else if(GetTotalHandValue(dealerHand) < GetTotalHandValue(activePlayerHand))
             {
                 ModifyBank(betMoneyValue * 2, true, false);
                 MessageBox.Show("You win! Here's your money.", "Win!", MessageBoxButtons.OK);
             
             }
             //player and dealer tie
-            else if (GetTotalHandValue(dealerHand) == GetTotalHandValue(playerHand1))
+            else if (GetTotalHandValue(dealerHand) == GetTotalHandValue(activePlayerHand))
             {
                 ModifyBank(betMoneyValue, true, false);
                 MessageBox.Show("We tied! Here's your bet back.", "Tie!", MessageBoxButtons.OK);
@@ -505,9 +505,9 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             btnDoubleDown.Enabled = false;
             btnDoubleDown.Visible = false;
             BettingMoneyGrabber(betMoneyValue);
-            playerHand1.AddCardToHand(deck.DealCardFromPack());
-            lblPlayerHandValue.Text = GetTotalHandValue(playerHand1).ToString();
-            DisplayPlayerCards(playerHand1);
+            activePlayerHand.AddCardToHand(deck.DealCardFromPack());
+            lblPlayerHandValue.Text = GetTotalHandValue(activePlayerHand).ToString();
+            DisplayPlayerCards(activePlayerHand);
             Stand();
         }
 
