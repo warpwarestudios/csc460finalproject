@@ -254,30 +254,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             //player blackjack
             if (CheckForBlackjack(activePlayerHand))
             {
-                //if player has blackjack, dealer must check for blackjack
-                if (CheckForBlackjack(dealerHand))
-                {
-                    ModifyBank(betMoneyValue, true,false);
-                    MessageBox.Show("We tied! Here's your bet back.", "Tie!", MessageBoxButtons.OK);
-                }
-                //if dealer does not have blackjack dealer hits until he can't anymore
-                else
-                {
-                    DealerHit();
-                    //dealer hits checks for blackjack
-                    if (CheckForBlackjack(dealerHand))
-                    {
-                        ModifyBank(betMoneyValue, true, false);
-                        MessageBox.Show("We tied! Here's your bet back.", "Tie!", MessageBoxButtons.OK);
-                    }
-                    //if dealer did not bust and did not get to 21, player wins
-                    else
-                    {
-                        ModifyBank(betMoneyValue * 2.5, true, false);
-                        MessageBox.Show("You got blackjack! Great job! Here's your money.", "Win!", MessageBoxButtons.OK);
-                    }
-
-                }
+                 ModifyBank(betMoneyValue * 2.5, true, false);
+                 MessageBox.Show("You got blackjack! Great job! Here's your money.", "Win!", MessageBoxButtons.OK);
             }
             //check for player insurance
             //Scenarios:
