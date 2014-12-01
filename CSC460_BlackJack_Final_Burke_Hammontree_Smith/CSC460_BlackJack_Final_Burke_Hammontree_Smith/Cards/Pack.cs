@@ -16,6 +16,10 @@ namespace Cards
             Reshuffle();
         }
 
+        public void ClearPack()
+        {
+            this.cardPack = new Hashtable();
+        }
         // Builds deck with card values for all card suits and values
         public void Reshuffle()
         {

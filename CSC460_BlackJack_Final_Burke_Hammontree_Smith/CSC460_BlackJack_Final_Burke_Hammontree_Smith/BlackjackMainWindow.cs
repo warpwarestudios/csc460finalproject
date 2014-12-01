@@ -85,17 +85,17 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 {
                     Button newButton = (Button)this.Controls[this.Controls.IndexOfKey("Card" + i)];
                     newButton.Parent = pnlBackground;
-                    newButton.Location = new Point(newButton.Parent.Size.Width / 2 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - 100);
+                    newButton.Location = new Point(100 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - 50);
                 }
                 //if control does not already exist create and position it
-                if (!this.Controls.ContainsKey("Card" + i))
+                else if(!this.Controls.ContainsKey("Card" + i))
                 {
                     Button newButton = new Button();
                     newButton.Name = "Card" + i;
                     newButton.Parent = pnlBackground;
                     newButton.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
                     newButton.Size = new Size(100, 150);
-                    newButton.Location = new Point(newButton.Parent.Size.Width / 2 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - 100);
+                    newButton.Location = new Point(100 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - 50);
                     newButton.BackgroundImage = ((PlayingCard)hand.CardsInHand()[i - 1]).CardImage();
                     newButton.BackgroundImageLayout = ImageLayout.Stretch;
                     this.Controls.Add(newButton);
@@ -231,12 +231,16 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             DeleteCards(activePlayerHand);
             DeleteCards(dealerHand);
 
+            activePlayerHand.ClearHand();
+            dealerHand.ClearHand();
+
             // reset split conditions
             splits = 0;
 
             // reshuffle deck if below 21 cards
             if (deck.CardsLeft() <= 21)
             {
+                deck.ClearPack();
                 deck.Reshuffle();
             }
 
@@ -353,17 +357,17 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         private void DeleteCards(Hand hand)
         {
             //Deletes all cards shown
-            for (int i = 1; i <= hand.CardsInHand().Count; i++)
+            int i = 1;
+            while(this.Controls.ContainsKey("Card" + i))
             {
-                if (this.Controls.ContainsKey("Card" + i))
-                {
-                    this.Controls.RemoveByKey("Card" + i);
-                }
-
-                if (this.Controls.ContainsKey("DealerCard" + i))
-                {
-                    this.Controls.RemoveByKey("DealerCard" + i);
-                }
+                this.Controls.RemoveByKey("Card" + i);
+                i++;
+            }
+            i = 1;
+            while(this.Controls.ContainsKey("DealerCard" + i))
+            {
+                this.Controls.RemoveByKey("DealerCard" + i);
+                i++;
             }
         }
 
@@ -390,12 +394,11 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         {
             activePlayerHand.AddCardToHand(deck.DealCardFromPack());
             lblPlayerHandValue.Text = GetTotalHandValue(activePlayerHand).ToString();
-            DisplayPlayerCards(activePlayerHand);
             
             //TODO: Fix to reflect activePlayerHand
-            DeleteCards(activePlayerHand);
+            //DeleteCards(activePlayerHand);
             DisplayPlayerCards(activePlayerHand);
-             DisplayDealerCards(dealerHand);
+            //DisplayDealerCards(dealerHand);
 
             //TODO: Fix win conditions
             //if player busts
