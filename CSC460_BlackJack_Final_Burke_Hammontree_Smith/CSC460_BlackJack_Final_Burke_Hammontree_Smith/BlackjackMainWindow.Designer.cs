@@ -54,6 +54,7 @@
             // 
             // btnHit
             // 
+            this.btnHit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnHit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHit.Location = new System.Drawing.Point(612, 547);
             this.btnHit.Name = "btnHit";
@@ -65,6 +66,7 @@
             // 
             // lblDealerHandValue
             // 
+            this.lblDealerHandValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblDealerHandValue.AutoSize = true;
             this.lblDealerHandValue.Location = new System.Drawing.Point(54, 619);
             this.lblDealerHandValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -75,6 +77,7 @@
             // 
             // lblPlayerHandValue
             // 
+            this.lblPlayerHandValue.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblPlayerHandValue.AutoSize = true;
             this.lblPlayerHandValue.Location = new System.Drawing.Point(706, 547);
             this.lblPlayerHandValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -85,6 +88,7 @@
             // 
             // betFiveBtn
             // 
+            this.betFiveBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.betFiveBtn.BackColor = System.Drawing.Color.White;
             this.betFiveBtn.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Chip_Blue;
             this.betFiveBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -99,6 +103,7 @@
             // 
             // betTenBtn
             // 
+            this.betTenBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.betTenBtn.BackColor = System.Drawing.Color.White;
             this.betTenBtn.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Chip_Green;
             this.betTenBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -113,6 +118,7 @@
             // 
             // betFiftyBtn
             // 
+            this.betFiftyBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.betFiftyBtn.BackColor = System.Drawing.Color.White;
             this.betFiftyBtn.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Chip_Orange;
             this.betFiftyBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -127,6 +133,7 @@
             // 
             // betHundredBtn
             // 
+            this.betHundredBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.betHundredBtn.BackColor = System.Drawing.Color.White;
             this.betHundredBtn.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Chip_Red;
             this.betHundredBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -141,6 +148,7 @@
             // 
             // betFiveHundredBtn
             // 
+            this.betFiveHundredBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.betFiveHundredBtn.BackColor = System.Drawing.Color.White;
             this.betFiveHundredBtn.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Chip_Purple;
             this.betFiveHundredBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -155,6 +163,7 @@
             // 
             // betThousandBtn
             // 
+            this.betThousandBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.betThousandBtn.BackColor = System.Drawing.Color.White;
             this.betThousandBtn.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Chip_Black;
             this.betThousandBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -170,6 +179,7 @@
             // 
             // betAndSetBtn
             // 
+            this.betAndSetBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.betAndSetBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.betAndSetBtn.ForeColor = System.Drawing.SystemColors.ControlText;
             this.betAndSetBtn.Location = new System.Drawing.Point(246, 614);
@@ -182,6 +192,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -193,6 +204,7 @@
             // 
             // valueLostLbl
             // 
+            this.valueLostLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.valueLostLbl.AutoSize = true;
             this.valueLostLbl.BackColor = System.Drawing.Color.Transparent;
             this.valueLostLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -204,6 +216,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -215,6 +228,7 @@
             // 
             // valueBetLbl
             // 
+            this.valueBetLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.valueBetLbl.AutoSize = true;
             this.valueBetLbl.BackColor = System.Drawing.Color.Transparent;
             this.valueBetLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -226,6 +240,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -237,6 +252,7 @@
             // 
             // valuePlayerLbl
             // 
+            this.valuePlayerLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.valuePlayerLbl.AutoSize = true;
             this.valuePlayerLbl.BackColor = System.Drawing.Color.Transparent;
             this.valuePlayerLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -248,6 +264,7 @@
             // 
             // label7
             // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -259,6 +276,7 @@
             // 
             // valueMostGainedLbl
             // 
+            this.valueMostGainedLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.valueMostGainedLbl.AutoSize = true;
             this.valueMostGainedLbl.BackColor = System.Drawing.Color.Transparent;
             this.valueMostGainedLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -270,15 +288,21 @@
             // 
             // pnlBackground
             // 
+            this.pnlBackground.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBackground.AutoSize = true;
             this.pnlBackground.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.CasinoMortambo;
             this.pnlBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlBackground.Location = new System.Drawing.Point(12, 12);
+            this.pnlBackground.MinimumSize = new System.Drawing.Size(10, 10);
             this.pnlBackground.Name = "pnlBackground";
-            this.pnlBackground.Size = new System.Drawing.Size(992, 465);
+            this.pnlBackground.Size = new System.Drawing.Size(992, 456);
             this.pnlBackground.TabIndex = 18;
             // 
             // btnStand
             // 
+            this.btnStand.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnStand.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStand.Location = new System.Drawing.Point(612, 518);
             this.btnStand.Name = "btnStand";
@@ -290,9 +314,10 @@
             // 
             // btnDoubleDown
             // 
+            this.btnDoubleDown.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnDoubleDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDoubleDown.Location = new System.Drawing.Point(612, 575);
-            this.btnDoubleDown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDoubleDown.Margin = new System.Windows.Forms.Padding(2);
             this.btnDoubleDown.Name = "btnDoubleDown";
             this.btnDoubleDown.Size = new System.Drawing.Size(75, 23);
             this.btnDoubleDown.TabIndex = 20;
@@ -302,9 +327,10 @@
             // 
             // btnSplit
             // 
+            this.btnSplit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSplit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSplit.Location = new System.Drawing.Point(612, 603);
-            this.btnSplit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSplit.Margin = new System.Windows.Forms.Padding(2);
             this.btnSplit.Name = "btnSplit";
             this.btnSplit.Size = new System.Drawing.Size(75, 23);
             this.btnSplit.TabIndex = 21;
@@ -342,7 +368,7 @@
             this.Controls.Add(this.betTenBtn);
             this.Controls.Add(this.lblDealerHandValue);
             this.Controls.Add(this.btnHit);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "BlackjackMainWindow";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

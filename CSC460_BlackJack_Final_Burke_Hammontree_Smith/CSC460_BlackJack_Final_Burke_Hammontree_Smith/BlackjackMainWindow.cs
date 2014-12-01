@@ -74,6 +74,13 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             //Displays all cards in hand
             for (int i = 1; i <= hand.CardsInHand().Count; i++)
             {
+                //if this control exists, reposition it
+                if (this.Controls.ContainsKey("Card" + i))
+                {
+                    Button newButton = (Button)this.Controls[this.Controls.IndexOfKey("Card" + i)];
+                    newButton.Parent = pnlBackground;
+                    newButton.Location = new Point(newButton.Parent.Size.Width / 2 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - 100);
+                }
                 //if control does not already exist create and position it
                 if (!this.Controls.ContainsKey("Card" + i))
                 {
@@ -82,7 +89,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                     newButton.Parent = pnlBackground;
                     newButton.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
                     newButton.Size = new Size(100, 150);
-                    newButton.Location = new Point(newButton.Parent.Size.Width / 2 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - 50);
+                    newButton.Location = new Point(newButton.Parent.Size.Width / 2 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - 100);
                     newButton.BackgroundImage = ((PlayingCard)hand.CardsInHand()[i - 1]).CardImage();
                     newButton.BackgroundImageLayout = ImageLayout.Stretch;
                     this.Controls.Add(newButton);
@@ -158,7 +165,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             return blackjack;
         }
 
-        //check for hand greater than 21
+        //check for hand greater than 21, returns true if hand busted
         private bool CheckForBust(Hand hand)
         {
             bool bust = false;
@@ -167,6 +174,25 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             { bust = true; }
 
             return bust;
+        }
+
+        //check for chance for player to buy insurance
+        //returns true if player buys insurance
+        private bool CheckForInsurance()
+        {
+            bool insurance = false;
+            //get second card in dealer's hand
+            PlayingCard card = (PlayingCard)dealerHand.CardsInHand().ToArray()[1];
+            if (card.CardValue() == Value.Ace)
+            {
+                DialogResult result = MessageBox.Show("The dealer has a face up ace. Do you want to buy insurance equal to your bet?", "Insurance", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    insurance = true;
+                }
+            }
+
+            return insurance;
         }
 
         private void Deal()
@@ -191,10 +217,62 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             DisplayDealerCards(dealerHand);
 
             //Check for initial win conditions
+            //player blackjack
             if (CheckForBlackjack(playerHand1))
             {
-                
-                MessageBox.Show("You got blackjack! Great job! Here's your money.","Win!",MessageBoxButtons.OK);
+                //if player has blackjack, dealer must check for blackjack
+                if (CheckForBlackjack(dealerHand))
+                {
+                    ModifyBank(betMoneyValue, true,false);
+                    MessageBox.Show("We tied! Here's your bet back.", "Tie!", MessageBoxButtons.OK);
+                }
+                //if dealer does not have blackjack dealer hits until he can't anymore
+                else
+                {
+                    DealerHit();
+                    //dealer hits checks for blackjack
+                    if (CheckForBlackjack(dealerHand))
+                    {
+                        ModifyBank(betMoneyValue, true, false);
+                        MessageBox.Show("We tied! Here's your bet back.", "Tie!", MessageBoxButtons.OK);
+                    }
+                    //if dealer did not bust and did not get to 21, player wins
+                    else
+                    {
+                        ModifyBank(betMoneyValue * 2.5, true, false);
+                        MessageBox.Show("You got blackjack! Great job! Here's your money.", "Win!", MessageBoxButtons.OK);
+                    }
+
+                }
+            }
+            //check for player insurance
+            //Scenarios:
+            //1. The player buys insurance, the dealer has blackjack. 
+            //Result: The player's bet is taken. The amount the player places up for insurance is payed out 2 to 1. The round ends.
+            //2. The player buys insurance, the dealer does not have blackjack.
+            //Result: The player's insurance is taken by the dealer, and the round continues with the players original bet.
+            else if (CheckForInsurance())
+            {
+                if (CheckForBlackjack(dealerHand))
+                {
+                    ModifyBank(betMoneyValue, true, false);
+                    MessageBox.Show("I have blackjack! Good call!", "Insurance",MessageBoxButtons.OK);
+                }
+                else if (!CheckForBlackjack(dealerHand))
+                {
+                    ModifyBank(betMoneyValue / 2 * -1, false, false);
+                    MessageBox.Show("Too bad, I don't have blackjack! I'll take half your bet now.", "Lose Your Insurance!", MessageBoxButtons.OK);
+                }
+            }
+            //check to see if dealer has blackjack if player doesn't have to buy insurance
+            //3. The player does not buy insurance, the dealer has blackjack.
+            //Result: The player loses the round and loses his bet
+            //4. The player does not buy insurance, the dealer does not have blackjack.
+            //Result: The round continues as normal.
+            else if(CheckForBlackjack(dealerHand))
+            {
+                ModifyBank(betMoneyValue * -1, true , false);
+                MessageBox.Show("I got blackjack! You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK); 
             }
         }
 
@@ -285,20 +363,75 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         {
             playerHand1.AddCardToHand(deck.DealCardFromPack());
             lblPlayerHandValue.Text = GetTotalHandValue(playerHand1).ToString();
+            DeleteCards(playerHand1);
             DisplayPlayerCards(playerHand1);
-            //if no win condition is met, dealer hits
-            //TODO: Add win conditions
+            DisplayDealerCards(dealerHand);
+            //if player busts
+            if (CheckForBust(playerHand1))
+            {
+                ModifyBank(betMoneyValue * -1, true, false);
+                MessageBox.Show("You busted! You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK); 
+            }
+            else if(CheckForBlackjack(playerHand1))
+            {
+                DealerHit();
+                //if dealer got to 21, there is a tie
+                if(CheckForBlackjack(dealerHand))
+                {
+                    ModifyBank(betMoneyValue, true, false);
+                    MessageBox.Show("We tied! Here's your bet back.", "Tie!", MessageBoxButtons.OK); 
+                }
+                //if dealer busted or did not get to 21, player wins
+                else
+                {
+                    ModifyBank(betMoneyValue * 2.5, true, false);
+                    MessageBox.Show("You got blackjack! Great job! Here's your money.", "Win!", MessageBoxButtons.OK);
+                }
+                
 
+            }
         }
 
         private void btnStand_Click(object sender, EventArgs e)
         {
             btnHit.Enabled = false;
             stand = true;
+            //flip dealers card
             ((Button)this.Controls["DealerCard1"]).BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[0]).CardImage();
+            //dealer hits until 17
             DealerHit();
             DisplayDealerCards(dealerHand);
-            //TODO: Check for win conditions
+            //dealer has blackjack
+            if (CheckForBlackjack(dealerHand))
+            {
+                ModifyBank(betMoneyValue * -1, true, false);
+                MessageBox.Show("I got blackjack! You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK);
+            }
+            //dealer busts
+            else if (CheckForBust(dealerHand))
+            {
+                ModifyBank(betMoneyValue * 2, true, false);
+                MessageBox.Show("I busted! You win! Here's your money.", "Win!", MessageBoxButtons.OK);
+            }
+            //dealer beats player
+            else if(GetTotalHandValue(dealerHand) > GetTotalHandValue(playerHand1))
+            {
+                ModifyBank(betMoneyValue * -1, true, false);
+                MessageBox.Show("You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK);
+            }
+            //player beats dealer
+            else if(GetTotalHandValue(dealerHand) < GetTotalHandValue(playerHand1))
+            {
+                ModifyBank(betMoneyValue * 2, true, false);
+                MessageBox.Show("You win! Here's your money.", "Win!", MessageBoxButtons.OK);
+            
+            }
+            //player and dealer tie
+            else if(GetTotalHandValue(dealerHand) == GetTotalHandValue(playerHand1))
+            {
+                ModifyBank(betMoneyValue, true, false);
+                MessageBox.Show("We tied! Here's your bet back.", "Tie!", MessageBoxButtons.OK);
+            }
         }
 
         //Double down
@@ -380,7 +513,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             betThousandBtn.Visible = enable;
 
         }
-
         private void betFiveBtn_Click(object sender, EventArgs e)
         {
             PlayerMoneyControl();
@@ -417,8 +549,35 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             BettingMoneyGrabber(1000);
             PlayerMoneyControl();
         }
-        
+     
+        //helper function to add and take away from players bank
+        //updates labels as well, and ends round
+        private void ModifyBank(double change, bool resetBet, bool borrow)
+        {
+            //update
+            DatabaseCall.UpdateBank(activePlayer, (decimal)change, borrow);
+            //update variables
+            playerMoneyValue = (double)activePlayer.Bank;
+            if (resetBet)
+            {
+                betMoneyValue = 0;
+            }
+            //update lables
+            valueBetLbl.Text = betMoneyValue.ToString();
+            valuePlayerLbl.Text = playerMoneyValue.ToString();
+            //reset buttons for next round
+            EndRound();
+        }
+
+        //helper function to set up for next round by disabling the proper buttons
+        //and enabling the bet button
+        private void EndRound()
+        {
+            btnHit.Enabled = false;
+            btnStand.Enabled = false;
+            betAndSetBtn.Enabled = true;
+            dealerStand = false;
+        }
     }
-
-
 }
+
