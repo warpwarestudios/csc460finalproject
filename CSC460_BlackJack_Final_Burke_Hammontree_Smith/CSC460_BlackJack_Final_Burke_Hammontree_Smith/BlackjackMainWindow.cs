@@ -456,7 +456,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             btnHit.Enabled = false;
             stand = true;
             //flip dealers card
-            ((Button)this.Controls["DealerCard1"]).BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[0]).CardImage();
+            ((Button)pnlBackground.Controls["DealerCard1"]).BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[0]).CardImage();
             //dealer hits until 17
             DealerHit();
             DisplayDealerCards(dealerHand);
