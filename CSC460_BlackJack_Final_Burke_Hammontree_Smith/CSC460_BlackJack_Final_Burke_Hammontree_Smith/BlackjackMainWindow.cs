@@ -78,6 +78,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             btnDoubleDown.Visible = false;
             btnSplit.Enabled = false;
             btnSplit.Visible = false;
+            btnSurrender.Enabled = false;
+            btnSurrender.Visible = false;
         }
 
         private void DisplayPlayerCards(Hand hand)
@@ -305,6 +307,12 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 {
                     ModifyBank(betMoneyValue / 2 * -1, false, false);
                     MessageBox.Show("Too bad, I don't have blackjack! I'll take half your bet now.", "Lose Your Insurance!", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    btnSurrender.Enabled = true;
+                    btnSurrender.Visible = true;
+                    
                 }
             }
             //check to see if dealer has blackjack if player doesn't have to buy insurance
@@ -718,6 +726,15 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             btnStand.Enabled = false;
             betAndSetBtn.Enabled = true;
             dealerStand = false;
+        }
+
+        private void btnSurrender_Click(object sender, EventArgs e)
+        {
+            ModifyBank(betMoneyValue / -2, true, false);
+            MessageBox.Show("You surrender! You gain half your money back.", "Surrender", MessageBoxButtons.OK);
+            EndRound();
+            btnSurrender.Enabled = false;
+            btnSurrender.Visible = false;
         }
     }
 }
