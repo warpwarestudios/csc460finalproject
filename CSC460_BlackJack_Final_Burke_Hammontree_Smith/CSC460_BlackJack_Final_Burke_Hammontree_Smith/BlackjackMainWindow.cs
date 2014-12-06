@@ -49,6 +49,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             LogInWindow login = new LogInWindow();
             login.ShowDialog(this);
 
+            this.WindowState = FormWindowState.Maximized;
             // if player closed login window without logging in
             // close this window to finish complete program shutdown
             if (activePlayer == null)
@@ -61,12 +62,16 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             playerHand3 = new Hand();
             dealerHand = new Hand();
 
-            valuePlayerLbl.Text = playerMoneyValue.ToString();
-            if (activePlayer != null && activePlayer.Borrow != null)
-            { playerDebt = (double)activePlayer.Borrow; } // retrieve how much player owes bank
-            else
-            { playerDebt = 0; }
-
+            //get values from database and fill player money
+            if (activePlayer != null)
+            {
+                playerMoneyValue = (double)activePlayer.Bank;
+                valuePlayerLbl.Text = playerMoneyValue.ToString();
+                if (activePlayer.Borrow != null)
+                { playerDebt = (double)activePlayer.Borrow; } // retrieve how much player owes bank
+                else
+                { playerDebt = 0; }
+            }
             btnHit.Enabled = false;
             btnStand.Enabled = false;
             btnDoubleDown.Enabled = false;
@@ -77,6 +82,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
         private void DisplayPlayerCards(Hand hand)
         {
+            int size;
             //Displays all cards in hand
             for (int i = 1; i <= hand.CardsInHand().Count; i++)
             {
@@ -94,8 +100,9 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                     newButton.Name = "Card" + i;
                     newButton.Parent = pnlBackground;
                     newButton.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
-                    newButton.Size = new Size(100, 150);
-                    newButton.Location = new Point(100 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - 50);
+                    size = newButton.Parent.Height / 8;
+                    newButton.Size = new Size(size, (int)(size * 1.5));
+                    newButton.Location = new Point((newButton.Parent.Size.Width / 2) - 35 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - size);
                     newButton.BackgroundImage = ((PlayingCard)hand.CardsInHand()[i - 1]).CardImage();
                     newButton.BackgroundImageLayout = ImageLayout.Stretch;
                     pnlBackground.Controls.Add(newButton);
@@ -105,30 +112,35 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         }
         
 
-        private void DisplayDealerCards(Hand hand)
+        private void DisplayDealerCards()
         {
+            int size;
             //Displays all cards in hand
-            for (int i = 1; i <= hand.CardsInHand().Count; i++)
+            for (int i = 1; i <= dealerHand.CardsInHand().Count; i++)
             {
+                //if this control exists, reposition it
                 if (pnlBackground.Controls.ContainsKey("DealerCard" + i))
                 {
                     Button newButton = (Button)pnlBackground.Controls[pnlBackground.Controls.IndexOfKey("DealerCard" + i)];
                     newButton.Parent = pnlBackground;
-                    newButton.Location = new Point(100 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - 50);
+                    newButton.Location = new Point((newButton.Parent.Size.Width / 2) - 35 + (35 * i), 0);
                 }
                 //if control does not already exist create and position it
-                if (!pnlBackground.Controls.ContainsKey("DealerCard" + i))
+                else if (!pnlBackground.Controls.ContainsKey("DealerCard" + i))
                 {
                     if (dealerFirstDraw)
                     {
                         Button newButton = new Button();
                         newButton.Name = "DealerCard" + i;
-                        newButton.Location = new Point(this.Size.Width / 2 + (35 * i), 100);
-                        newButton.BackgroundImage = ((PlayingCard)hand.CardsInHand()[i - 1]).HiddenCardImage();
+                        newButton.Parent = pnlBackground;
+                        newButton.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+                        size = newButton.Parent.Height/8;
+                        newButton.Size = new Size(size, (int)(size * 1.5));
+                        newButton.Location = new Point((newButton.Parent.Size.Width / 2) - 35 + (35 * i), 0);
+                        newButton.BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[i - 1]).HiddenCardImage();
                         newButton.BackgroundImageLayout = ImageLayout.Stretch;
-                        newButton.Size = new Size(100, 150);
                         pnlBackground.Controls.Add(newButton);
-                        pnlBackground.Controls.SetChildIndex(newButton, hand.CardsInHand().Count - i);
+                        pnlBackground.Controls.SetChildIndex(newButton, dealerHand.CardsInHand().Count - i);
                         dealerFirstDraw = false;
                     }
                     else
@@ -136,12 +148,14 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                         Button newButton = new Button();
                         newButton.Name = "DealerCard" + i;
                         newButton.Parent = pnlBackground;
-                        newButton.Location = new Point(this.Size.Width / 2 + (35 * i), 100);
-                        newButton.BackgroundImage = ((PlayingCard)hand.CardsInHand()[i - 1]).CardImage();
+                        newButton.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+                        size = newButton.Parent.Height / 8;
+                        newButton.Size = new Size(size, (int)(size * 1.5));
+                        newButton.Location = new Point((newButton.Parent.Size.Width / 2) - 35 + (35 * i), 0);
+                        newButton.BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[i - 1]).CardImage();
                         newButton.BackgroundImageLayout = ImageLayout.Stretch;
-                        newButton.Size = new Size(100, 150);
                         pnlBackground.Controls.Add(newButton);
-                        pnlBackground.Controls.SetChildIndex(newButton, hand.CardsInHand().Count - i);
+                        pnlBackground.Controls.SetChildIndex(newButton, dealerHand.CardsInHand().Count - i);
                     }
                 }
             }
@@ -265,7 +279,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             lblDealerHandValue.Text = GetTotalHandValue(dealerHand).ToString();
 
             DisplayPlayerCards(activePlayerHand);
-            DisplayDealerCards(dealerHand);
+            DisplayDealerCards();
 
             //Check for initial win conditions
             //player blackjack
@@ -402,12 +416,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             activePlayerHand.AddCardToHand(deck.DealCardFromPack());
             lblPlayerHandValue.Text = GetTotalHandValue(activePlayerHand).ToString();
             
-            //TODO: Fix to reflect activePlayerHand
             DeleteCards();
             DisplayPlayerCards(activePlayerHand);
-            DisplayDealerCards(dealerHand);
+            DisplayDealerCards();
 
-            //TODO: Fix win conditions
             //if player busts
             if (CheckForBust(activePlayerHand))
             {
@@ -442,9 +454,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
         private void Stand()
         {
-            //TODO: Rewrite with new win conditions
-            //CheckForWin(activePlayerHand);
-
+           
             // once a player stands hold a copy of the hand (this is important for splits)
             // This is only neccesary once
             if (splits >= 1)
@@ -459,7 +469,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             ((Button)pnlBackground.Controls["DealerCard1"]).BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[0]).CardImage();
             //dealer hits until 17
             DealerHit();
-            DisplayDealerCards(dealerHand);
+            DisplayDealerCards();
             //dealer has blackjack
             if (CheckForBlackjack(dealerHand))
             {
@@ -502,7 +512,23 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             activePlayerHand.AddCardToHand(deck.DealCardFromPack());
             lblPlayerHandValue.Text = GetTotalHandValue(activePlayerHand).ToString();
             DisplayPlayerCards(activePlayerHand);
-            Stand();
+            //check for blackjack
+            if (CheckForBlackjack(activePlayerHand))
+            {
+                ModifyBank(betMoneyValue * 2, true, false);
+                MessageBox.Show("You got blackjack! Great job! Here's your money.", "Win!", MessageBoxButtons.OK);
+            }
+            //check for bust
+            else if (CheckForBust(activePlayerHand))
+            {
+                ModifyBank(betMoneyValue * -1, true, false);
+                MessageBox.Show("You busted! You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK); 
+            }
+            //otherwise stand
+            else
+            {
+                Stand();
+            }
         }
 
         //Split hand

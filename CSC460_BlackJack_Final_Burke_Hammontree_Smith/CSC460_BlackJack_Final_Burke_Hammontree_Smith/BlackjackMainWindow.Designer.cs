@@ -219,7 +219,7 @@
             this.btnDoubleDown.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnDoubleDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDoubleDown.Location = new System.Drawing.Point(656, 95);
-            this.btnDoubleDown.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnDoubleDown.Margin = new System.Windows.Forms.Padding(2);
             this.btnDoubleDown.Name = "btnDoubleDown";
             this.btnDoubleDown.Size = new System.Drawing.Size(75, 23);
             this.btnDoubleDown.TabIndex = 20;
@@ -232,7 +232,7 @@
             this.btnSplit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSplit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSplit.Location = new System.Drawing.Point(656, 122);
-            this.btnSplit.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSplit.Margin = new System.Windows.Forms.Padding(2);
             this.btnSplit.Name = "btnSplit";
             this.btnSplit.Size = new System.Drawing.Size(75, 23);
             this.btnSplit.TabIndex = 21;
@@ -387,7 +387,7 @@
             this.ClientSize = new System.Drawing.Size(1092, 581);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlBackground);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "BlackjackMainWindow";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
