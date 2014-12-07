@@ -271,7 +271,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 {
                     Button newButton = (Button)pnlBackground.Controls[pnlBackground.Controls.IndexOfKey("DealerCard" + i)];
                     newButton.Parent = pnlBackground;
-                    newButton.Location = new Point((newButton.Parent.Size.Width / 2) - 35 + (35 * i), 0);
+                    newButton.Location = new Point((newButton.Parent.Size.Width / 2) - 35 + (35 * i), (newButton.Parent.Size.Height / 4));
                 }
                 //if control does not already exist create and position it
                 else if (!pnlBackground.Controls.ContainsKey("DealerCard" + i))
@@ -284,7 +284,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                         newButton.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
                         size = newButton.Parent.Height/8;
                         newButton.Size = new Size(size, (int)(size * 1.5));
-                        newButton.Location = new Point((newButton.Parent.Size.Width / 2) - 35 + (35 * i), 0);
+                        newButton.Location = new Point((newButton.Parent.Size.Width / 2) - 35 + (35 * i), (newButton.Parent.Size.Height / 4));
                         newButton.BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[i - 1]).HiddenCardImage();
                         newButton.BackgroundImageLayout = ImageLayout.Stretch;
                         pnlBackground.Controls.Add(newButton);
@@ -299,7 +299,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                         newButton.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
                         size = newButton.Parent.Height / 8;
                         newButton.Size = new Size(size, (int)(size * 1.5));
-                        newButton.Location = new Point((newButton.Parent.Size.Width / 2) - 35 + (35 * i), 0);
+                        newButton.Location = new Point((newButton.Parent.Size.Width / 2) - 35 + (35 * i), (newButton.Parent.Size.Height / 4));
                         newButton.BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[i - 1]).CardImage();
                         newButton.BackgroundImageLayout = ImageLayout.Stretch;
                         pnlBackground.Controls.Add(newButton);
@@ -609,10 +609,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
         private void Stand()
         {
-<<<<<<< HEAD
-=======
-           
->>>>>>> origin/Development-Branch
             // once a player stands hold a copy of the hand (this is important for splits)
             if (splits == 1)
             {
@@ -645,8 +641,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             ((Button)pnlBackground.Controls["DealerCard1"]).BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[0]).CardImage();
             //dealer hits until 17
             DealerHit();
-<<<<<<< HEAD
-            DisplayDealerCards(dealerHand);
+            DisplayDealerCards();
 
             int i = 1; // set loop couter
             if (stand3)
@@ -657,9 +652,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             while (i > 0)
             {
 
-=======
             DisplayDealerCards();
->>>>>>> origin/Development-Branch
             //dealer has blackjack
             if (CheckForBlackjack(dealerHand))
             {
@@ -757,13 +750,19 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
                 activePlayerHand.AddCardToHand(card1);
                 activePlayerHand.AddCardToHand(deck.DealCardFromPack());
-                DisplayPlayerCards();
+                
+                //make sure playerHand1 is holding the cards for display
+                foreach (PlayingCard card in activePlayerHand.CardsInHand())
+                { playerHand1.AddCardToHand(card); }
+                
 
                 playerHand2.AddCardToHand(card2);
                 playerHand2.AddCardToHand(deck.DealCardFromPack());
-                // DisplayPlayerCards(playerHand2);
-                // ^ need a place to display 2nd hand
                 splits++;
+
+                //display cards
+                DisplayPlayerCards();
+                DisplayDealerCards();
             }
             else if (splits == 1) // second split
             {
@@ -779,13 +778,13 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
                 activePlayerHand.AddCardToHand(card1);
                 activePlayerHand.AddCardToHand(deck.DealCardFromPack());
-                DisplayPlayerCards();
-
+                
                 playerHand3.AddCardToHand(card2);
                 playerHand3.AddCardToHand(deck.DealCardFromPack());
-                //DisplayPlayerCards(playerHand3);
-                // ^ need a place to display third hand
                 splits++;
+                //display cards
+                DisplayPlayerCards();
+                DisplayDealerCards();
             }
 
             btnSplit.Enabled = false;
