@@ -414,13 +414,11 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 {
                     ModifyBank(betMoneyValue / 2 * -1, false, false);
                     MessageBox.Show("Too bad, I don't have blackjack! I'll take half your bet now.", "Lose Your Insurance!", MessageBoxButtons.OK);
+                    btnHit.Enabled = true;
+                    btnStand.Enabled = true;
+                    betAndSetBtn.Enabled = false;
                 }
-                else
-                {
-                    btnSurrender.Enabled = true;
-                    btnSurrender.Visible = true;
-                    
-                }
+                
             }
             //check to see if dealer has blackjack if player doesn't have to buy insurance
             //3. The player does not buy insurance, the dealer has blackjack.
@@ -432,8 +430,12 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 ModifyBank(betMoneyValue * -1, true , false);
                 MessageBox.Show("I got blackjack! You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK); 
             }
-            //TODO:Fix win conditions
-           // CheckForWin(activePlayerHand);
+            else
+            {
+                btnSurrender.Enabled = true;
+                btnSurrender.Visible = true;
+
+            }
         }
 
         //intended to add everything up to make it easier to check for win conditions
@@ -883,6 +885,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         {
             btnHit.Enabled = false;
             btnStand.Enabled = false;
+            btnSplit.Visible = false;
+            btnDoubleDown.Visible = false;
             betAndSetBtn.Enabled = true;
             dealerStand = false;
         }
@@ -891,7 +895,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         {
             ModifyBank(betMoneyValue / -2, true, false);
             MessageBox.Show("You surrender! You gain half your money back.", "Surrender", MessageBoxButtons.OK);
-            EndRound();
             btnSurrender.Enabled = false;
             btnSurrender.Visible = false;
         }
