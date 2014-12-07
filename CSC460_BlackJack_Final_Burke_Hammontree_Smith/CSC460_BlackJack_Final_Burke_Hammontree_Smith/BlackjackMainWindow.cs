@@ -128,7 +128,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                         newButton.BackgroundImage = ((PlayingCard)playerHand1.CardsInHand()[i - 1]).CardImage();
                         newButton.BackgroundImageLayout = ImageLayout.Stretch;
                         pnlBackground.Controls.Add(newButton);
-                        pnlBackground.Controls.SetChildIndex(newButton, playerHand1.CardsInHand().Count - i);
+                        //pnlBackground.Controls.SetChildIndex(newButton, playerHand1.CardsInHand().Count - i);
                     }
                     //create cards for playerHand2
                     //if control does not already exist create and position it
@@ -144,7 +144,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                         newButton.BackgroundImage = ((PlayingCard)playerHand2.CardsInHand()[i - (1 + playerHand1.CardsInHand().Count) ]).CardImage();
                         newButton.BackgroundImageLayout = ImageLayout.Stretch;
                         pnlBackground.Controls.Add(newButton);
-                        pnlBackground.Controls.SetChildIndex(newButton, i - playerHand2.CardsInHand().Count);
+                        //pnlBackground.Controls.SetChildIndex(newButton, i - playerHand2.CardsInHand().Count);
                     }
                 }
             }
@@ -571,6 +571,9 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             else if(CheckForBlackjack(activePlayerHand))
             {
                 DealerHit();
+                DeleteCards();
+                DisplayDealerCards();
+                DisplayPlayerCards();
                 //if dealer got to 21, there is a tie
                 if (CheckForBlackjack(dealerHand))
                 {
@@ -601,27 +604,25 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         private void Stand()
         {
             // once a player stands hold a copy of the hand (this is important for splits)
-            if (splits == 1)
+            if (splits == 1 && !stand1)
             {
-                foreach (PlayingCard card in activePlayerHand.CardsInHand())
-                { playerHand1.AddCardToHand(card); }
                 activePlayerHand.ClearHand();
                 foreach (PlayingCard card in playerHand2.CardsInHand())
                 { activePlayerHand.AddCardToHand(card); }
+                CheckForSplit(activePlayerHand);
                 stand1 = true;
                 return;
             }
-            if (splits == 2)
+            if (splits == 2 && !stand2)
             {
-                foreach (PlayingCard card in activePlayerHand.CardsInHand())
-                { playerHand2.AddCardToHand(card); }
                 activePlayerHand.ClearHand();
                 foreach (PlayingCard card in playerHand3.CardsInHand())
                 { activePlayerHand.AddCardToHand(card); }
+                CheckForSplit(activePlayerHand);
                 stand2 = true;
                 return;
             }
-            if (splits == 3)
+            if (splits == 3 && !stand3)
             {
                 foreach (PlayingCard card in activePlayerHand.CardsInHand())
                 { playerHand3.AddCardToHand(card); }
@@ -786,6 +787,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             btnSurrender.Enabled = false;
             btnSurrender.Visible = false;
         }
+
         private void betAndSetBtn_Click(object sender, EventArgs e)
         {
             playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
