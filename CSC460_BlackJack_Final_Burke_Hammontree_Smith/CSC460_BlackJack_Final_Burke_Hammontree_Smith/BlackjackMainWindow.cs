@@ -208,7 +208,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             }
             
         }
-        
 
         private void DisplayDealerCards()
         {
