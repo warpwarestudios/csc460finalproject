@@ -555,8 +555,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 //if dealer busted or did not get to 21, player wins
                 else
                 {
-                    ModifyBank(betMoneyValue * 2.5, true, false);
-                    MessageBox.Show("You got blackjack! Great job! Here's your money.", "Win!", MessageBoxButtons.OK);
+                    ModifyBank(betMoneyValue * 2, true, false);
+                    MessageBox.Show("You win! Here's your money.", "Win!", MessageBoxButtons.OK);
                 }
             }
            
@@ -590,7 +590,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 stand2 = true;
                 return;
             }
-            else
+            if (splits == 3)
             {
                 foreach (PlayingCard card in activePlayerHand.CardsInHand())
                 { playerHand3.AddCardToHand(card); }
@@ -611,14 +611,13 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             else if (stand2)
             { i = 2; }
 
-            while (i > 0)
+            while (i >= 1)
             {
-                DisplayDealerCards();
                 //dealer has blackjack
                 if (CheckForBlackjack(dealerHand))
                 {
                     ModifyBank(betMoneyValue * -1, true, false);
-                    MessageBox.Show("I got blackjack! You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK);
+                    MessageBox.Show("You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK);
                 }
                 //dealer busts
                 else if (CheckForBust(dealerHand))
