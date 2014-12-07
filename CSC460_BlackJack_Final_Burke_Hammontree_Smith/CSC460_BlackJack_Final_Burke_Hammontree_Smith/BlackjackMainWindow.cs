@@ -401,6 +401,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             //delete all cards shown in player and dealer hands
             DeleteCards();
 
+            stand1 = false;
+            stand2 = false;
+            stand3 = false;
+
             activePlayerHand.ClearHand();
             dealerHand.ClearHand();
 
@@ -609,10 +613,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
         private void Stand()
         {
-<<<<<<< HEAD
-=======
-           
->>>>>>> origin/Development-Branch
             // once a player stands hold a copy of the hand (this is important for splits)
             if (splits == 1)
             {
@@ -645,8 +645,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             ((Button)pnlBackground.Controls["DealerCard1"]).BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[0]).CardImage();
             //dealer hits until 17
             DealerHit();
-<<<<<<< HEAD
-            DisplayDealerCards(dealerHand);
+            DisplayDealerCards();
 
             int i = 1; // set loop couter
             if (stand3)
@@ -656,10 +655,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
             while (i > 0)
             {
-
-=======
             DisplayDealerCards();
->>>>>>> origin/Development-Branch
             //dealer has blackjack
             if (CheckForBlackjack(dealerHand))
             {
@@ -691,8 +687,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 ModifyBank(betMoneyValue, true, false);
                 MessageBox.Show("We tied! Here's your bet back.", "Tie!", MessageBoxButtons.OK);
             }
-
-            i--;
+                i--;
             } // while loop
         }
         
