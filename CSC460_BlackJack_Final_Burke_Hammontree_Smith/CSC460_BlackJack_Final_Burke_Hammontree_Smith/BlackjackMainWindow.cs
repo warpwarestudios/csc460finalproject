@@ -444,7 +444,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         private void Stand()
         {
             // once a player stands hold a copy of the hand (this is important for splits)
-            if (splits >= 1)
+            if (splits == 1)
             {
                 foreach (PlayingCard card in activePlayerHand.CardsInHand())
                 { playerHand1.AddCardToHand(card); }
@@ -453,7 +453,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 stand1 = true;
                 return;
             }
-            if (splits >= 2)
+            if (splits == 2)
             {
                 foreach (PlayingCard card in activePlayerHand.CardsInHand())
                 { playerHand2.AddCardToHand(card); }
