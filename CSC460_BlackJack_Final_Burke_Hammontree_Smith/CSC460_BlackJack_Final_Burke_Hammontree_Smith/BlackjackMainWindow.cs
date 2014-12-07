@@ -538,6 +538,27 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             lblPlayerHandValue.Text = GetTotalHandValue(activePlayerHand).ToString();
             
             DeleteCards();
+
+            //copy activePlayerHand into proper variable for display
+            if (stand2)
+            {
+                playerHand3.ClearHand();
+                foreach (PlayingCard card in activePlayerHand.CardsInHand())
+                { playerHand3.AddCardToHand(card); }
+            }
+            else if (stand1)
+            {
+                playerHand2.ClearHand();
+                foreach (PlayingCard card in activePlayerHand.CardsInHand())
+                { playerHand2.AddCardToHand(card); }
+            }
+            else 
+            {
+                playerHand1.ClearHand();
+                foreach (PlayingCard card in activePlayerHand.CardsInHand())
+                { playerHand1.AddCardToHand(card); }
+            }
+
             DisplayPlayerCards();
             DisplayDealerCards();
 
@@ -584,6 +605,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             {
                 foreach (PlayingCard card in activePlayerHand.CardsInHand())
                 { playerHand1.AddCardToHand(card); }
+                activePlayerHand.ClearHand();
                 foreach (PlayingCard card in playerHand2.CardsInHand())
                 { activePlayerHand.AddCardToHand(card); }
                 stand1 = true;
@@ -593,6 +615,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             {
                 foreach (PlayingCard card in activePlayerHand.CardsInHand())
                 { playerHand2.AddCardToHand(card); }
+                activePlayerHand.ClearHand();
                 foreach (PlayingCard card in playerHand3.CardsInHand())
                 { activePlayerHand.AddCardToHand(card); }
                 stand2 = true;
