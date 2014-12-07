@@ -477,7 +477,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             DealerHit();
             DisplayDealerCards(dealerHand);
 
-            int i = 1;
+            int i = 1; // set loop couter
             if (stand3)
             { i = 3; }
             else if (stand2)
@@ -518,9 +518,11 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 MessageBox.Show("We tied! Here's your bet back.", "Tie!", MessageBoxButtons.OK);
             }
 
+            i--;
             } // while loop
         }
-
+        
+        // support func for stand method
         private Hand handSelector(int i)
         {
             if (i == 1)
