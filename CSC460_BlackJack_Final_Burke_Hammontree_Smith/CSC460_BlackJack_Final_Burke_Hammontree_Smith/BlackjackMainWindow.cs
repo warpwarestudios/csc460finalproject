@@ -750,7 +750,9 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 
 
                 playerHand2.AddCardToHand(card2);
-                playerHand2.AddCardToHand(deck.DealCardFromPack());
+                //playerHand2.AddCardToHand(deck.DealCardFromPack());
+                PlayingCard card3 = new PlayingCard(Suit.Clubs, Value.Four);
+                playerHand2.AddCardToHand(card3);
                 splits++;
 
                 //display cards
