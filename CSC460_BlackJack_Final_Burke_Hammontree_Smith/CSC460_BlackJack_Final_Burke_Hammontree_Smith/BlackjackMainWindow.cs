@@ -58,6 +58,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             //create decks and hands
             deck = new Pack();
             activePlayerHand = new Hand();
+            playerHand1 = new Hand();
             playerHand2 = new Hand();
             playerHand3 = new Hand();
             dealerHand = new Hand();
@@ -91,15 +92,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             {
                 for (int i = 1; i <= activePlayerHand.CardsInHand().Count; i++)
                 {
-                    //if this control exists, reposition it
-                    if (pnlBackground.Controls.ContainsKey("Card" + i))
-                    {
-                        Button newButton = (Button)pnlBackground.Controls[pnlBackground.Controls.IndexOfKey("Card" + i)];
-                        newButton.Parent = pnlBackground;
-                        newButton.Location = new Point((newButton.Parent.Size.Width / 2) - 35 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - size);
-                    }
                     //if control does not already exist create and position it
-                    else if (!pnlBackground.Controls.ContainsKey("Card" + i))
+                    if (!pnlBackground.Controls.ContainsKey("Card" + i))
                     {
                         Button newButton = new Button();
                         newButton.Name = "Card" + i;
@@ -119,17 +113,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             else if (splits == 1)
             {
                 //create cards for playerHand1
-                for (int i = 1; i <= playerHand1.CardsInHand().Count; i++)
+                for (int i = 1; i <= playerHand1.CardsInHand().Count + playerHand2.CardsInHand().Count; i++)
                 {
-                    //if this control exists, reposition it
-                    if (pnlBackground.Controls.ContainsKey("Card" + i))
-                    {
-                        Button newButton = (Button)pnlBackground.Controls[pnlBackground.Controls.IndexOfKey("Card" + i)];
-                        newButton.Parent = pnlBackground;
-                        newButton.Location = new Point((newButton.Parent.Size.Width / 4) - 35 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - size);
-                    }
                     //if control does not already exist create and position it
-                    else if (!pnlBackground.Controls.ContainsKey("Card" + i))
+                    if (!pnlBackground.Controls.ContainsKey("Card" + i) && i <= playerHand1.CardsInHand().Count)
                     {
                         Button newButton = new Button();
                         newButton.Name = "Card" + i;
@@ -143,20 +130,9 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                         pnlBackground.Controls.Add(newButton);
                         pnlBackground.Controls.SetChildIndex(newButton, playerHand1.CardsInHand().Count - i);
                     }
-                }
-
-                //create cards for playerHand2
-                for (int i = 1; i <= playerHand2.CardsInHand().Count; i++)
-                {
-                    //if this control exists, reposition it
-                    if (pnlBackground.Controls.ContainsKey("Card" + i))
-                    {
-                        Button newButton = (Button)pnlBackground.Controls[pnlBackground.Controls.IndexOfKey("Card" + i)];
-                        newButton.Parent = pnlBackground;
-                        newButton.Location = new Point((newButton.Parent.Size.Width * 3 / 4) - 35 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - size);
-                    }
+                    //create cards for playerHand2
                     //if control does not already exist create and position it
-                    else if (!pnlBackground.Controls.ContainsKey("Card" + i))
+                    else if (!pnlBackground.Controls.ContainsKey("Card" + i) && i > playerHand1.CardsInHand().Count)
                     {
                         Button newButton = new Button();
                         newButton.Name = "Card" + i;
@@ -165,28 +141,22 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                         size = newButton.Parent.Height / 8;
                         newButton.Size = new Size(size, (int)(size * 1.5));
                         newButton.Location = new Point((newButton.Parent.Size.Width * 3 / 4) - 35 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - size);
-                        newButton.BackgroundImage = ((PlayingCard)playerHand2.CardsInHand()[i - 1]).CardImage();
+                        newButton.BackgroundImage = ((PlayingCard)playerHand2.CardsInHand()[i - (1 + playerHand1.CardsInHand().Count) ]).CardImage();
                         newButton.BackgroundImageLayout = ImageLayout.Stretch;
                         pnlBackground.Controls.Add(newButton);
-                        pnlBackground.Controls.SetChildIndex(newButton, playerHand2.CardsInHand().Count - i);
+                        pnlBackground.Controls.SetChildIndex(newButton, i - playerHand2.CardsInHand().Count);
                     }
                 }
             }
             else if (splits == 2)
             {
+                int totalCardNum = playerHand1.CardsInHand().Count + playerHand2.CardsInHand().Count + playerHand3.CardsInHand().Count;
+                int cardsPlaced = 0;
                 //create cards for playerHand1
-                for (int i = 1; i <= playerHand1.CardsInHand().Count; i++)
+                for (int i = 1; i <= totalCardNum; i++)
                 {
-                    
-                    //if this control exists, reposition it
-                    if (pnlBackground.Controls.ContainsKey("Card" + i))
-                    {
-                        Button newButton = (Button)pnlBackground.Controls[pnlBackground.Controls.IndexOfKey("Card" + i)];
-                        newButton.Parent = pnlBackground;
-                        newButton.Location = new Point((newButton.Parent.Size.Width / 4) - 35 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - size);
-                    }
                     //if control does not already exist create and position it
-                    else if (!pnlBackground.Controls.ContainsKey("Card" + i))
+                    if (!pnlBackground.Controls.ContainsKey("Card" + i) && i <= playerHand1.CardsInHand().Count)
                     {
                         Button newButton = new Button();
                         newButton.Name = "Card" + i;
@@ -199,48 +169,11 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                         newButton.BackgroundImageLayout = ImageLayout.Stretch;
                         pnlBackground.Controls.Add(newButton);
                         pnlBackground.Controls.SetChildIndex(newButton, playerHand1.CardsInHand().Count - i);
+                        cardsPlaced = playerHand1.CardsInHand().Count;
                     }
-                }
-
-                //create cards for playerHand2
-                for (int i = 1; i <= playerHand2.CardsInHand().Count; i++)
-                {
-                    //if this control exists, reposition it
-                    if (pnlBackground.Controls.ContainsKey("Card" + i))
-                    {
-                        Button newButton = (Button)pnlBackground.Controls[pnlBackground.Controls.IndexOfKey("Card" + i)];
-                        newButton.Parent = pnlBackground;
-                        newButton.Location = new Point((newButton.Parent.Size.Width / 2) - 35 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - size);
-                    }
+                    //create cards for playerHand2
                     //if control does not already exist create and position it
-                    else if (!pnlBackground.Controls.ContainsKey("Card" + i))
-                    {
-                        Button newButton = new Button();
-                        newButton.Name = "Card" + i;
-                        newButton.Parent = pnlBackground;
-                        newButton.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
-                        size = newButton.Parent.Height / 8;
-                        newButton.Size = new Size(size, (int)(size * 1.5));
-                        newButton.Location = new Point((newButton.Parent.Size.Width / 2) - 35 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - size);
-                        newButton.BackgroundImage = ((PlayingCard)playerHand2.CardsInHand()[i - 1]).CardImage();
-                        newButton.BackgroundImageLayout = ImageLayout.Stretch;
-                        pnlBackground.Controls.Add(newButton);
-                        pnlBackground.Controls.SetChildIndex(newButton, playerHand2.CardsInHand().Count - i);
-                    }
-                }
-
-                //create cards for playerHand3
-                for (int i = 1; i <= playerHand3.CardsInHand().Count; i++)
-                {
-                    //if this control exists, reposition it
-                    if (pnlBackground.Controls.ContainsKey("Card" + i))
-                    {
-                        Button newButton = (Button)pnlBackground.Controls[pnlBackground.Controls.IndexOfKey("Card" + i)];
-                        newButton.Parent = pnlBackground;
-                        newButton.Location = new Point((newButton.Parent.Size.Width * 3 / 4) - 35 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - size);
-                    }
-                    //if control does not already exist create and position it
-                    else if (!pnlBackground.Controls.ContainsKey("Card" + i))
+                    else if (!pnlBackground.Controls.ContainsKey("Card" + i) && i > cardsPlaced)
                     {
                         Button newButton = new Button();
                         newButton.Name = "Card" + i;
@@ -249,10 +182,27 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                         size = newButton.Parent.Height / 8;
                         newButton.Size = new Size(size, (int)(size * 1.5));
                         newButton.Location = new Point((newButton.Parent.Size.Width * 3 / 4) - 35 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - size);
-                        newButton.BackgroundImage = ((PlayingCard)playerHand3.CardsInHand()[i - 1]).CardImage();
+                        newButton.BackgroundImage = ((PlayingCard)playerHand2.CardsInHand()[i - (1 + cardsPlaced)]).CardImage();
                         newButton.BackgroundImageLayout = ImageLayout.Stretch;
                         pnlBackground.Controls.Add(newButton);
-                        pnlBackground.Controls.SetChildIndex(newButton, playerHand3.CardsInHand().Count - i);
+                        pnlBackground.Controls.SetChildIndex(newButton, i - cardsPlaced);
+                        cardsPlaced += playerHand2.CardsInHand().Count;
+                    }
+                    //create cards for playerHand3
+                    //if control does not already exist create and position it
+                    else if (!pnlBackground.Controls.ContainsKey("Card" + i) && i > cardsPlaced)
+                    {
+                        Button newButton = new Button();
+                        newButton.Name = "Card" + i;
+                        newButton.Parent = pnlBackground;
+                        newButton.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
+                        size = newButton.Parent.Height / 8;
+                        newButton.Size = new Size(size, (int)(size * 1.5));
+                        newButton.Location = new Point((newButton.Parent.Size.Width * 3 / 4) - 35 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - size);
+                        newButton.BackgroundImage = ((PlayingCard)playerHand2.CardsInHand()[i - (1 + cardsPlaced)]).CardImage();
+                        newButton.BackgroundImageLayout = ImageLayout.Stretch;
+                        pnlBackground.Controls.Add(newButton);
+                        pnlBackground.Controls.SetChildIndex(newButton, i - cardsPlaced);
                     }
                 }
             }
@@ -406,6 +356,9 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             stand3 = false;
 
             activePlayerHand.ClearHand();
+            playerHand1.ClearHand();
+            playerHand2.ClearHand();
+            playerHand3.ClearHand();
             dealerHand.ClearHand();
 
             // reset split conditions
@@ -422,8 +375,11 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             activePlayerHand = new Hand();
             dealerHand = new Hand();
 
-            activePlayerHand.AddCardToHand(deck.DealCardFromPack());
-            activePlayerHand.AddCardToHand(deck.DealCardFromPack());
+            //activePlayerHand.AddCardToHand(deck.DealCardFromPack());
+            //activePlayerHand.AddCardToHand(deck.DealCardFromPack());
+            PlayingCard card = new PlayingCard(Suit.Clubs, Value.Four);
+            activePlayerHand.AddCardToHand(card);
+            activePlayerHand.AddCardToHand(card);
             CheckForSplit(activePlayerHand);
             lblPlayerHandValue.Text = GetTotalHandValue(activePlayerHand).ToString();
 
@@ -647,7 +603,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             DealerHit();
             DisplayDealerCards();
 
-            int i = 1; // set loop couter
+            int i = 1; // set loop counter
             if (stand3)
             { i = 3; }
             else if (stand2)
@@ -655,49 +611,47 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
             while (i > 0)
             {
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/Development-Branch
-            DisplayDealerCards();
-            //dealer has blackjack
-            if (CheckForBlackjack(dealerHand))
-            {
-                ModifyBank(betMoneyValue * -1, true, false);
-                MessageBox.Show("I got blackjack! You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK);
-            }
-            //dealer busts
-            else if (CheckForBust(dealerHand))
-            {
-                ModifyBank(betMoneyValue * 2, true, false);
-                MessageBox.Show("I busted! You win! Here's your money.", "Win!", MessageBoxButtons.OK);
-            }
-            //dealer beats player
-            else if(GetTotalHandValue(dealerHand) > GetTotalHandValue(handSelector(i)))
-            {
-                ModifyBank(betMoneyValue * -1, true, false);
-                MessageBox.Show("You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK);
-            }
-            //player beats dealer
-            else if (GetTotalHandValue(dealerHand) < GetTotalHandValue(handSelector(i)))
-            {
-                ModifyBank(betMoneyValue * 2, true, false);
-                MessageBox.Show("You win! Here's your money.", "Win!", MessageBoxButtons.OK);
+                DisplayDealerCards();
+                //dealer has blackjack
+                if (CheckForBlackjack(dealerHand))
+                {
+                    ModifyBank(betMoneyValue * -1, true, false);
+                    MessageBox.Show("I got blackjack! You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK);
+                }
+                //dealer busts
+                else if (CheckForBust(dealerHand))
+                {
+                    ModifyBank(betMoneyValue * 2, true, false);
+                    MessageBox.Show("I busted! You win! Here's your money.", "Win!", MessageBoxButtons.OK);
+                }
+                //dealer beats player
+                else if(GetTotalHandValue(dealerHand) > GetTotalHandValue(handSelector(i)))
+                {
+                    ModifyBank(betMoneyValue * -1, true, false);
+                    MessageBox.Show("You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK);
+                }
+                //player beats dealer
+                else if (GetTotalHandValue(dealerHand) < GetTotalHandValue(handSelector(i)))
+                {
+                    ModifyBank(betMoneyValue * 2, true, false);
+                    MessageBox.Show("You win! Here's your money.", "Win!", MessageBoxButtons.OK);
             
-            }
-            //player and dealer tie
-            else if (GetTotalHandValue(dealerHand) == GetTotalHandValue(handSelector(i)))
-            {
-                ModifyBank(betMoneyValue, true, false);
-                MessageBox.Show("We tied! Here's your bet back.", "Tie!", MessageBoxButtons.OK);
-            }
-                i--;
+                }
+                //player and dealer tie
+                else if (GetTotalHandValue(dealerHand) == GetTotalHandValue(handSelector(i)))
+                {
+                    ModifyBank(betMoneyValue, true, false);
+                    MessageBox.Show("We tied! Here's your bet back.", "Tie!", MessageBoxButtons.OK);
+                }
+                    i--;
             } // while loop
         }
         
         // support func for stand method
         private Hand handSelector(int i)
         {
+            if (splits == 0)
+            { return activePlayerHand; }
             if (i == 1)
             { return playerHand1; }
             if (i == 2)
@@ -750,6 +704,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                     { card1 = card; }
                     else if (i == 2)
                     { card2 = card; }
+                    i++;
                 }
                 DeleteCards();
                 activePlayerHand.ClearHand();
@@ -778,6 +733,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                     { card1 = card; }
                     else if (i == 2)
                     { card2 = card; }
+                    i++;
                 }
                 DeleteCards();
                 activePlayerHand.ClearHand();
