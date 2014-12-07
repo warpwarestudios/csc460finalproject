@@ -525,6 +525,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         {
             btnDoubleDown.Enabled = false;
             btnDoubleDown.Visible = false;
+            btnSplit.Enabled = false;
+            btnSplit.Visible = false;
+            btnSurrender.Enabled = false;
+            btnSurrender.Visible = false;
             Hit();
         }
 
@@ -566,6 +570,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         {
             btnDoubleDown.Enabled = false;
             btnDoubleDown.Visible = false;
+            btnSplit.Enabled = false;
+            btnSplit.Visible = false;
+            btnSurrender.Enabled = false;
+            btnSurrender.Visible = false;
             Stand();
         }
 
@@ -613,7 +621,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
             while (i > 0)
             {
-                DisplayDealerCards();
                 //dealer has blackjack
                 if (CheckForBlackjack(dealerHand))
                 {
@@ -753,6 +760,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
             btnSplit.Enabled = false;
             btnSplit.Visible = false;
+            btnSurrender.Enabled = false;
+            btnSurrender.Visible = false;
         }
         private void betAndSetBtn_Click(object sender, EventArgs e)
         {
