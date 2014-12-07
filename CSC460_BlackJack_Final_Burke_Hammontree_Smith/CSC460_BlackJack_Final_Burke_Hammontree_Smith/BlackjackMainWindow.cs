@@ -16,7 +16,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         // Variables
         public static Player activePlayer;
         bool dealerFirstDraw = true;
-        bool stand = false;
+        bool stand1 = false, stand2 = false, stand3 = false;
         bool dealerStand = false;
         int splits = 0; // number off times the player has split
         Pack deck;
@@ -169,7 +169,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         {
             bool blackjack = false;
 
-            if(GetTotalHandValue(hand) == 21)
+            if (GetTotalHandValue(hand) == 21)
             {
                 blackjack = true;
             }
@@ -206,6 +206,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
             return insurance;
         }
+
         private void CheckForSplit (Hand hand)
         {
             // if player has already split 3 times, prevent any more splitting
@@ -442,24 +443,49 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
         private void Stand()
         {
-            //TODO: Rewrite with new win conditions
-            //CheckForWin(activePlayerHand);
-
             // once a player stands hold a copy of the hand (this is important for splits)
-            // This is only neccesary once
             if (splits >= 1)
             {
                 foreach (PlayingCard card in activePlayerHand.CardsInHand())
+                { playerHand1.AddCardToHand(card); }
+                foreach (PlayingCard card in playerHand2.CardsInHand())
                 { activePlayerHand.AddCardToHand(card); }
+                stand1 = true;
+                return;
+            }
+            if (splits >= 2)
+            {
+                foreach (PlayingCard card in activePlayerHand.CardsInHand())
+                { playerHand2.AddCardToHand(card); }
+                foreach (PlayingCard card in playerHand3.CardsInHand())
+                { activePlayerHand.AddCardToHand(card); }
+                stand2 = true;
+                return;
+            }
+            else
+            {
+                foreach (PlayingCard card in activePlayerHand.CardsInHand())
+                { playerHand3.AddCardToHand(card); }
+                stand3 = true;
             }
 
+            stand1 = true;
             btnHit.Enabled = false;
-            stand = true;
             //flip dealers card
             ((Button)pnlBackground.Controls["DealerCard1"]).BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[0]).CardImage();
             //dealer hits until 17
             DealerHit();
             DisplayDealerCards(dealerHand);
+
+            int i = 1;
+            if (stand3)
+            { i = 3; }
+            else if (stand2)
+            { i = 2; }
+
+            while (i > 0)
+            {
+
             //dealer has blackjack
             if (CheckForBlackjack(dealerHand))
             {
@@ -473,24 +499,38 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 MessageBox.Show("I busted! You win! Here's your money.", "Win!", MessageBoxButtons.OK);
             }
             //dealer beats player
-            else if(GetTotalHandValue(dealerHand) > GetTotalHandValue(activePlayerHand))
+            else if(GetTotalHandValue(dealerHand) > GetTotalHandValue(handSelector(i)))
             {
                 ModifyBank(betMoneyValue * -1, true, false);
                 MessageBox.Show("You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK);
             }
             //player beats dealer
-            else if(GetTotalHandValue(dealerHand) < GetTotalHandValue(activePlayerHand))
+            else if (GetTotalHandValue(dealerHand) < GetTotalHandValue(handSelector(i)))
             {
                 ModifyBank(betMoneyValue * 2, true, false);
                 MessageBox.Show("You win! Here's your money.", "Win!", MessageBoxButtons.OK);
             
             }
             //player and dealer tie
-            else if (GetTotalHandValue(dealerHand) == GetTotalHandValue(activePlayerHand))
+            else if (GetTotalHandValue(dealerHand) == GetTotalHandValue(handSelector(i)))
             {
                 ModifyBank(betMoneyValue, true, false);
                 MessageBox.Show("We tied! Here's your bet back.", "Tie!", MessageBoxButtons.OK);
             }
+
+            } // while loop
+        }
+
+        private Hand handSelector(int i)
+        {
+            if (i == 1)
+            { return playerHand1; }
+            if (i == 2)
+            { return playerHand2; }
+            if (i == 3)
+            { return playerHand3; }
+
+            return null;
         }
 
         //Double down
