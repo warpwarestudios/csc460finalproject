@@ -401,6 +401,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             //delete all cards shown in player and dealer hands
             DeleteCards();
 
+            stand1 = false;
+            stand2 = false;
+            stand3 = false;
+
             activePlayerHand.ClearHand();
             dealerHand.ClearHand();
 
@@ -651,7 +655,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
             while (i > 0)
             {
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/Development-Branch
             DisplayDealerCards();
             //dealer has blackjack
             if (CheckForBlackjack(dealerHand))
@@ -684,8 +691,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 ModifyBank(betMoneyValue, true, false);
                 MessageBox.Show("We tied! Here's your bet back.", "Tie!", MessageBoxButtons.OK);
             }
-
-            i--;
+                i--;
             } // while loop
         }
         
