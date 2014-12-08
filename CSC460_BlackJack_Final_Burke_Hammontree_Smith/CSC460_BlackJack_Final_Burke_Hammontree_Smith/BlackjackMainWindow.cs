@@ -609,15 +609,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 {
                     totalWins++;
                     ModifyBank(betMoneyValue * 2, true, false);
-                    MessageBox.Show("You win!", "Win!", MessageBoxButtons.OK);
-<<<<<<< HEAD
                     MessageBox.Show("You win! Here's your money.", "Win!", MessageBoxButtons.OK);
                  
                }
-=======
-                }
->>>>>>> origin/Development-Branch
-            }
+           }
            
         }
 
@@ -695,11 +690,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 //dealer busts
                 else if (CheckForBust(dealerHand))
                 {
-<<<<<<< HEAD
                     ModifyBank((int)gain, true, false);
-=======
-                    ModifyBank(gain, true, false);
->>>>>>> origin/Development-Branch
                     MessageBox.Show("I busted! You win!", "Win!", MessageBoxButtons.OK);
                     ModifyBank(betMoneyValue * 2, true, false);
                     MessageBox.Show("I busted! You win! Here's your money.", "Win!", MessageBoxButtons.OK);
@@ -714,11 +705,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 //player beats dealer
                 else if (GetTotalHandValue(dealerHand) < GetTotalHandValue(handSelector(i)))
                 {
-<<<<<<< HEAD
                     ModifyBank((int)gain, true, false);
-=======
-                    ModifyBank(gain, true, false);
->>>>>>> origin/Development-Branch
                     MessageBox.Show("You win!", "Win!", MessageBoxButtons.OK);
                     ModifyBank(betMoneyValue * 2, true, false);
                     MessageBox.Show("You win! Here's your money.", "Win!", MessageBoxButtons.OK);
@@ -753,10 +740,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         //Double down
         private void btnDoubleDown_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-=======
-            
->>>>>>> origin/Development-Branch
             if (splits == 1)
             { 
                 BettingMoneyGrabber(betMoneyValue/2);
@@ -775,9 +758,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 activePlayerHand.AddCardToHand(deck.DealCardFromPack());
                 DisplayPlayerCards();
             }
-<<<<<<< HEAD
             activePlayerHand.AddCardToHand(deck.DealCardFromPack());
-            lblPlayerHandValue.Text = GetTotalHandValue(activePlayerHand).ToString();
+            //lblPlayerHandValue.Text = GetTotalHandValue(activePlayerHand).ToString();
             DisplayPlayerCards();
             btnDoubleDown.Enabled = false;
             btnDoubleDown.Visible = false;
@@ -785,7 +767,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             btnSurrender.Visible = false;
             BettingMoneyGrabber(betMoneyValue);
             activePlayerHand.AddCardToHand(deck.DealCardFromPack());
-            lblPlayerHandValue.Text = GetTotalHandValue(activePlayerHand).ToString();
+            //lblPlayerHandValue.Text = GetTotalHandValue(activePlayerHand).ToString();
             DisplayPlayerCards();
             //check for blackjack
             if (CheckForBlackjack(activePlayerHand))
@@ -794,9 +776,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 MessageBox.Show("You got blackjack! Great job! Here's your money.", "Win!", MessageBoxButtons.OK);
                 totalWins++;
             }
-=======
-     
->>>>>>> origin/Development-Branch
+
             //check for bust
             if (CheckForBust(activePlayerHand))
             {
