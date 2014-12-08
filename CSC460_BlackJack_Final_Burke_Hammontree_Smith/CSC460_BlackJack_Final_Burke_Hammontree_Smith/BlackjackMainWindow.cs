@@ -429,7 +429,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             {
                  totalWins++;
                  ModifyBank((double)(betMoneyValue * 2.5), true, false);
-                 MessageBox.Show("You got blackjack! Great job! Here's your money.", "Win!", MessageBoxButtons.OK);
+                 MessageBox.Show("You got blackjack!", "Win!", MessageBoxButtons.OK);
                  totalWins++;
             }
             //check for player insurance
@@ -443,7 +443,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 if (CheckForBlackjack(dealerHand))
                 {
                     ModifyBank(betMoneyValue, true, false);
-                    MessageBox.Show("I have blackjack! Good call!", "Insurance",MessageBoxButtons.OK);
+                    MessageBox.Show("I have blackjack!", "Insurance",MessageBoxButtons.OK);
                 }
                 else if (!CheckForBlackjack(dealerHand))
                 {
@@ -600,17 +600,21 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                     deltaMoney += (betMoneyValue / 2) * -1;
                     valueBetLbl.Text = (betMoneyValue + deltaMoney).ToString();
                     MessageBox.Show("You busted!", "Lose!", MessageBoxButtons.OK);
+                    Stand();
                 }
                 else if (splits == 1 && !stand2)
                 {
                     deltaMoney += (betMoneyValue / 2) * -1;
                     valueBetLbl.Text = (betMoneyValue + deltaMoney).ToString();
                     MessageBox.Show("You busted!", "Lose!", MessageBoxButtons.OK);
+                    Stand();
+                    btnStand.Enabled = false;
                 }
                 else
                 {
                     ModifyBank(betMoneyValue * -1, true, false);
                     MessageBox.Show("You busted!", "Lose!", MessageBoxButtons.OK);
+                    btnStand.Enabled = false;
                 }
             }
             else if(CheckForBlackjack(activePlayerHand))
@@ -668,18 +672,17 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             DisplayDealerCards();
 
             int i = 1; // set loop counter
-            double gain = betMoneyValue * 2;
-            double loss = betMoneyValue * -1;
-            double draw = betMoneyValue; // money values
+            double gain = originalBet * 2;
+            double loss = originalBet * -1;
+            double draw = originalBet; // money values
 
             
-            if (stand2)
-            { 
-                i = 2;
-                gain /= 2;
-                loss /= 2;
-                draw = betMoneyValue;
-            }
+            //if (stand2)
+            //{ 
+            //    i = 2;
+            //    gain /= 2;
+            //    loss /= 2;
+            //}
 
 
             while (i >= 1)
@@ -716,12 +719,12 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                     i--;
             } // while loop
 
-            if (deltaMoney >= 0)
-            { MessageBox.Show("Result: $" + deltaMoney.ToString(), "Win!", MessageBoxButtons.OK); }
-            else if (deltaMoney <= 0)
-            { MessageBox.Show("Result: $" + deltaMoney.ToString(), "Loss!", MessageBoxButtons.OK); }
+            if (deltaMoney > 0)
+            { MessageBox.Show("Win! /nResult: $" + deltaMoney.ToString(), "Win!", MessageBoxButtons.OK); }
+            else if (deltaMoney < 0)
+            { MessageBox.Show("Loss! /nResult: $" + deltaMoney.ToString(), "Loss!", MessageBoxButtons.OK); }
             else if (deltaMoney == 0)
-            { MessageBox.Show("Result: $" + deltaMoney.ToString(), "Push!", MessageBoxButtons.OK); }
+            { MessageBox.Show("Push! /nResult: $" + deltaMoney.ToString(), "Push!", MessageBoxButtons.OK); }
             ModifyBank(0, true, false);
         }
         

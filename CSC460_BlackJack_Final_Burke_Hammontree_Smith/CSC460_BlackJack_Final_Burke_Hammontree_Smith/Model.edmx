@@ -73,7 +73,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Model">
-        <EntityTypeShape EntityType="DatabaseModel.Player" Width="1.5" PointX="0.75" PointY="0.75" Height="2.0002864583333331" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Player" Width="1.5" PointX="4.375" PointY="1.5" Height="1.9802864583333331" IsExpanded="true" />
       </Diagram>
     </Diagrams>
   </Designer>
