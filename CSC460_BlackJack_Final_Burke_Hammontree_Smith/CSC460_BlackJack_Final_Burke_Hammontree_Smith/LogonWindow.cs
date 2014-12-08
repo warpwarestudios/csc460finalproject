@@ -42,6 +42,12 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
+            if (tboxUsername.Text.Equals(""))
+            { 
+                MessageBox.Show("Invalid username entry. Must contain at least 1 character.");
+                return;
+            }
+
             try 
             { // try creating player using provided info
                 DatabaseCall.CreatePlayer(tboxUsername.Text, tboxPassword.Text);

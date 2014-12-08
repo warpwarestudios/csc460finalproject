@@ -11,9 +11,9 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BlackjackMainWindow());
+          Application.EnableVisualStyles();
+          Application.SetCompatibleTextRenderingDefault(false);
+          Application.Run(new BlackjackMainWindow());
         }
 
     }

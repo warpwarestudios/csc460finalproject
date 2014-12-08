@@ -73,15 +73,14 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             dealerHand = new Hand();
 
             //get values from database and fill player money
-            if (activePlayer != null)
-            {
-                playerMoneyValue = (int)activePlayer.Bank;
-                valuePlayerLbl.Text = playerMoneyValue.ToString();
-                if (activePlayer.Borrow != null)
-                { playerDebt = (int)activePlayer.Borrow; } // retrieve how much player owes bank
-                else
-                { playerDebt = 0; }
-            }
+            
+            playerMoneyValue = (double)activePlayer.Bank;
+            valuePlayerLbl.Text = playerMoneyValue.ToString();
+            if (activePlayer.Borrow != null)
+            { playerDebt = (int)activePlayer.Borrow; } // retrieve how much player owes bank
+            else
+            { playerDebt = 0; }
+            
             btnHit.Enabled = false;
             btnStand.Enabled = false;
             btnDoubleDown.Enabled = false;
@@ -853,7 +852,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
         private void betAndSetBtn_Click(object sender, EventArgs e)
         {
-            playerMoneyValue = (int)activePlayer.Bank; // retrieve current player's money
+            playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
 
             if (betAndSetBtn.Text == "Bet")
             {
@@ -990,7 +989,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 deltaMoney = 0;
             }
             //update variables
-            playerMoneyValue = (int)activePlayer.Bank;
+            playerMoneyValue = (double)activePlayer.Bank;
             if (resetBet)
             {
                 betMoneyValue = 0;
