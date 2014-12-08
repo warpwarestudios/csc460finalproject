@@ -520,16 +520,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             }
         }
 
-        //Reference for borrowing
-        // borrow money if player is out of money
-       /*     if (playerMoneyValue == 0)
-            {
-                DatabaseCall.UpdateBank(activePlayer, 0, true);
-                playerDebt = (double)activePlayer.Borrow; // retrieve how much player owes bank
-                playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
-                valuePlayerLbl.Text = playerMoneyValue.ToString();
-            }*/
-
         // *BUTTONS AND STUFF*
 
         private void btnHit_Click(object sender, EventArgs e)
@@ -1044,6 +1034,15 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             lblTotalGained.Text = gainTotalMoneyValue.ToString();
             lblMostGained.Text = gainMostMoneyValue.ToString();
             lblMostLost.Text = lostMostMoneyValue.ToString();
+
+            // borrow money if player is out of money
+                 if (playerMoneyValue == 0)
+                 {
+                     DatabaseCall.UpdateBank(activePlayer, 0, true);
+                     playerDebt = (double)activePlayer.Borrow; // retrieve how much player owes bank
+                     playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
+                     valuePlayerLbl.Text = playerMoneyValue.ToString();
+                 }
            
             //reset buttons for next round
             EndRound();
