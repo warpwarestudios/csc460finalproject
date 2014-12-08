@@ -362,6 +362,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             stand2 = false;
             stand3 = false; // not used
 
+            originalBet = betMoneyValue;
+
             activePlayerHand.ClearHand();
             playerHand1.ClearHand();
             playerHand2.ClearHand();
@@ -739,15 +741,15 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             
             if (splits == 1)
             { 
-                BettingMoneyGrabber(betMoneyValue/2);
+                BettingMoneyGrabber(originalBet);
                 btnSurrender.Enabled = false;
                 btnSurrender.Visible = false;
                 activePlayerHand.AddCardToHand(deck.DealCardFromPack());
                 DisplayPlayerCards();
             }
             else
-            { 
-                BettingMoneyGrabber(betMoneyValue);
+            {
+                BettingMoneyGrabber(originalBet);
                 btnDoubleDown.Enabled = false;
                 btnDoubleDown.Visible = false;
                 btnSurrender.Enabled = false;
@@ -817,10 +819,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 playerHand2.AddCardToHand(card3);
                 splits++;
 
-                playerMoneyValue = playerMoneyValue - betMoneyValue;
-                valuePlayerLbl.Text = playerMoneyValue.ToString();
-                betMoneyValue *= 2;
-                valueBetLbl.Text = betMoneyValue.ToString();
+                BettingMoneyGrabber(originalBet);
 
                 if (CheckForBlackjack(activePlayerHand))
                 {
@@ -1014,6 +1013,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             if (resetBet)
             {
                 betMoneyValue = 0;
+                originalBet = 0;
             }
             //update lables
             valueBetLbl.Text = betMoneyValue.ToString();
