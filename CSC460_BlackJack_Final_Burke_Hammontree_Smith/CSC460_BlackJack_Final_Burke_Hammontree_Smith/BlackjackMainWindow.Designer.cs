@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BlackjackMainWindow));
             this.btnHit = new System.Windows.Forms.Button();
             this.betAndSetBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,8 +44,6 @@
             this.betFiftyBtn = new System.Windows.Forms.Button();
             this.betFiveBtn = new System.Windows.Forms.Button();
             this.pnlBackground = new System.Windows.Forms.Panel();
-            this.DownArrow2 = new System.Windows.Forms.Button();
-            this.DownArrow1 = new System.Windows.Forms.Button();
             this.betThousandBtn = new System.Windows.Forms.Button();
             this.betFiveHundredBtn = new System.Windows.Forms.Button();
             this.betHundredBtn = new System.Windows.Forms.Button();
@@ -59,6 +56,8 @@
             this.lbltotalWin = new System.Windows.Forms.Label();
             this.lbltotalWinCount = new System.Windows.Forms.Label();
             this.btnSurrender = new System.Windows.Forms.Button();
+            this.DownArrow1 = new System.Windows.Forms.Panel();
+            this.DownArrow2 = new System.Windows.Forms.Panel();
             this.pnlBackground.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -271,9 +270,9 @@
             // 
             // pnlBackground
             // 
-            this.pnlBackground.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBackground.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlBackground.AutoSize = true;
             this.pnlBackground.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.CasinoMortambo;
             this.pnlBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -284,28 +283,6 @@
             this.pnlBackground.Name = "pnlBackground";
             this.pnlBackground.Size = new System.Drawing.Size(1068, 377);
             this.pnlBackground.TabIndex = 18;
-            // 
-            // DownArrow2
-            // 
-            this.DownArrow2.BackColor = System.Drawing.Color.Transparent;
-            this.DownArrow2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DownArrow2.BackgroundImage")));
-            this.DownArrow2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.DownArrow2.Location = new System.Drawing.Point(739, 138);
-            this.DownArrow2.Name = "DownArrow2";
-            this.DownArrow2.Size = new System.Drawing.Size(75, 73);
-            this.DownArrow2.TabIndex = 1;
-            this.DownArrow2.UseVisualStyleBackColor = false;
-            // 
-            // DownArrow1
-            // 
-            this.DownArrow1.BackColor = System.Drawing.Color.Transparent;
-            this.DownArrow1.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.downarrow;
-            this.DownArrow1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.DownArrow1.Location = new System.Drawing.Point(221, 138);
-            this.DownArrow1.Name = "DownArrow1";
-            this.DownArrow1.Size = new System.Drawing.Size(75, 73);
-            this.DownArrow1.TabIndex = 0;
-            this.DownArrow1.UseVisualStyleBackColor = false;
             // 
             // betThousandBtn
             // 
@@ -370,8 +347,8 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.BackgroundLayout;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.label4);
@@ -499,6 +476,26 @@
             this.btnSurrender.UseVisualStyleBackColor = false;
             this.btnSurrender.Click += new System.EventHandler(this.btnSurrender_Click);
             // 
+            // DownArrow1
+            // 
+            this.DownArrow1.BackColor = System.Drawing.Color.Transparent;
+            this.DownArrow1.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.downarrow;
+            this.DownArrow1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DownArrow1.Location = new System.Drawing.Point(221, 150);
+            this.DownArrow1.Name = "DownArrow1";
+            this.DownArrow1.Size = new System.Drawing.Size(78, 72);
+            this.DownArrow1.TabIndex = 2;
+            // 
+            // DownArrow2
+            // 
+            this.DownArrow2.BackColor = System.Drawing.Color.Transparent;
+            this.DownArrow2.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.downarrow;
+            this.DownArrow2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DownArrow2.Location = new System.Drawing.Point(732, 150);
+            this.DownArrow2.Name = "DownArrow2";
+            this.DownArrow2.Size = new System.Drawing.Size(78, 72);
+            this.DownArrow2.TabIndex = 3;
+            // 
             // BlackjackMainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -553,8 +550,8 @@
         private System.Windows.Forms.Label lblMostLost;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblTotalGained;
-        private System.Windows.Forms.Button DownArrow2;
-        private System.Windows.Forms.Button DownArrow1;
+        private System.Windows.Forms.Panel DownArrow2;
+        private System.Windows.Forms.Panel DownArrow1;
 
 
     }
