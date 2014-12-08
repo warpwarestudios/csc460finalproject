@@ -413,7 +413,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             PlayingCard card = new PlayingCard(Suit.Clubs, Value.Four);
             activePlayerHand.AddCardToHand(card);
             activePlayerHand.AddCardToHand(card);
-            CheckForSplit(activePlayerHand);
+
+            if (playerMoneyValue >= originalBet) // split check
+            { CheckForSplit(activePlayerHand); }
+            
 
             dealerHand.AddCardToHand(deck.DealCardFromPack());
             dealerHand.AddCardToHand(deck.DealCardFromPack());
@@ -464,7 +467,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 ((Button)pnlBackground.Controls["DealerCard1"]).BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[0]).CardImage();
                 //take away money
                 ModifyBank(betMoneyValue * -1, true , false);
-                MessageBox.Show("I got blackjack! You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK); 
+                MessageBox.Show("I got blackjack! You lose. ", "Lose!", MessageBoxButtons.OK); 
             }
             else
             {
@@ -1009,8 +1012,11 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                      playerDebt = (double)activePlayer.Borrow; // retrieve how much player owes bank
                      playerMoneyValue = (double)activePlayer.Bank; // retrieve current player's money
                      valuePlayerLbl.Text = playerMoneyValue.ToString();
+                     MessageBox.Show("You ran out of money. The bank has lent you $1000 \n" + 
+                         "Your currently in debt to the bank for $"+playerDebt, "Bank", MessageBoxButtons.OK);
                  }
-           
+
+            PlayerMoneyControl();
             //reset buttons for next round
             EndRound();
         }
