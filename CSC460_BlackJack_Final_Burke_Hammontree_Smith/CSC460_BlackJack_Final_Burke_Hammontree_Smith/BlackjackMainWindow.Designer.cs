@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.btnHit = new System.Windows.Forms.Button();
-            this.lblDealerHandValue = new System.Windows.Forms.Label();
-            this.lblPlayerHandValue = new System.Windows.Forms.Label();
             this.betAndSetBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblMostGained = new System.Windows.Forms.Label();
@@ -58,7 +56,6 @@
             this.lbltotalWin = new System.Windows.Forms.Label();
             this.lbltotalWinCount = new System.Windows.Forms.Label();
             this.btnSurrender = new System.Windows.Forms.Button();
-            this.pnlBackground.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,39 +65,14 @@
             this.btnHit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(103)))), ((int)(((byte)(64)))));
             this.btnHit.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHit.ForeColor = System.Drawing.Color.Gold;
-            this.btnHit.Location = new System.Drawing.Point(621, 86);
+            this.btnHit.Location = new System.Drawing.Point(828, 106);
+            this.btnHit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnHit.Name = "btnHit";
-            this.btnHit.Size = new System.Drawing.Size(100, 50);
+            this.btnHit.Size = new System.Drawing.Size(133, 62);
             this.btnHit.TabIndex = 0;
             this.btnHit.Text = "Hit";
             this.btnHit.UseVisualStyleBackColor = false;
             this.btnHit.Click += new System.EventHandler(this.btnHit_Click);
-            // 
-            // lblDealerHandValue
-            // 
-            this.lblDealerHandValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblDealerHandValue.AutoSize = true;
-            this.lblDealerHandValue.BackColor = System.Drawing.Color.White;
-            this.lblDealerHandValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDealerHandValue.Location = new System.Drawing.Point(250, 46);
-            this.lblDealerHandValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDealerHandValue.Name = "lblDealerHandValue";
-            this.lblDealerHandValue.Size = new System.Drawing.Size(148, 20);
-            this.lblDealerHandValue.TabIndex = 1;
-            this.lblDealerHandValue.Text = "dealerHandValue";
-            // 
-            // lblPlayerHandValue
-            // 
-            this.lblPlayerHandValue.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.lblPlayerHandValue.AutoSize = true;
-            this.lblPlayerHandValue.BackColor = System.Drawing.Color.White;
-            this.lblPlayerHandValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlayerHandValue.Location = new System.Drawing.Point(340, 299);
-            this.lblPlayerHandValue.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPlayerHandValue.Name = "lblPlayerHandValue";
-            this.lblPlayerHandValue.Size = new System.Drawing.Size(95, 20);
-            this.lblPlayerHandValue.TabIndex = 2;
-            this.lblPlayerHandValue.Text = "handValue";
             // 
             // betAndSetBtn
             // 
@@ -108,9 +80,10 @@
             this.betAndSetBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(103)))), ((int)(((byte)(64)))));
             this.betAndSetBtn.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.betAndSetBtn.ForeColor = System.Drawing.Color.Gold;
-            this.betAndSetBtn.Location = new System.Drawing.Point(269, 112);
+            this.betAndSetBtn.Location = new System.Drawing.Point(359, 138);
+            this.betAndSetBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.betAndSetBtn.Name = "betAndSetBtn";
-            this.betAndSetBtn.Size = new System.Drawing.Size(100, 50);
+            this.betAndSetBtn.Size = new System.Drawing.Size(133, 62);
             this.betAndSetBtn.TabIndex = 9;
             this.betAndSetBtn.Text = "Bet";
             this.betAndSetBtn.UseVisualStyleBackColor = false;
@@ -123,9 +96,10 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Gold;
-            this.label1.Location = new System.Drawing.Point(748, 69);
+            this.label1.Location = new System.Drawing.Point(997, 85);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 15);
+            this.label1.Size = new System.Drawing.Size(113, 20);
             this.label1.TabIndex = 10;
             this.label1.Text = "Total Lost: $";
             // 
@@ -136,9 +110,10 @@
             this.lblMostGained.BackColor = System.Drawing.Color.Transparent;
             this.lblMostGained.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMostGained.ForeColor = System.Drawing.Color.Gold;
-            this.lblMostGained.Location = new System.Drawing.Point(854, 25);
+            this.lblMostGained.Location = new System.Drawing.Point(1139, 31);
+            this.lblMostGained.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMostGained.Name = "lblMostGained";
-            this.lblMostGained.Size = new System.Drawing.Size(14, 15);
+            this.lblMostGained.Size = new System.Drawing.Size(18, 20);
             this.lblMostGained.TabIndex = 11;
             this.lblMostGained.Text = "0";
             // 
@@ -149,9 +124,10 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Rockwell", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Gold;
-            this.label3.Location = new System.Drawing.Point(19, 121);
+            this.label3.Location = new System.Drawing.Point(25, 149);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 33);
+            this.label3.Size = new System.Drawing.Size(112, 42);
             this.label3.TabIndex = 12;
             this.label3.Text = "Bet: $";
             // 
@@ -162,9 +138,10 @@
             this.valueBetLbl.BackColor = System.Drawing.Color.Transparent;
             this.valueBetLbl.Font = new System.Drawing.Font("Rockwell", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.valueBetLbl.ForeColor = System.Drawing.Color.Gold;
-            this.valueBetLbl.Location = new System.Drawing.Point(107, 121);
+            this.valueBetLbl.Location = new System.Drawing.Point(143, 149);
+            this.valueBetLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.valueBetLbl.Name = "valueBetLbl";
-            this.valueBetLbl.Size = new System.Drawing.Size(30, 33);
+            this.valueBetLbl.Size = new System.Drawing.Size(37, 42);
             this.valueBetLbl.TabIndex = 13;
             this.valueBetLbl.Text = "0";
             // 
@@ -175,9 +152,10 @@
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Gold;
-            this.label5.Location = new System.Drawing.Point(736, 11);
+            this.label5.Location = new System.Drawing.Point(981, 14);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(99, 15);
+            this.label5.Size = new System.Drawing.Size(133, 20);
             this.label5.TabIndex = 14;
             this.label5.Text = "Your Money: $";
             // 
@@ -188,9 +166,10 @@
             this.valuePlayerLbl.BackColor = System.Drawing.Color.Transparent;
             this.valuePlayerLbl.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.valuePlayerLbl.ForeColor = System.Drawing.Color.Gold;
-            this.valuePlayerLbl.Location = new System.Drawing.Point(854, 12);
+            this.valuePlayerLbl.Location = new System.Drawing.Point(1139, 15);
+            this.valuePlayerLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.valuePlayerLbl.Name = "valuePlayerLbl";
-            this.valuePlayerLbl.Size = new System.Drawing.Size(14, 15);
+            this.valuePlayerLbl.Size = new System.Drawing.Size(18, 20);
             this.valuePlayerLbl.TabIndex = 15;
             this.valuePlayerLbl.Text = "0";
             // 
@@ -201,9 +180,10 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Gold;
-            this.label7.Location = new System.Drawing.Point(730, 26);
+            this.label7.Location = new System.Drawing.Point(973, 32);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(105, 15);
+            this.label7.Size = new System.Drawing.Size(138, 20);
             this.label7.TabIndex = 16;
             this.label7.Text = "Most Gained: $";
             // 
@@ -214,9 +194,10 @@
             this.lblTotalLost.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalLost.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalLost.ForeColor = System.Drawing.Color.Gold;
-            this.lblTotalLost.Location = new System.Drawing.Point(854, 69);
+            this.lblTotalLost.Location = new System.Drawing.Point(1139, 85);
+            this.lblTotalLost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalLost.Name = "lblTotalLost";
-            this.lblTotalLost.Size = new System.Drawing.Size(14, 15);
+            this.lblTotalLost.Size = new System.Drawing.Size(18, 20);
             this.lblTotalLost.TabIndex = 17;
             this.lblTotalLost.Text = "0";
             // 
@@ -226,9 +207,10 @@
             this.btnStand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(103)))), ((int)(((byte)(64)))));
             this.btnStand.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStand.ForeColor = System.Drawing.Color.Gold;
-            this.btnStand.Location = new System.Drawing.Point(621, 21);
+            this.btnStand.Location = new System.Drawing.Point(828, 26);
+            this.btnStand.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnStand.Name = "btnStand";
-            this.btnStand.Size = new System.Drawing.Size(100, 50);
+            this.btnStand.Size = new System.Drawing.Size(133, 62);
             this.btnStand.TabIndex = 19;
             this.btnStand.Text = "Stand";
             this.btnStand.UseVisualStyleBackColor = false;
@@ -240,10 +222,10 @@
             this.btnDoubleDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(103)))), ((int)(((byte)(64)))));
             this.btnDoubleDown.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDoubleDown.ForeColor = System.Drawing.Color.Gold;
-            this.btnDoubleDown.Location = new System.Drawing.Point(829, 104);
-            this.btnDoubleDown.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDoubleDown.Location = new System.Drawing.Point(1105, 128);
+            this.btnDoubleDown.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDoubleDown.Name = "btnDoubleDown";
-            this.btnDoubleDown.Size = new System.Drawing.Size(100, 50);
+            this.btnDoubleDown.Size = new System.Drawing.Size(133, 62);
             this.btnDoubleDown.TabIndex = 20;
             this.btnDoubleDown.Text = "Double Down";
             this.btnDoubleDown.UseVisualStyleBackColor = false;
@@ -255,10 +237,10 @@
             this.btnSplit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(103)))), ((int)(((byte)(64)))));
             this.btnSplit.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSplit.ForeColor = System.Drawing.Color.Gold;
-            this.btnSplit.Location = new System.Drawing.Point(726, 104);
-            this.btnSplit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSplit.Location = new System.Drawing.Point(968, 128);
+            this.btnSplit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSplit.Name = "btnSplit";
-            this.btnSplit.Size = new System.Drawing.Size(100, 50);
+            this.btnSplit.Size = new System.Drawing.Size(133, 62);
             this.btnSplit.TabIndex = 21;
             this.btnSplit.Text = "Split";
             this.btnSplit.UseVisualStyleBackColor = false;
@@ -271,9 +253,10 @@
             this.betFiftyBtn.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Chip_Orange;
             this.betFiftyBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.betFiftyBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.betFiftyBtn.Location = new System.Drawing.Point(221, 11);
+            this.betFiftyBtn.Location = new System.Drawing.Point(295, 14);
+            this.betFiftyBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.betFiftyBtn.Name = "betFiftyBtn";
-            this.betFiftyBtn.Size = new System.Drawing.Size(100, 100);
+            this.betFiftyBtn.Size = new System.Drawing.Size(133, 123);
             this.betFiftyBtn.TabIndex = 5;
             this.betFiftyBtn.Text = "$50";
             this.betFiftyBtn.UseVisualStyleBackColor = false;
@@ -286,9 +269,10 @@
             this.betFiveBtn.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Chip_Blue;
             this.betFiveBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.betFiveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.betFiveBtn.Location = new System.Drawing.Point(25, 11);
+            this.betFiveBtn.Location = new System.Drawing.Point(33, 14);
+            this.betFiveBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.betFiveBtn.Name = "betFiveBtn";
-            this.betFiveBtn.Size = new System.Drawing.Size(100, 100);
+            this.betFiveBtn.Size = new System.Drawing.Size(133, 123);
             this.betFiveBtn.TabIndex = 3;
             this.betFiveBtn.Text = "$5";
             this.betFiveBtn.UseVisualStyleBackColor = false;
@@ -302,12 +286,11 @@
             this.pnlBackground.AutoSize = true;
             this.pnlBackground.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.CasinoMortambo;
             this.pnlBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlBackground.Controls.Add(this.lblPlayerHandValue);
-            this.pnlBackground.Controls.Add(this.lblDealerHandValue);
-            this.pnlBackground.Location = new System.Drawing.Point(12, 12);
-            this.pnlBackground.MinimumSize = new System.Drawing.Size(10, 10);
+            this.pnlBackground.Location = new System.Drawing.Point(16, 15);
+            this.pnlBackground.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlBackground.MinimumSize = new System.Drawing.Size(13, 12);
             this.pnlBackground.Name = "pnlBackground";
-            this.pnlBackground.Size = new System.Drawing.Size(1068, 377);
+            this.pnlBackground.Size = new System.Drawing.Size(1424, 464);
             this.pnlBackground.TabIndex = 18;
             // 
             // betThousandBtn
@@ -318,9 +301,10 @@
             this.betThousandBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.betThousandBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.betThousandBtn.ForeColor = System.Drawing.Color.White;
-            this.betThousandBtn.Location = new System.Drawing.Point(515, 11);
+            this.betThousandBtn.Location = new System.Drawing.Point(687, 14);
+            this.betThousandBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.betThousandBtn.Name = "betThousandBtn";
-            this.betThousandBtn.Size = new System.Drawing.Size(100, 100);
+            this.betThousandBtn.Size = new System.Drawing.Size(133, 123);
             this.betThousandBtn.TabIndex = 8;
             this.betThousandBtn.Text = "$1000";
             this.betThousandBtn.UseVisualStyleBackColor = false;
@@ -333,9 +317,10 @@
             this.betFiveHundredBtn.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Chip_Purple;
             this.betFiveHundredBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.betFiveHundredBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.betFiveHundredBtn.Location = new System.Drawing.Point(417, 11);
+            this.betFiveHundredBtn.Location = new System.Drawing.Point(556, 14);
+            this.betFiveHundredBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.betFiveHundredBtn.Name = "betFiveHundredBtn";
-            this.betFiveHundredBtn.Size = new System.Drawing.Size(100, 100);
+            this.betFiveHundredBtn.Size = new System.Drawing.Size(133, 123);
             this.betFiveHundredBtn.TabIndex = 7;
             this.betFiveHundredBtn.Text = "$500";
             this.betFiveHundredBtn.UseVisualStyleBackColor = false;
@@ -348,9 +333,10 @@
             this.betHundredBtn.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Chip_Red;
             this.betHundredBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.betHundredBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.betHundredBtn.Location = new System.Drawing.Point(319, 11);
+            this.betHundredBtn.Location = new System.Drawing.Point(425, 14);
+            this.betHundredBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.betHundredBtn.Name = "betHundredBtn";
-            this.betHundredBtn.Size = new System.Drawing.Size(100, 100);
+            this.betHundredBtn.Size = new System.Drawing.Size(133, 123);
             this.betHundredBtn.TabIndex = 6;
             this.betHundredBtn.Text = "$100";
             this.betHundredBtn.UseVisualStyleBackColor = false;
@@ -363,9 +349,10 @@
             this.betTenBtn.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Chip_Green;
             this.betTenBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.betTenBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.betTenBtn.Location = new System.Drawing.Point(123, 11);
+            this.betTenBtn.Location = new System.Drawing.Point(164, 14);
+            this.betTenBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.betTenBtn.Name = "betTenBtn";
-            this.betTenBtn.Size = new System.Drawing.Size(100, 100);
+            this.betTenBtn.Size = new System.Drawing.Size(133, 123);
             this.betTenBtn.TabIndex = 4;
             this.betTenBtn.Text = "$10";
             this.betTenBtn.UseVisualStyleBackColor = false;
@@ -404,9 +391,10 @@
             this.panel1.Controls.Add(this.betFiveBtn);
             this.panel1.Controls.Add(this.betAndSetBtn);
             this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(12, 400);
+            this.panel1.Location = new System.Drawing.Point(16, 492);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1068, 169);
+            this.panel1.Size = new System.Drawing.Size(1424, 208);
             this.panel1.TabIndex = 22;
             // 
             // label4
@@ -416,9 +404,10 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Gold;
-            this.label4.Location = new System.Drawing.Point(729, 40);
+            this.label4.Location = new System.Drawing.Point(972, 49);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 15);
+            this.label4.Size = new System.Drawing.Size(139, 20);
             this.label4.TabIndex = 27;
             this.label4.Text = "Total Gained: $";
             // 
@@ -429,9 +418,10 @@
             this.lblTotalGained.BackColor = System.Drawing.Color.Transparent;
             this.lblTotalGained.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalGained.ForeColor = System.Drawing.Color.Gold;
-            this.lblTotalGained.Location = new System.Drawing.Point(854, 39);
+            this.lblTotalGained.Location = new System.Drawing.Point(1139, 48);
+            this.lblTotalGained.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalGained.Name = "lblTotalGained";
-            this.lblTotalGained.Size = new System.Drawing.Size(14, 15);
+            this.lblTotalGained.Size = new System.Drawing.Size(18, 20);
             this.lblTotalGained.TabIndex = 28;
             this.lblTotalGained.Text = "0";
             // 
@@ -442,9 +432,10 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Gold;
-            this.label2.Location = new System.Drawing.Point(750, 54);
+            this.label2.Location = new System.Drawing.Point(1000, 66);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 15);
+            this.label2.Size = new System.Drawing.Size(112, 20);
             this.label2.TabIndex = 25;
             this.label2.Text = "Most Lost: $";
             // 
@@ -455,9 +446,10 @@
             this.lblMostLost.BackColor = System.Drawing.Color.Transparent;
             this.lblMostLost.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMostLost.ForeColor = System.Drawing.Color.Gold;
-            this.lblMostLost.Location = new System.Drawing.Point(854, 54);
+            this.lblMostLost.Location = new System.Drawing.Point(1139, 66);
+            this.lblMostLost.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMostLost.Name = "lblMostLost";
-            this.lblMostLost.Size = new System.Drawing.Size(14, 15);
+            this.lblMostLost.Size = new System.Drawing.Size(18, 20);
             this.lblMostLost.TabIndex = 26;
             this.lblMostLost.Text = "0";
             // 
@@ -468,9 +460,10 @@
             this.lbltotalWin.BackColor = System.Drawing.Color.Transparent;
             this.lbltotalWin.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltotalWin.ForeColor = System.Drawing.Color.Gold;
-            this.lbltotalWin.Location = new System.Drawing.Point(779, 84);
+            this.lbltotalWin.Location = new System.Drawing.Point(1039, 103);
+            this.lbltotalWin.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbltotalWin.Name = "lbltotalWin";
-            this.lbltotalWin.Size = new System.Drawing.Size(45, 15);
+            this.lbltotalWin.Size = new System.Drawing.Size(58, 20);
             this.lbltotalWin.TabIndex = 23;
             this.lbltotalWin.Text = "Wins:";
             // 
@@ -481,9 +474,10 @@
             this.lbltotalWinCount.BackColor = System.Drawing.Color.Transparent;
             this.lbltotalWinCount.Font = new System.Drawing.Font("Rockwell", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltotalWinCount.ForeColor = System.Drawing.Color.Gold;
-            this.lbltotalWinCount.Location = new System.Drawing.Point(847, 87);
+            this.lbltotalWinCount.Location = new System.Drawing.Point(1129, 107);
+            this.lbltotalWinCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbltotalWinCount.Name = "lbltotalWinCount";
-            this.lbltotalWinCount.Size = new System.Drawing.Size(28, 15);
+            this.lbltotalWinCount.Size = new System.Drawing.Size(36, 20);
             this.lbltotalWinCount.TabIndex = 24;
             this.lbltotalWinCount.Text = "0/0";
             // 
@@ -493,10 +487,10 @@
             this.btnSurrender.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(103)))), ((int)(((byte)(64)))));
             this.btnSurrender.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSurrender.ForeColor = System.Drawing.Color.Gold;
-            this.btnSurrender.Location = new System.Drawing.Point(933, 104);
-            this.btnSurrender.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSurrender.Location = new System.Drawing.Point(1244, 128);
+            this.btnSurrender.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSurrender.Name = "btnSurrender";
-            this.btnSurrender.Size = new System.Drawing.Size(100, 50);
+            this.btnSurrender.Size = new System.Drawing.Size(133, 62);
             this.btnSurrender.TabIndex = 22;
             this.btnSurrender.Text = "Surrender";
             this.btnSurrender.UseVisualStyleBackColor = false;
@@ -504,22 +498,20 @@
             // 
             // BlackjackMainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1092, 581);
+            this.ClientSize = new System.Drawing.Size(1456, 715);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlBackground);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "BlackjackMainWindow";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Blackjack";
             this.Load += new System.EventHandler(this.BlackjackMainWindow_Load);
-            this.pnlBackground.ResumeLayout(false);
-            this.pnlBackground.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
@@ -530,8 +522,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnHit;
-        private System.Windows.Forms.Label lblDealerHandValue;
-        private System.Windows.Forms.Label lblPlayerHandValue;
         private System.Windows.Forms.Button betFiveBtn;
         private System.Windows.Forms.Button betTenBtn;
         private System.Windows.Forms.Button betFiftyBtn;
