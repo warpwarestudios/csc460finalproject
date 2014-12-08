@@ -320,8 +320,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
         private void CheckForSplit (Hand hand)
         {
-            // if player has already split 3 times, prevent any more splitting
-            if (splits == 2)
+            // if player has already split 2 times, prevent any more splitting
+            if (splits == 1)
             { return;  }
 
             // Split hand scenario checker
@@ -352,7 +352,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
             stand1 = false;
             stand2 = false;
-            stand3 = false;
+            stand3 = false; // not used
 
             activePlayerHand.ClearHand();
             playerHand1.ClearHand();
@@ -564,7 +564,16 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             //if player busts
             if (CheckForBust(activePlayerHand))
             {
-                ModifyBank(betMoneyValue * -1, true, false);
+                if (splits == 1)
+                {
+                    ModifyBank((betMoneyValue / 2) * -1, true, false);
+                    MessageBox.Show("You busted!", "Lose!", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    ModifyBank(betMoneyValue * -1, true, false);
+                    MessageBox.Show("You busted!", "Lose!", MessageBoxButtons.OK);
+                }
                 MessageBox.Show("You busted! You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK); 
             }
             else if(CheckForBlackjack(activePlayerHand))
@@ -577,13 +586,13 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 if (CheckForBlackjack(dealerHand))
                 {
                     ModifyBank(betMoneyValue, true, false);
-                    MessageBox.Show("We tied! Here's your bet back.", "Tie!", MessageBoxButtons.OK);
+                    MessageBox.Show("We tied!", "Tie!", MessageBoxButtons.OK);
                 }
                 //if dealer busted or did not get to 21, player wins
                 else
                 {
                     ModifyBank(betMoneyValue * 2, true, false);
-                    MessageBox.Show("You win! Here's your money.", "Win!", MessageBoxButtons.OK);
+                    MessageBox.Show("You win!", "Win!", MessageBoxButtons.OK);
                 }
             }
            
@@ -612,7 +621,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 stand1 = true;
                 return;
             }
-            if (splits == 2 && !stand2)
+            if (splits == 2 && !stand2) // not used
             {
                 activePlayerHand.ClearHand();
                 foreach (PlayingCard card in playerHand3.CardsInHand())
@@ -637,43 +646,51 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             DisplayDealerCards();
 
             int i = 1; // set loop counter
-            if (stand3)
+            double gain = betMoneyValue * 2, loss = betMoneyValue * -1, draw = betMoneyValue;// money values
+
+            if (stand3) // not used
             { i = 3; }
             else if (stand2)
-            { i = 2; }
+            { 
+                i = 2;
+                gain /= 2;
+                loss /= 2;
+                draw = betMoneyValue;
+            }
+
 
             while (i >= 1)
             {
                 //dealer has blackjack
                 if (CheckForBlackjack(dealerHand))
                 {
-                    ModifyBank(betMoneyValue * -1, true, false);
-                    MessageBox.Show("You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK);
+                    ModifyBank(loss, true, false);
+                    MessageBox.Show("You lose.", "Lose!", MessageBoxButtons.OK);
                 }
                 //dealer busts
                 else if (CheckForBust(dealerHand))
                 {
-                    ModifyBank(betMoneyValue * 2, true, false);
-                    MessageBox.Show("I busted! You win! Here's your money.", "Win!", MessageBoxButtons.OK);
+                    ModifyBank(gain, true, false);
+                    MessageBox.Show("I busted! You win!", "Win!", MessageBoxButtons.OK);
                 }
                 //dealer beats player
                 else if(GetTotalHandValue(dealerHand) > GetTotalHandValue(handSelector(i)))
                 {
-                    ModifyBank(betMoneyValue * -1, true, false);
-                    MessageBox.Show("You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK);
+                    ModifyBank(loss, true, false);
+                    MessageBox.Show("You lose.", "Lose!", MessageBoxButtons.OK);
                 }
                 //player beats dealer
                 else if (GetTotalHandValue(dealerHand) < GetTotalHandValue(handSelector(i)))
                 {
-                    ModifyBank(betMoneyValue * 2, true, false);
-                    MessageBox.Show("You win! Here's your money.", "Win!", MessageBoxButtons.OK);
+                    ModifyBank(gain, true, false);
+                    MessageBox.Show("You win!", "Win!", MessageBoxButtons.OK);
             
                 }
                 //player and dealer tie
                 else if (GetTotalHandValue(dealerHand) == GetTotalHandValue(handSelector(i)))
                 {
-                    ModifyBank(betMoneyValue, true, false);
-                    MessageBox.Show("We tied! Here's your bet back.", "Tie!", MessageBoxButtons.OK);
+                    ModifyBank(draw, true, false);
+                    MessageBox.Show("We tied!", "Tie!", MessageBoxButtons.OK);
                 }
                     i--;
             } // while loop
@@ -697,23 +714,34 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         //Double down
         private void btnDoubleDown_Click(object sender, EventArgs e)
         {
-            btnDoubleDown.Enabled = false;
-            btnDoubleDown.Visible = false;
-            BettingMoneyGrabber(betMoneyValue);
+            
+            if (splits == 1)
+            { 
+                BettingMoneyGrabber((betMoneyValue / 2));
+            }
+            else
+            { 
+                BettingMoneyGrabber(betMoneyValue);
+                btnDoubleDown.Enabled = false;
+                btnDoubleDown.Visible = false;
+            }
             activePlayerHand.AddCardToHand(deck.DealCardFromPack());
             lblPlayerHandValue.Text = GetTotalHandValue(activePlayerHand).ToString();
             DisplayPlayerCards();
-            //check for blackjack
-            if (CheckForBlackjack(activePlayerHand))
-            {
-                ModifyBank(betMoneyValue * 2, true, false);
-                MessageBox.Show("You got blackjack! Great job! Here's your money.", "Win!", MessageBoxButtons.OK);
-            }
+
             //check for bust
-            else if (CheckForBust(activePlayerHand))
+            if (CheckForBust(activePlayerHand))
             {
-                ModifyBank(betMoneyValue * -1, true, false);
-                MessageBox.Show("You busted! You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK); 
+                if (splits == 1)
+                {
+                    ModifyBank((betMoneyValue / 2) * -1, true, false);
+                    MessageBox.Show("You busted!", "Lose!", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    ModifyBank(betMoneyValue * -1, true, false);
+                    MessageBox.Show("You busted!", "Lose!", MessageBoxButtons.OK);
+                }
             }
             //otherwise stand
             else
@@ -755,11 +783,26 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 playerHand2.AddCardToHand(card3);
                 splits++;
 
+                playerMoneyValue = playerMoneyValue - betMoneyValue;
+                valuePlayerLbl.Text = playerMoneyValue.ToString();
+                betMoneyValue *= 2;
+                valueBetLbl.Text = betMoneyValue.ToString();
+
+                if (CheckForBlackjack(activePlayerHand))
+                {
+                    ModifyBank((betMoneyValue / 2) * 2.5, true, false);
+                    MessageBox.Show("You got blackjack in your first hand!", "Win!", MessageBoxButtons.OK);
+                }
+                if (CheckForBlackjack(playerHand2))
+                {
+                    ModifyBank((betMoneyValue / 2) * 2.5, true, false);
+                    MessageBox.Show("You got blackjack in your second hand!", "Win!", MessageBoxButtons.OK);
+                }
                 //display cards
                 DisplayPlayerCards();
                 DisplayDealerCards();
             }
-            else if (splits == 1) // second split
+            else if (splits == 1) // not used
             {
                 foreach (PlayingCard card in activePlayerHand.CardsInHand())
                 {
@@ -778,6 +821,12 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 playerHand3.AddCardToHand(card2);
                 playerHand3.AddCardToHand(deck.DealCardFromPack());
                 splits++;
+
+                playerMoneyValue = playerMoneyValue - betMoneyValue;
+                valuePlayerLbl.Text = playerMoneyValue.ToString();
+                betMoneyValue *= 2;
+                valueBetLbl.Text = betMoneyValue.ToString();
+
                 //display cards
                 DisplayPlayerCards();
                 DisplayDealerCards();
