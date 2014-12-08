@@ -805,12 +805,12 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
                 if (CheckForBlackjack(activePlayerHand))
                 {
-                    ModifyBank((int)((betMoneyValue / 2) * 2.5), true, false);
+                    ModifyBank((double)((betMoneyValue / 2) * 2.5), true, false);
                     MessageBox.Show("You got blackjack in your first hand!", "Win!", MessageBoxButtons.OK);
                 }
                 if (CheckForBlackjack(playerHand2))
                 {
-                    ModifyBank((int)((betMoneyValue / 2) * 2.5), true, false);
+                    ModifyBank((double)((betMoneyValue / 2) * 2.5), true, false);
                     MessageBox.Show("You got blackjack in your second hand!", "Win!", MessageBoxButtons.OK);
                 }
                 //display cards
