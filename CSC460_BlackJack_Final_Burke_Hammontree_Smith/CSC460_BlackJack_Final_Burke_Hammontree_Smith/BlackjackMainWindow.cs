@@ -407,11 +407,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             activePlayerHand = new Hand();
             dealerHand = new Hand();
 
-            //activePlayerHand.AddCardToHand(deck.DealCardFromPack());
-            //activePlayerHand.AddCardToHand(deck.DealCardFromPack());
-            PlayingCard card = new PlayingCard(Suit.Clubs, Value.Four);
-            activePlayerHand.AddCardToHand(card);
-            activePlayerHand.AddCardToHand(card);
+            activePlayerHand.AddCardToHand(deck.DealCardFromPack());
+            activePlayerHand.AddCardToHand(deck.DealCardFromPack());
 
             if (playerMoneyValue >= originalBet) // split check
             { CheckForSplit(activePlayerHand); }
@@ -853,9 +850,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 
 
                 playerHand2.AddCardToHand(card2);
-                //playerHand2.AddCardToHand(deck.DealCardFromPack());
-                PlayingCard card3 = new PlayingCard(Suit.Clubs, Value.Four);
-                playerHand2.AddCardToHand(card3);
+                playerHand2.AddCardToHand(deck.DealCardFromPack());
                 splits++;
 
                 BettingMoneyGrabber(originalBet);
