@@ -90,6 +90,15 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             btnSplit.Visible = false;
             btnSurrender.Enabled = false;
             btnSurrender.Visible = false;
+
+            int size = pnlBackground.Height / 4 + 45;        
+            DownArrow1.Parent = pnlBackground;
+            DownArrow2.Parent = pnlBackground;
+            DownArrow1.Location = new Point((DownArrow1.Parent.Size.Width / 4), DownArrow1.Parent.Size.Height - DownArrow1.Size.Height - size);
+            DownArrow2.Location = new Point((DownArrow2.Parent.Size.Width * 3 / 4), DownArrow2.Parent.Size.Height - DownArrow2.Size.Height - size);
+            DownArrow1.Visible = false;
+            DownArrow2.Visible = false;
+                        
         }
 
         private void DisplayPlayerCards()
@@ -121,8 +130,22 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             //hand is split once
             else if (splits == 1)
             {
+                int totalCardNum = playerHand1.CardsInHand().Count + playerHand2.CardsInHand().Count;
+                int cardsPlaced = 0;
+                
+                //indicate which hand you are playing
+                if (stand1)
+                {
+                    DownArrow2.Visible = true;
+                    DownArrow1.Visible = false;
+                }
+                else
+                {
+                    DownArrow1.Visible = true;
+                }
+
                 //create cards for playerHand1
-                for (int i = 1; i <= playerHand1.CardsInHand().Count + playerHand2.CardsInHand().Count; i++)
+                for (int i = 1; i <= totalCardNum; i++)
                 {
                     //if control does not already exist create and position it
                     if (!pnlBackground.Controls.ContainsKey("Card" + i) && i <= playerHand1.CardsInHand().Count)
@@ -137,7 +160,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                         newButton.BackgroundImage = ((PlayingCard)playerHand1.CardsInHand()[i - 1]).CardImage();
                         newButton.BackgroundImageLayout = ImageLayout.Stretch;
                         pnlBackground.Controls.Add(newButton);
-                        //pnlBackground.Controls.SetChildIndex(newButton, playerHand1.CardsInHand().Count - i);
+                        pnlBackground.Controls.SetChildIndex(newButton, playerHand1.CardsInHand().Count - i);
+                        cardsPlaced = playerHand1.CardsInHand().Count;
                     }
                     //create cards for playerHand2
                     //if control does not already exist create and position it
@@ -149,11 +173,11 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                         newButton.Anchor = (AnchorStyles.Bottom | AnchorStyles.Right);
                         size = newButton.Parent.Height / 8;
                         newButton.Size = new Size(size, (int)(size * 1.5));
-                        newButton.Location = new Point((newButton.Parent.Size.Width * 3 / 4) - 35 + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - size);
+                        newButton.Location = new Point((newButton.Parent.Size.Width * 3 / 4) - (35 * (1 + cardsPlaced)) + (35 * i), newButton.Parent.Size.Height - newButton.Size.Height - size);
                         newButton.BackgroundImage = ((PlayingCard)playerHand2.CardsInHand()[i - (1 + playerHand1.CardsInHand().Count) ]).CardImage();
                         newButton.BackgroundImageLayout = ImageLayout.Stretch;
                         pnlBackground.Controls.Add(newButton);
-                        //pnlBackground.Controls.SetChildIndex(newButton, i - playerHand2.CardsInHand().Count);
+                        pnlBackground.Controls.SetChildIndex(newButton, i - cardsPlaced);
                     }
                 }
             }
@@ -641,6 +665,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 stand1 = true;
                 btnDoubleDown.Visible = true;
                 btnDoubleDown.Enabled = true;
+                DownArrow1.Visible = false;
+                DownArrow2.Visible = true;
                 return;
             }
             if (splits == 2 && !stand2) // not used
@@ -665,6 +691,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             ((Button)pnlBackground.Controls["DealerCard1"]).BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[0]).CardImage();
             //dealer hits until 17
             DealerHit();
+            DeleteCards();
+            DisplayPlayerCards();
             DisplayDealerCards();
 
             int i = 1; // set loop counter
@@ -694,8 +722,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 {
                     ModifyBank((int)gain, true, false);
                     MessageBox.Show("I busted! You win!", "Win!", MessageBoxButtons.OK);
-                    ModifyBank(betMoneyValue * 2, true, false);
-                    MessageBox.Show("I busted! You win! Here's your money.", "Win!", MessageBoxButtons.OK);
                     totalWins++;
                 }
                 //dealer beats player
@@ -709,8 +735,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 {
                     ModifyBank((int)gain, true, false);
                     MessageBox.Show("You win!", "Win!", MessageBoxButtons.OK);
-                    ModifyBank(betMoneyValue * 2, true, false);
-                    MessageBox.Show("You win! Here's your money.", "Win!", MessageBoxButtons.OK);
                     totalWins++;
             
                 }
@@ -747,8 +771,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 BettingMoneyGrabber(originalBet);
                 btnSurrender.Enabled = false;
                 btnSurrender.Visible = false;
-                activePlayerHand.AddCardToHand(deck.DealCardFromPack());
-                DisplayPlayerCards();
+                Hit();
             }
             else
             {
@@ -757,54 +780,14 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 btnDoubleDown.Visible = false;
                 btnSurrender.Enabled = false;
                 btnSurrender.Visible = false;
-                activePlayerHand.AddCardToHand(deck.DealCardFromPack());
-                DisplayPlayerCards();
-            }
-            activePlayerHand.AddCardToHand(deck.DealCardFromPack());
-            //lblPlayerHandValue.Text = GetTotalHandValue(activePlayerHand).ToString();
-            DisplayPlayerCards();
-            btnDoubleDown.Enabled = false;
-            btnDoubleDown.Visible = false;
-            btnSurrender.Enabled = false;
-            btnSurrender.Visible = false;
-            BettingMoneyGrabber(betMoneyValue);
-            activePlayerHand.AddCardToHand(deck.DealCardFromPack());
-            //lblPlayerHandValue.Text = GetTotalHandValue(activePlayerHand).ToString();
-            DisplayPlayerCards();
-            //check for blackjack
-            if (CheckForBlackjack(activePlayerHand))
-            {
-                ModifyBank(betMoneyValue * 2, true, false);
-                MessageBox.Show("You got blackjack! Great job! Here's your money.", "Win!", MessageBoxButtons.OK);
-                totalWins++;
-            }
 
-            //check for bust
-            if (CheckForBust(activePlayerHand))
-            {
-                if (splits == 1 && !stand1)
-                {
-                    deltaMoney = (betMoneyValue / 2) * -1;
-                    valueBetLbl.Text = (betMoneyValue + deltaMoney).ToString();
-                    MessageBox.Show("You busted!", "Lose!", MessageBoxButtons.OK);
-                }
-                else if (splits == 1 && !stand2)
-                {
-                    deltaMoney = (betMoneyValue / 2) * -1;
-                    valueBetLbl.Text = (betMoneyValue + deltaMoney).ToString();
-                    MessageBox.Show("You busted!", "Lose!", MessageBoxButtons.OK);
-                }
-                else
-                {
-                    ModifyBank(betMoneyValue * -1, true, false);
-                    MessageBox.Show("You busted!", "Lose!", MessageBoxButtons.OK);
-                }
+                Hit();
             }
+            
+            
             //otherwise stand
-            else
-            {
-                Stand();
-            }
+            Stand();
+             
         }
 
         //Split hand
@@ -1059,6 +1042,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             btnDoubleDown.Visible = false;
             betAndSetBtn.Enabled = true;
             dealerStand = false;
+            DownArrow1.Visible = false;
+            DownArrow2.Visible = false;
         }
 
         private void btnSurrender_Click(object sender, EventArgs e)
