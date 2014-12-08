@@ -380,7 +380,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         private void Deal()
         {
             //delete all cards shown in player and dealer hands
-            DeleteCards();
+            DeletePlayerCards();
+            DeleteDealerCards();
 
             stand1 = false;
             stand2 = false;
@@ -527,7 +528,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             return handValue;
         }
 
-        private void DeleteCards()
+        private void DeletePlayerCards()
         {
             //Deletes all cards shown
             int i = 1;
@@ -536,8 +537,12 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 pnlBackground.Controls.RemoveByKey("Card" + i);
                 i++;
             }
-            i = 1;
-            while(pnlBackground.Controls.ContainsKey("DealerCard" + i))
+        }
+
+        private void DeleteDealerCards()
+        {
+            int i = 1;
+            while (pnlBackground.Controls.ContainsKey("DealerCard" + i))
             {
                 pnlBackground.Controls.RemoveByKey("DealerCard" + i);
                 i++;
@@ -561,7 +566,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         {
             activePlayerHand.AddCardToHand(deck.DealCardFromPack());
             
-            DeleteCards();
+            DeletePlayerCards();
 
             //copy activePlayerHand into proper variable for display
             if (stand2)
@@ -591,13 +596,13 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             {
                 if (splits == 1 && !stand1)
                 {
-                    deltaMoney = (betMoneyValue / 2) * -1;
+                    deltaMoney += (betMoneyValue / 2) * -1;
                     valueBetLbl.Text = (betMoneyValue + deltaMoney).ToString();
                     MessageBox.Show("You busted!", "Lose!", MessageBoxButtons.OK);
                 }
                 else if (splits == 1 && !stand2)
                 {
-                    deltaMoney = (betMoneyValue / 2) * -1;
+                    deltaMoney += (betMoneyValue / 2) * -1;
                     valueBetLbl.Text = (betMoneyValue + deltaMoney).ToString();
                     MessageBox.Show("You busted!", "Lose!", MessageBoxButtons.OK);
                 }
@@ -606,29 +611,11 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                     ModifyBank(betMoneyValue * -1, true, false);
                     MessageBox.Show("You busted!", "Lose!", MessageBoxButtons.OK);
                 }
-                MessageBox.Show("You busted! You lose. I'll take your bet now.", "Lose!", MessageBoxButtons.OK); 
             }
             else if(CheckForBlackjack(activePlayerHand))
             {
-                DealerHit();
-                DeleteCards();
-                DisplayDealerCards();
-                DisplayPlayerCards();
-                //if dealer got to 21, there is a tie
-                if (CheckForBlackjack(dealerHand))
-                {
-                    ModifyBank(betMoneyValue, true, false);
-                    MessageBox.Show("We tied!", "Tie!", MessageBoxButtons.OK);
-                }
-                //if dealer busted or did not get to 21, player wins
-                else
-                {
-                    totalWins++;
-                    ModifyBank(betMoneyValue * 2, true, false);
-                    MessageBox.Show("You win! Here's your money.", "Win!", MessageBoxButtons.OK);
-                 
-               }
-           }
+                Stand();
+            }
            
         }
 
@@ -659,20 +646,13 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 DownArrow2.Visible = true;
                 return;
             }
-            if (splits == 2 && !stand2) // not used
+            if (splits == 2 && !stand2) 
             {
                 activePlayerHand.ClearHand();
                 foreach (PlayingCard card in playerHand3.CardsInHand())
                 { activePlayerHand.AddCardToHand(card); }
-                CheckForSplit(activePlayerHand);
                 stand2 = true;
                 return;
-            }
-            if (splits == 3 && !stand3)
-            {
-                foreach (PlayingCard card in activePlayerHand.CardsInHand())
-                { playerHand3.AddCardToHand(card); }
-                stand3 = true;
             }
 
             stand1 = true;
@@ -681,16 +661,18 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             ((Button)pnlBackground.Controls["DealerCard1"]).BackgroundImage = ((PlayingCard)dealerHand.CardsInHand()[0]).CardImage();
             //dealer hits until 17
             DealerHit();
-            DeleteCards();
+            DeleteDealerCards();
+            DeletePlayerCards();
             DisplayPlayerCards();
             DisplayDealerCards();
 
             int i = 1; // set loop counter
-            double gain = betMoneyValue * 2, loss = betMoneyValue * -1, draw = betMoneyValue;// money values
+            double gain = betMoneyValue * 2;
+            double loss = betMoneyValue * -1;
+            double draw = betMoneyValue; // money values
 
-            if (stand3) // not used
-            { i = 3; }
-            else if (stand2)
+            
+            if (stand2)
             { 
                 i = 2;
                 gain /= 2;
@@ -704,38 +686,42 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 //dealer has blackjack
                 if (CheckForBlackjack(dealerHand))
                 {
-                    ModifyBank((int)loss, true, false);
-                    MessageBox.Show("You lose.", "Lose!", MessageBoxButtons.OK);
+                    deltaMoney += loss;
+                    ModifyBank((double)loss, true, false);
                 }
                 //dealer busts
                 else if (CheckForBust(dealerHand))
                 {
-                    ModifyBank((int)gain, true, false);
-                    MessageBox.Show("I busted! You win!", "Win!", MessageBoxButtons.OK);
+                    deltaMoney += gain;
                     totalWins++;
                 }
                 //dealer beats player
                 else if(GetTotalHandValue(dealerHand) > GetTotalHandValue(handSelector(i)))
                 {
-                    ModifyBank((int)loss, true, false);
-                    MessageBox.Show("You lose.", "Lose!", MessageBoxButtons.OK);
+                    deltaMoney += loss;
                 }
                 //player beats dealer
                 else if (GetTotalHandValue(dealerHand) < GetTotalHandValue(handSelector(i)))
                 {
-                    ModifyBank((int)gain, true, false);
-                    MessageBox.Show("You win!", "Win!", MessageBoxButtons.OK);
+                    deltaMoney += gain;
                     totalWins++;
             
                 }
                 //player and dealer tie
                 else if (GetTotalHandValue(dealerHand) == GetTotalHandValue(handSelector(i)))
                 {
-                    ModifyBank((int)draw, true, false);
-                    MessageBox.Show("We tied!", "Tie!", MessageBoxButtons.OK);
+                    deltaMoney += draw;
                 }
                     i--;
             } // while loop
+
+            if (deltaMoney >= 0)
+            { MessageBox.Show("Result: $" + deltaMoney.ToString(), "Win!", MessageBoxButtons.OK); }
+            else if (deltaMoney <= 0)
+            { MessageBox.Show("Result: $" + deltaMoney.ToString(), "Loss!", MessageBoxButtons.OK); }
+            else if (deltaMoney == 0)
+            { MessageBox.Show("Result: $" + deltaMoney.ToString(), "Push!", MessageBoxButtons.OK); }
+            ModifyBank(0, true, false);
         }
         
         // support func for stand method
@@ -770,10 +756,8 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 btnDoubleDown.Visible = false;
                 btnSurrender.Enabled = false;
                 btnSurrender.Visible = false;
-
                 Hit();
             }
-            
             
             //otherwise stand
             Stand();
@@ -796,7 +780,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                     { card2 = card; }
                     i++;
                 }
-                DeleteCards();
+                DeletePlayerCards();
                 activePlayerHand.ClearHand();
 
                 activePlayerHand.AddCardToHand(card1);
@@ -839,7 +823,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                     { card2 = card; }
                     i++;
                 }
-                DeleteCards();
+                DeletePlayerCards();
                 activePlayerHand.ClearHand();
 
                 activePlayerHand.AddCardToHand(card1);
