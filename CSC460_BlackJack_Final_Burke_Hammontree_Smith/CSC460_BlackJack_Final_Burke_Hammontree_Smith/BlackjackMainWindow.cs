@@ -720,11 +720,68 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             } // while loop
 
             if (deltaMoney > 0)
-            { MessageBox.Show("Win! /nResult: $" + deltaMoney.ToString(), "Win!", MessageBoxButtons.OK); }
+            { 
+                MessageBox.Show("Win! \nResult: $" + deltaMoney.ToString(), "Win!", MessageBoxButtons.OK);
+                if (deltaMoney > gainMostMoneyValue)
+                {
+                    gainMostMoneyValue = deltaMoney;
+                }
+                else if (deltaMoney < lostMostMoneyValue)
+                {
+                    lostMostMoneyValue = deltaMoney;
+                }
+
+                if (deltaMoney > 0)
+                {
+                    gainTotalMoneyValue += deltaMoney;
+                }
+                else if (deltaMoney < 0)
+                {
+                    lostTotalMoneyValue += deltaMoney;
+                }
+            }
             else if (deltaMoney < 0)
-            { MessageBox.Show("Loss! /nResult: $" + deltaMoney.ToString(), "Loss!", MessageBoxButtons.OK); }
+            { 
+                MessageBox.Show("Loss! \nResult: $" + deltaMoney.ToString(), "Loss!", MessageBoxButtons.OK);
+                if (deltaMoney > gainMostMoneyValue)
+                {
+                    gainMostMoneyValue = deltaMoney;
+                }
+                else if (deltaMoney < lostMostMoneyValue)
+                {
+                    lostMostMoneyValue = deltaMoney;
+                }
+
+                if (deltaMoney > 0)
+                {
+                    gainTotalMoneyValue += deltaMoney;
+                }
+                else if (deltaMoney < 0)
+                {
+                    lostTotalMoneyValue += deltaMoney;
+                }
+            }
             else if (deltaMoney == 0)
-            { MessageBox.Show("Push! /nResult: $" + deltaMoney.ToString(), "Push!", MessageBoxButtons.OK); }
+            { 
+                MessageBox.Show("Push! \nResult: $" + deltaMoney.ToString(), "Push!", MessageBoxButtons.OK);
+                if (deltaMoney > gainMostMoneyValue)
+                {
+                    gainMostMoneyValue = deltaMoney;
+                }
+                else if (deltaMoney < lostMostMoneyValue)
+                {
+                    lostMostMoneyValue = deltaMoney;
+                }
+
+                if (deltaMoney > 0)
+                {
+                    gainTotalMoneyValue += deltaMoney;
+                }
+                else if (deltaMoney < 0)
+                {
+                    lostTotalMoneyValue += deltaMoney;
+                }
+            }
             ModifyBank(0, true, false);
         }
         
