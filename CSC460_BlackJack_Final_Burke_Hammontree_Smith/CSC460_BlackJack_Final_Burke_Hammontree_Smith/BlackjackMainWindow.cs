@@ -16,7 +16,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         // Variables
         public static Player activePlayer;
         bool dealerFirstDraw = true;
-        bool stand1 = false, stand2 = false, stand3 = false;
+        bool stand1 = false, stand2 = false;
         bool dealerStand = false;
         int splits = 0; // number off times the player has split
         Pack deck;
@@ -385,7 +385,6 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
 
             stand1 = false;
             stand2 = false;
-            stand3 = false; // not used
 
             originalBet = betMoneyValue;
 
@@ -887,6 +886,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 betAndSetBtn.Text = "Bet";
                 MoneyButtonVisiblity(false);
                 betAndSetBtn.Enabled = false;
+                btnStand.Enabled = true;
                 btnHit.Enabled = true;
                 Deal();
             }

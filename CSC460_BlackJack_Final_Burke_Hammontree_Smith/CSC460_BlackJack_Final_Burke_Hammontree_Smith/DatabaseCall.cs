@@ -37,6 +37,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             newPlayer.Username = name;
             newPlayer.Password = password;
             newPlayer.Bank = 3000;
+            newPlayer.Borrow = 0;
             db.AddToPlayers(newPlayer);
 
             db.SaveChanges();
