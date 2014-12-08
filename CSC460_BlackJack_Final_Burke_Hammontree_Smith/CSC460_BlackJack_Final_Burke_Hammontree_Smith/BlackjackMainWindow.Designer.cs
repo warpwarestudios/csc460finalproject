@@ -60,7 +60,7 @@
             // 
             this.btnHit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnHit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(103)))), ((int)(((byte)(64)))));
-            this.btnHit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHit.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHit.ForeColor = System.Drawing.Color.Gold;
             this.btnHit.Location = new System.Drawing.Point(621, 86);
             this.btnHit.Name = "btnHit";
@@ -100,7 +100,7 @@
             // 
             this.betAndSetBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.betAndSetBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(103)))), ((int)(((byte)(64)))));
-            this.betAndSetBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.betAndSetBtn.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.betAndSetBtn.ForeColor = System.Drawing.Color.Gold;
             this.betAndSetBtn.Location = new System.Drawing.Point(269, 112);
             this.betAndSetBtn.Name = "betAndSetBtn";
@@ -115,11 +115,11 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Gold;
-            this.label1.Location = new System.Drawing.Point(803, 50);
+            this.label1.Location = new System.Drawing.Point(805, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 18);
+            this.label1.Size = new System.Drawing.Size(99, 18);
             this.label1.TabIndex = 10;
             this.label1.Text = "Total Lost: $";
             // 
@@ -128,7 +128,7 @@
             this.valueLostLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.valueLostLbl.AutoSize = true;
             this.valueLostLbl.BackColor = System.Drawing.Color.Transparent;
-            this.valueLostLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valueLostLbl.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.valueLostLbl.ForeColor = System.Drawing.Color.Gold;
             this.valueLostLbl.Location = new System.Drawing.Point(910, 50);
             this.valueLostLbl.Name = "valueLostLbl";
@@ -141,11 +141,11 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Gold;
-            this.label3.Location = new System.Drawing.Point(847, 30);
+            this.label3.Location = new System.Drawing.Point(855, 30);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 18);
+            this.label3.Size = new System.Drawing.Size(49, 18);
             this.label3.TabIndex = 12;
             this.label3.Text = "Bet: $";
             // 
@@ -154,7 +154,7 @@
             this.valueBetLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.valueBetLbl.AutoSize = true;
             this.valueBetLbl.BackColor = System.Drawing.Color.Transparent;
-            this.valueBetLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valueBetLbl.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.valueBetLbl.ForeColor = System.Drawing.Color.Gold;
             this.valueBetLbl.Location = new System.Drawing.Point(910, 30);
             this.valueBetLbl.Name = "valueBetLbl";
@@ -167,11 +167,11 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Gold;
-            this.label5.Location = new System.Drawing.Point(789, 10);
+            this.label5.Location = new System.Drawing.Point(788, 10);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(104, 18);
+            this.label5.Size = new System.Drawing.Size(116, 18);
             this.label5.TabIndex = 14;
             this.label5.Text = "Your Money: $";
             // 
@@ -180,7 +180,7 @@
             this.valuePlayerLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.valuePlayerLbl.AutoSize = true;
             this.valuePlayerLbl.BackColor = System.Drawing.Color.Transparent;
-            this.valuePlayerLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valuePlayerLbl.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.valuePlayerLbl.ForeColor = System.Drawing.Color.Gold;
             this.valuePlayerLbl.Location = new System.Drawing.Point(910, 10);
             this.valuePlayerLbl.Name = "valuePlayerLbl";
@@ -193,11 +193,11 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Gold;
-            this.label7.Location = new System.Drawing.Point(784, 68);
+            this.label7.Location = new System.Drawing.Point(783, 68);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(109, 18);
+            this.label7.Size = new System.Drawing.Size(121, 18);
             this.label7.TabIndex = 16;
             this.label7.Text = "Most Gained: $";
             // 
@@ -206,7 +206,7 @@
             this.valueMostGainedLbl.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.valueMostGainedLbl.AutoSize = true;
             this.valueMostGainedLbl.BackColor = System.Drawing.Color.Transparent;
-            this.valueMostGainedLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valueMostGainedLbl.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.valueMostGainedLbl.ForeColor = System.Drawing.Color.Gold;
             this.valueMostGainedLbl.Location = new System.Drawing.Point(910, 68);
             this.valueMostGainedLbl.Name = "valueMostGainedLbl";
@@ -218,7 +218,7 @@
             // 
             this.btnStand.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnStand.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(103)))), ((int)(((byte)(64)))));
-            this.btnStand.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStand.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStand.ForeColor = System.Drawing.Color.Gold;
             this.btnStand.Location = new System.Drawing.Point(621, 21);
             this.btnStand.Name = "btnStand";
@@ -232,7 +232,7 @@
             // 
             this.btnDoubleDown.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnDoubleDown.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(103)))), ((int)(((byte)(64)))));
-            this.btnDoubleDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDoubleDown.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDoubleDown.ForeColor = System.Drawing.Color.Gold;
             this.btnDoubleDown.Location = new System.Drawing.Point(829, 104);
             this.btnDoubleDown.Margin = new System.Windows.Forms.Padding(2);
@@ -247,7 +247,7 @@
             // 
             this.btnSplit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSplit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(103)))), ((int)(((byte)(64)))));
-            this.btnSplit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSplit.Font = new System.Drawing.Font("Rockwell", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSplit.ForeColor = System.Drawing.Color.Gold;
             this.btnSplit.Location = new System.Drawing.Point(726, 104);
             this.btnSplit.Margin = new System.Windows.Forms.Padding(2);
@@ -290,9 +290,9 @@
             // 
             // pnlBackground
             // 
-            this.pnlBackground.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBackground.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlBackground.AutoSize = true;
             this.pnlBackground.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.CasinoMortambo;
             this.pnlBackground.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -367,8 +367,8 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackgroundImage = global::CSC460_BlackJack_Final_Burke_Hammontree_Smith.Properties.Resources.Background_Layout;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.btnSurrender);
@@ -401,7 +401,7 @@
             // 
             this.btnSurrender.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSurrender.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(103)))), ((int)(((byte)(64)))));
-            this.btnSurrender.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSurrender.Font = new System.Drawing.Font("Rockwell", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSurrender.ForeColor = System.Drawing.Color.Gold;
             this.btnSurrender.Location = new System.Drawing.Point(933, 104);
             this.btnSurrender.Margin = new System.Windows.Forms.Padding(2);
