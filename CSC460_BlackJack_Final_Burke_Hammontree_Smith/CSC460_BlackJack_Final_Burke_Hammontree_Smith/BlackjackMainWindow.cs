@@ -739,6 +739,7 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
             }
             else if (deltaMoney < 0)
             { 
+              
                 MessageBox.Show("Loss! \nResult: $" + deltaMoney.ToString(), "Loss!", MessageBoxButtons.OK);
                 if (deltaMoney > gainMostMoneyValue)
                 {
