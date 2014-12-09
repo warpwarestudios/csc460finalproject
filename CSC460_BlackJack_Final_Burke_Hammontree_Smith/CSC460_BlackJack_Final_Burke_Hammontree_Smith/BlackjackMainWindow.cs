@@ -476,6 +476,10 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
         private int GetTotalHandValue(Hand hand)
         {
             int handValue = 0;
+            PlayingCard ace = null;
+            PlayingCard ace2 = null;
+            PlayingCard ace3 = null;
+            PlayingCard ace4 = null;
 
             foreach (PlayingCard card in hand.CardsInHand())
             {
@@ -517,11 +521,42 @@ namespace CSC460_BlackJack_Final_Burke_Hammontree_Smith
                 }
                 else if (card.CardValue() == Value.Ace)
                 {
-                    if (handValue + 11 > 21)
-                    { handValue += 1; }
-                    else
-                    { handValue += 11; }
+                    if (ace == null)
+                    {
+                        ace = card;
+                    }
+                    else if (ace2 == null)
+                    {
+                        ace2 = card;
+                    }
+                    else if (ace3 == null)
+                    {
+                        ace3 = card;
+                    }
+                    else if (ace4 == null)
+                    {
+                        ace4 = card;
+                    }
                 }
+            }
+            if (ace4 != null)
+            {
+                handValue += 1;
+            }
+            if (ace3 != null)
+            {
+                handValue += 1;
+            }
+            if (ace2 != null)
+            {
+                handValue += 1;
+            }
+            if (ace != null)
+            {
+                if (handValue + 11 > 21)
+                { handValue += 1; }
+                else
+                { handValue += 11; }
             }
             return handValue;
         }
